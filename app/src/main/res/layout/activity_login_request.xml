@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/login_request_banner_iv"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:src="@drawable/login_request_banner"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/login_request_line_1_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인하고"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/login_request_banner_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/login_request_line_2_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나만의 주류 기록 남기기"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/login_request_line_1_tv"
+        app:layout_constraintStart_toStartOf="@id/login_request_line_1_tv"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/login_request_line_2_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="70dp"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#3C94DF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그인 하러가기"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_request_skip_cl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp">
+
+        <TextView
+            android:id="@+id/login_request_skip_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="건너뛰기"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="@id/login_request_skip_tv"
+            app:layout_constraintEnd_toEndOf="@id/login_request_skip_tv"
+            app:layout_constraintTop_toBottomOf="@id/login_request_skip_tv"
+            android:background="@color/gray"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
