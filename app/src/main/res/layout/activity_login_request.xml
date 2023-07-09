@@ -48,6 +48,7 @@
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/login_request_button_join_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#3C94DF">
