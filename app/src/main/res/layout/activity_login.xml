@@ -7,7 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_top_cl"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:background="@color/login_top_bar"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="뒤로가기"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@id/login_back_iv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:text="로그인"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:text="아이디"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_top_cl"
         android:layout_marginStart="20dp"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@id/login_id_tv"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"/>
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/login_password_tv"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:text="비밀번호"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_id_ed"
         android:layout_marginStart="20dp"
@@ -106,7 +106,7 @@
         app:layout_constraintTop_toBottomOf="@id/login_password_tv"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"/>
+        android:textSize="16sp"/>
 
 
     <ImageView
@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:text="회원가입"
             android:textColor="@color/gray"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -208,7 +208,7 @@
             android:layout_height="wrap_content"
             android:text="비밀번호 찾기"
             android:textColor="@color/gray"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -231,7 +231,7 @@
         android:layout_height="wrap_content"
         android:text="또는"
         android:textColor="@color/gray"
-        android:textSize="17sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_contour"
