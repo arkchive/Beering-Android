@@ -18,6 +18,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.loginBackIv.setOnClickListener {
+            finish()
+        }
+
 
     }
 }
