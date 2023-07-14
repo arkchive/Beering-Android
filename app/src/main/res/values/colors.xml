@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="login_top_bar">#E9E9E9</color>
     <color name="gray">#747D74</color>
-    <color name="light_gray">#F8F8F8EB</color>
+    <color name="gray2">#D9D9D9</color>
+    <color name="light_gray">#F8F8F8</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
