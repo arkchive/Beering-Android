@@ -18,5 +18,13 @@ class MyFragment : Fragment() {
         binding = FragmentMyBinding.inflate(inflater, container, false)
         return binding.root
 
+
+        // 내 리뷰 모아보기 설정
+
+
+        // api 연결설정
+
+
+
     }
 }

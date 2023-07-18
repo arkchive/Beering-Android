@@ -13,8 +13,8 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/selector_home"
         android:title="홈"
-        app:showAsAction="always"
-        tools:ignore="AlwaysShowAction" />
+        android:state_checked="true"
+        app:showAsAction="always" />
 
 
     <item

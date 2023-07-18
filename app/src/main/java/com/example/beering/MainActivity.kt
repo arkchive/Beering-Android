@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frm, HomeFragment())
             .commitAllowingStateLoss()
+        binding.mainBnv.selectedItemId = R.id.homeFragment
 
 
         binding.mainBnv.setOnItemSelectedListener {
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.drinkSearchFragment -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, DrinkSearchFragmentFragment())
+                        .replace(R.id.main_frm, DrinkSearchFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

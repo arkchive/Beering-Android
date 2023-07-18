@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.databinding.FragmentDrinkSearchBinding
 import com.example.naverwebtoon.data.DrinkCover
 
-class DrinkSearchFragmentFragment: Fragment() {
+class DrinkSearchFragment: Fragment() {
     lateinit var binding: FragmentDrinkSearchBinding
 
     override fun onCreateView(
