@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/selector_home"
-        android:title="홈"
-        app:showAsAction="always"
-        tools:ignore="AlwaysShowAction" />
-
-    <item
         android:id="@+id/drinkSearchFragment"
         android:icon="@drawable/selector_drink_search"
         android:title="주류 검색"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/selector_home"
+        android:title="홈"
+        android:state_checked="true"
+        app:showAsAction="always" />
+
 
     <item
         android:id="@+id/myFragment"
