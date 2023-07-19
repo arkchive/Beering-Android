@@ -11,15 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Beering"
         tools:targetApi="31">
-        <activity android:name=".JoinActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SearchFilterActivity"/>
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".LoginRequestActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

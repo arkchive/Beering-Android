@@ -22,6 +22,10 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.loginBackCl.setOnClickListener {
+            val intent = Intent(this, LoginRequestActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
