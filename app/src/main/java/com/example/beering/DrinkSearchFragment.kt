@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.databinding.FragmentDrinkSearchBinding
 import com.example.naverwebtoon.data.DrinkCover
@@ -39,7 +40,21 @@ class DrinkSearchFragment: Fragment() {
                     "Tiger",
                     "Pilsner Urquell Brewery",
                     1,
-                    R.drawable.login_request_banner)
+                    R.drawable.img_temp_drink)
+            )
+            data.add(1,
+                DrinkCover("타이거",
+                    "Tiger",
+                    "Pilsner Urquell Brewery",
+                    1,
+                    R.drawable.img_temp_drink)
+            )
+            data.add(2,
+                DrinkCover("타이거",
+                    "Tiger",
+                    "Pilsner Urquell Brewery",
+                    1,
+                    R.drawable.img_temp_drink)
             )
 
 
@@ -67,6 +82,13 @@ class DrinkSearchFragment: Fragment() {
             })
 
              */
+
+            drinkSearchAdapter!!.setOnHeartClickListener(object : DrinkSearchAdapter.OnHeartClickListener {
+                override fun onButtonClick(position: Int) {
+                    drinkSearchAdapter!!.setBindHeart(position, true)
+                    drinkSearchAdapter!!.notifyItemChanged(position, "heartChange")
+                }
+            })
         }
 
 
@@ -75,7 +97,7 @@ class DrinkSearchFragment: Fragment() {
 
         drinkSearchAdapter = DrinkSearchAdapter((drinkSearchList))
         binding.drinkSearchResultRv.adapter = drinkSearchAdapter
-        binding.drinkSearchResultRv.layoutManager = LinearLayoutManager(context)
+        binding.drinkSearchResultRv.layoutManager = GridLayoutManager(context,2)
 
 
     }
