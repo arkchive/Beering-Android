@@ -1,5 +1,4 @@
 package com.example.beering
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,4 +18,6 @@ class HomeFragment: Fragment() {
         return binding.root
 
     }
+    var homeAdapter: HomeAdapter?= null
+
 }
