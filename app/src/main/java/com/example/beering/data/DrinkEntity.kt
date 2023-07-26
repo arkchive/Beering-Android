@@ -14,3 +14,16 @@ data class DrinkCover (
         var BindHeart: Boolean = false
         )
 
+@Entity(tableName = "DrinkDetailTable")
+data class DrinkDetail (
+        val titleKr : String,
+        val mainImg : Int, // 상세페이지 대표 이미지
+        val information : String, // 주류 설명
+        val score : Float, //별점
+        val scoreCount : Int, // 별점 남긴 이용자 수
+        val alcoholPercentage : Float // 도수
+        ) {
+        @PrimaryKey(autoGenerate = true)
+        var id : Int = 0
+        }
+
