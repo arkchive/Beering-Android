@@ -20,6 +20,14 @@
 
     <!-- Splash theme. -->
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- No Title Bar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- no status bar -->
+        <item name="android:windowFullscreen">true</item>
+        <!-- 이미지 적용 -->
         <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">50000</item> // 스플래시 화면 지속시간
     </style>
+
 </resources>
