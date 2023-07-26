@@ -9,8 +9,9 @@ data class DrinkCover (
         val titleEn : String,
         val manufacture : String,
         val id : Int,
-        val img : Int,
-
+        var img : Int,
+        var isHeart: Boolean = false,
+        var BindHeart: Boolean = false
         )
 
 @Entity(tableName = "DrinkDetailTable")
