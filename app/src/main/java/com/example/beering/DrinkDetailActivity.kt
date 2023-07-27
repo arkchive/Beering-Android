@@ -3,6 +3,7 @@ package com.example.beering
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.databinding.ActivityDrinkDetailBinding
@@ -26,6 +27,7 @@ class DrinkDetailActivity : AppCompatActivity() {
 
         // 데이터를 받아서 처리
         val drinkId = intent.getStringExtra("drinkId")?.toInt()
+        Log.d("test", drinkId.toString())
 
         // 받은 데이터 사용
         if (drinkId != null) {
