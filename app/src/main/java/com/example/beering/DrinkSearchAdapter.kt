@@ -47,8 +47,7 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
 
             binding.itemDrinkSearchResultCl.setOnClickListener {
 
-                // 이후 상세페이지가 완료됐을때, 구현
-                // itemClickListener.onItemClick(drinkInfo)
+                itemClickListener.onItemClick(drinkInfo)
             }
 
 

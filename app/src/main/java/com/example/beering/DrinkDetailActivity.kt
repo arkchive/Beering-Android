@@ -9,6 +9,7 @@ import com.example.beering.databinding.ActivityDrinkDetailBinding
 import com.example.beering.databinding.ActivityJoinBinding
 import com.example.naverwebtoon.data.DrinkCover
 import com.example.naverwebtoon.data.DrinkDetail
+import com.google.gson.Gson
 
 class DrinkDetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDrinkDetailBinding
@@ -22,6 +23,15 @@ class DrinkDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDrinkDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 데이터를 받아서 처리
+        val dataJson = intent.getStringExtra("drinkId")
+        val drinkId = Gson().fromJson(dataJson, DrinkCover::class.java)
+
+        // 받은 데이터 사용
+        if (drinkId != null) {
+            // id를 바탕으로 api 연결
+        }
 
         initDummyData()
 
