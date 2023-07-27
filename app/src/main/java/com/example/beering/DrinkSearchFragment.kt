@@ -68,10 +68,8 @@ class DrinkSearchFragment: Fragment() {
             // 상세 페이지 구현시, 구현
             drinkSearchAdapter!!.setOnItemClickListener(object : DrinkSearchAdapter.OnItemClickListener {
                 override fun onItemClick(drinkInfo: DrinkCover) {
-                    Log.d("test","test")
                     val intent = Intent(requireContext(), DrinkDetailActivity::class.java)
-                    val dataJson = Gson().toJson(drinkInfo.id)
-                    intent.putExtra("drinkId", dataJson)
+                    intent.putExtra("drinkId", drinkInfo.id)
                     startActivity(intent)
 
                 }
@@ -86,7 +84,15 @@ class DrinkSearchFragment: Fragment() {
                     drinkSearchAdapter!!.notifyItemChanged(position, "heartChange")
                 }
             })
+
         }
+
+        binding.drinkSearchButtonFilterMcv.setOnClickListener {
+            val intent = Intent(requireContext(), SearchFilterActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 

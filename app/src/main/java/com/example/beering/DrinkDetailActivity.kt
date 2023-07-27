@@ -25,8 +25,7 @@ class DrinkDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 데이터를 받아서 처리
-        val dataJson = intent.getStringExtra("drinkId")
-        val drinkId = Gson().fromJson(dataJson, DrinkCover::class.java)
+        val drinkId = intent.getStringExtra("drinkId")?.toInt()
 
         // 받은 데이터 사용
         if (drinkId != null) {
