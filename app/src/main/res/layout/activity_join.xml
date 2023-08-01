@@ -67,6 +67,7 @@
                 android:background="@null" />
 
             <ImageView
+                android:id="@+id/join_id_iv1"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_delete_light"
@@ -74,6 +75,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <View
+                android:id="@+id/join_id_bar"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +84,7 @@
                 android:background="@color/gray01"/>
 
             <ImageView
+                android:id="@+id/join_id_iv2"
                 android:layout_width="42dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_duplicate_light"
@@ -107,19 +110,21 @@
                 android:ems="15"
                 android:hint=" 비밀번호를 입력해주세요"
                 android:textSize="16dp"
+                android:inputType="textPassword"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColorHint="@color/gray01"
                 android:background="@null" />
 
             <ImageView
-                android:layout_width="32dp"
+                android:id="@+id/join_password_iv"                android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_delete_light"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <View
+                android:id="@+id/join_password_bar"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -238,6 +243,7 @@
                 android:background="@null" />
 
             <ImageView
+                android:id="@+id/join_nickname_iv1"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_delete_light"
@@ -245,6 +251,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <View
+                android:id="@+id/join_nickname_bar"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -318,6 +325,7 @@
                 android:layout_marginStart="3dp" />
 
             <ImageView
+                android:id="@+id/join_nickname_iv2"
                 android:layout_width="42dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_duplicate_light"
@@ -488,6 +496,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
+        android:id="@+id/join_btn"
         android:layout_width="340dp"
         android:layout_height="70dp"
         android:src="@drawable/button_join_light"

@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Beering"
         tools:targetApi="31">
-        <activity android:name=".DrinkDetailActivity"/>
+        <activity
+            android:name=".DrinkDetailReviewsActivity"
+            android:exported="false" />
+        <activity android:name=".DrinkDetailActivity" />
         <activity android:name=".SearchFilterActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />
