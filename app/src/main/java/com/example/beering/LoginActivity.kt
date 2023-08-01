@@ -3,7 +3,11 @@ package com.example.beering
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
+import android.text.InputType.TYPE_CLASS_TEXT
+import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +18,6 @@ import com.example.beering.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,18 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginBackIv.setOnClickListener {
             finish()
+        }
+
+        binding.loginPasswordInvisibleIv.setOnClickListener {
+            binding.loginPasswordEd.inputType = InputType.TYPE_CLASS_TEXT
+            binding.loginPasswordInvisibleIv.visibility = View.INVISIBLE
+            binding.loginPasswordVisibleIv.visibility = View.VISIBLE
+        }
+
+        binding.loginPasswordVisibleIv.setOnClickListener {
+            binding.loginPasswordEd.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            binding.loginPasswordInvisibleIv.visibility = View.VISIBLE
+            binding.loginPasswordVisibleIv.visibility = View.INVISIBLE
         }
 
 
