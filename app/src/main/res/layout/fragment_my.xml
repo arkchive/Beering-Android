@@ -208,7 +208,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="이용약관"
+            android:text="버전 정보"
             android:textSize="16dp"
             android:textColor="@color/black"/>
 

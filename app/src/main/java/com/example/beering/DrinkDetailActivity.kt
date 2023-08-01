@@ -3,10 +3,12 @@ package com.example.beering
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.databinding.ActivityDrinkDetailBinding
 import com.example.beering.databinding.ActivityJoinBinding
+import com.example.beering.databinding.ActivityReviewWritingBinding
 import com.example.naverwebtoon.data.DrinkCover
 import com.example.naverwebtoon.data.DrinkDetail
 import com.google.gson.Gson
@@ -26,6 +28,7 @@ class DrinkDetailActivity : AppCompatActivity() {
 
         // 데이터를 받아서 처리
         val drinkId = intent.getStringExtra("drinkId")?.toInt()
+        Log.d("test", drinkId.toString())
 
         // 받은 데이터 사용
         if (drinkId != null) {
@@ -41,6 +44,12 @@ class DrinkDetailActivity : AppCompatActivity() {
         binding.buttonInterest.setOnClickListener {
             isInterest = !isInterest
             updateInterest(isInterest)
+        }
+
+
+        binding.drinkDetailReviewWritingBtn.setOnClickListener {
+            val intent = Intent(this, ReviewWritingActivity::class.java)
+            startActivity(intent)
         }
 
     }

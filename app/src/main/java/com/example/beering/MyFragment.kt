@@ -1,5 +1,6 @@
 package com.example.beering
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,7 +60,8 @@ class MyFragment : Fragment() {
         }
 
         binding.myFavoriteDrinkButtonIv.setOnClickListener {
-            // 찜한 주류 모아보기 연결
+            val intent = Intent(requireContext(), DrinkFavoriteActivity::class.java)
+            startActivity(intent)
         }
 
         return binding.root
