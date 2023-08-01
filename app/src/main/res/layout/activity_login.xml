@@ -97,12 +97,32 @@
             android:layout_height="32dp"
             android:backgroundTint="@color/gray01"
             android:hint="비밀번호를 입력해주세요."
+            android:inputType="textPassword"
             android:textSize="16sp"
             android:background="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/login_password_delete_iv"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/login_password_invisible_iv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/login_password_delete_iv"/>
+
+        <ImageView
+            android:id="@+id/login_password_visible_iv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_visible"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/login_password_delete_iv"/>
 
         <ImageView
             android:id="@+id/login_password_delete_iv"
