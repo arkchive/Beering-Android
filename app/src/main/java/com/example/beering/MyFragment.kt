@@ -56,7 +56,8 @@ class MyFragment : Fragment() {
         }
 
         binding.myMyReviewsButtonIv.setOnClickListener {
-            // 내 리뷰 모아보기 연결
+            val intent = Intent(requireContext(), MyReviewsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.myFavoriteDrinkButtonIv.setOnClickListener {

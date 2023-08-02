@@ -1,511 +1,641 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/join_header_cl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="25dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
-
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="32dp"
-            android:src="@drawable/ic_arrow_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:textSize="18dp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/btn_back"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="96dp" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/join_input_cl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/join_header_cl"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="48dp"
-        android:layout_marginHorizontal="32dp">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/join_id_cl"
+            android:id="@+id/join_header_cl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_height="88dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" >
 
-            <EditText
-                android:id="@+id/join_id_ed"
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="40dp"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="15"
-                android:hint=" 아이디를 입력해주세요"
-                android:textSize="16dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="회원가입"
+                android:textSize="16sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                android:textColorHint="@color/gray01"
-                android:background="@null" />
-
-            <ImageView
-                android:id="@+id/join_id_iv1"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_delete_light"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <View
-                android:id="@+id/join_id_bar"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/join_id_ed"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray01"/>
-
-            <ImageView
-                android:id="@+id/join_id_iv2"
-                android:layout_width="42dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_duplicate_light"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/join_id_ed"
-                android:layout_marginTop="15dp" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="40dp" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/join_password_cl"
+            android:id="@+id/join_input_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/join_id_cl"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="42dp">
-
-            <EditText
-                android:id="@+id/join_password_ed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:hint=" 비밀번호를 입력해주세요"
-                android:textSize="16dp"
-                android:inputType="textPassword"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColorHint="@color/gray01"
-                android:background="@null" />
-
-            <ImageView
-                android:id="@+id/join_password_iv"                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_delete_light"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <View
-                android:id="@+id/join_password_bar"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray01"/>
-
-            <TextView
-                android:id="@+id/condition_eng"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="영문"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="20dp" />
-
-            <ImageView
-                android:id="@+id/check1"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_eng"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-            <TextView
-                android:id="@+id/condition_character"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="특수 문자"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_eng"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="35dp"/>
-
-            <ImageView
-                android:id="@+id/check2"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_character"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-            <TextView
-                android:id="@+id/condition_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="숫자"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_character"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="35dp"/>
-
-            <ImageView
-                android:id="@+id/check3"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_num"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-            <TextView
-                android:id="@+id/condition_length"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="8-20자리"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_num"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="35dp"/>
-
-            <ImageView
-                android:id="@+id/check4"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_password_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_length"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/join_nickname_cl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/join_password_cl"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="42dp"
-            android:layout_marginBottom="10dp" >
-
-            <EditText
-                android:id="@+id/join_nickname_ed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:hint=" 닉네임을 입력해주세요"
-                android:textSize="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColorHint="@color/gray01"
-                android:background="@null" />
-
-            <ImageView
-                android:id="@+id/join_nickname_iv1"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_delete_light"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <View
-                android:id="@+id/join_nickname_bar"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray01"/>
-
-            <TextView
-                android:id="@+id/condition_eng2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="영문"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="20dp" />
-
-            <ImageView
-                android:id="@+id/check5"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_eng2"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-            <TextView
-                android:id="@+id/condition_kor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="한글"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_eng2"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="35dp"/>
-
-            <ImageView
-                android:id="@+id/check6"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_kor"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-            <TextView
-                android:id="@+id/condition_length2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1-10자리"
-                android:textSize="14dp"
-                android:textColor="@color/gray01"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_kor"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="35dp"/>
-
-            <ImageView
-                android:id="@+id/check7"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_check_light"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                app:layout_constraintStart_toEndOf="@id/condition_length2"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="3dp" />
-
-            <ImageView
-                android:id="@+id/join_nickname_iv2"
-                android:layout_width="42dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_duplicate_light"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
-                android:layout_marginTop="15dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/join_terms_cl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/join_input_cl"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginHorizontal="32dp">
-
-        <TextView
-            android:id="@+id/terms_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이용약관"
-            android:textSize="18dp"
-            android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-        
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/terms1_cl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/terms_tv"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp" >
-            
-            <ImageView
-                android:id="@+id/checkbox_term1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/btn_selector_checkbox_on"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-            
-            <ImageView
-                android:id="@+id/requirement_term1"
-                android:layout_width="35dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_requirement_dark"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/checkbox_term1"
-                android:layout_marginStart="10dp" />
+            android:layout_marginTop="100dp"
+            android:layout_marginHorizontal="32dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_id_cl"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="비어링 서비스 이용약관"
-                android:textSize="14dp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/requirement_term1"
+                android:layout_marginVertical="10dp"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="3dp"/>
-            
-            <ImageView
-                android:id="@+id/view_more_term1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_arrow_right"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            
+                app:layout_constraintStart_toStartOf="parent" >
+
+                <EditText
+                    android:id="@+id/join_id_ed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint=" 아이디를 입력해주세요"
+                    android:textSize="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColorHint="@color/gray01"
+                    android:background="@null" />
+
+                <ImageView
+                    android:id="@+id/join_id_iv1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_delete_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/join_id_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_id_ed"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray01"/>
+
+                <TextView
+                    android:id="@+id/join_id_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_id_ed"
+                    android:textSize="12sp"
+                    android:textColor="@color/beering_red"
+                    android:visibility="invisible"
+                    android:layout_marginTop="18dp"
+                    android:text="이미 사용하고 있는 아이디예요" />
+
+                <ImageView
+                    android:id="@+id/join_id_iv2"
+                    android:layout_width="42dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_duplicate_light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_id_ed"
+                    android:layout_marginTop="15dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_password_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/join_id_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="24dp">
+
+                <EditText
+                    android:id="@+id/join_password_ed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint=" 비밀번호를 입력해주세요"
+                    android:textSize="16dp"
+                    android:inputType="textPassword"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColorHint="@color/gray01"
+                    android:background="@null" />
+
+                <ImageView
+                    android:id="@+id/join_password_invisible_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_invisible"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/join_password_iv"/>
+
+                <ImageView
+                    android:id="@+id/join_password_visible_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_visible"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/join_password_iv"/>
+
+                <ImageView
+                    android:id="@+id/join_password_iv"                android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_delete_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/join_password_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray01"/>
+
+                <TextView
+                    android:id="@+id/condition_eng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="영문"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="18dp" />
+
+                <ImageView
+                    android:id="@+id/check1"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_light"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_eng"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="3dp" />
+
+                <TextView
+                    android:id="@+id/condition_character"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="특수 문자"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_eng"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="35dp"/>
+
+                <ImageView
+                    android:id="@+id/check2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_light"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_character"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="3dp" />
+
+                <TextView
+                    android:id="@+id/condition_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="숫자"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_character"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="35dp"/>
+
+                <ImageView
+                    android:id="@+id/check3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_light"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_num"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="3dp" />
+
+                <TextView
+                    android:id="@+id/condition_length"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8-20자리"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_num"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="35dp"/>
+
+                <ImageView
+                    android:id="@+id/check4"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_light"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_length"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="3dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_password_again_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/join_password_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="24dp">
+
+                <EditText
+                    android:id="@+id/join_password_again_ed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint=" 비밀번호를 한번 더 입력해주세요"
+                    android:textSize="16dp"
+                    android:inputType="textPassword"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColorHint="@color/gray01"
+                    android:background="@null" />
+
+                <ImageView
+                    android:id="@+id/join_password_again_invisible_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_invisible"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/join_password_again_iv"/>
+
+                <ImageView
+                    android:id="@+id/join_password_again_visible_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_visible"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/join_password_again_iv"/>
+
+                <ImageView
+                    android:id="@+id/join_password_again_iv"                android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_delete_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/join_password_again_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_again_ed"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray01"/>
+
+                <TextView
+                    android:id="@+id/join_password_again_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_password_again_ed"
+                    android:textSize="12sp"
+                    android:textColor="@color/beering_red"
+                    android:visibility="invisible"
+                    android:layout_marginTop="18dp"
+                    android:text="비밀번호가 일치하지 않아요" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/join_nickname_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/join_password_again_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="10dp" >
+
+                <EditText
+                    android:id="@+id/join_nickname_ed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint=" 닉네임을 입력해주세요"
+                    android:textSize="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColorHint="@color/gray01"
+                    android:background="@null" />
+
+                <ImageView
+                    android:id="@+id/join_nickname_iv1"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_delete_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/join_nickname_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray01"/>
+
+                <TextView
+                    android:id="@+id/condition_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="영문 · 한글 · 숫자"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="18dp" />
+
+                <ImageView
+                    android:id="@+id/check5"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_light"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_text"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="3dp" />
+
+                <TextView
+                    android:id="@+id/condition_length2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1-10자리"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_text"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="35dp"/>
+
+                <ImageView
+                    android:id="@+id/check6"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_light"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    app:layout_constraintStart_toEndOf="@id/condition_length2"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="3dp" />
+
+                <TextView
+                    android:id="@+id/join_nickname_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    android:textSize="12sp"
+                    android:textColor="@color/beering_red"
+                    android:visibility="invisible"
+                    android:layout_marginTop="18dp"
+                    android:text="이미 사용하고 있는 닉네임이에요" />
+
+                <ImageView
+                    android:id="@+id/join_nickname_iv2"
+                    android:layout_width="42dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_duplicate_light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    android:layout_marginTop="15dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/terms2_cl"
+            android:id="@+id/join_terms_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/terms1_cl"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="5dp" >
-
-            <ImageView
-                android:id="@+id/checkbox_term2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/btn_selector_checkbox_on"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <ImageView
-                android:id="@+id/requirement_term2"
-                android:layout_width="35dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_requirement_dark"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/checkbox_term2"
-                android:layout_marginStart="10dp" />
+            android:layout_marginTop="480dp"
+            android:layout_marginHorizontal="32dp">
 
             <TextView
+                android:id="@+id/terms_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="개인정보 수집 및 이용동의"
-                android:textSize="14dp"
+                android:text="이용약관"
+                android:textSize="18dp"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/requirement_term2"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="3dp"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageView
-                android:id="@+id/view_more_term2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_arrow_right"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms1_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/terms_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="13dp" >
 
+                <ImageView
+                    android:id="@+id/checkbox_term1_on"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/btn_selector_checkbox_on"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/checkbox_term1_off"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/btn_selector_checkbox_off"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/requirement_term1"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_requirement_dark"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/checkbox_term1_on"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비어링 서비스 이용약관"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/requirement_term1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"/>
+
+                <ImageView
+                    android:id="@+id/view_more_term1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms2_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/terms1_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="5dp" >
+
+                <ImageView
+                    android:id="@+id/checkbox_term2_on"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="visible"
+                    android:src="@drawable/btn_selector_checkbox_on"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/checkbox_term2_off"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="invisible"
+                    android:src="@drawable/btn_selector_checkbox_off"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/requirement_term2"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_requirement_dark"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/checkbox_term2_on"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개인정보 수집 및 이용동의"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/requirement_term2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"/>
+
+                <ImageView
+                    android:id="@+id/view_more_term2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms3_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/terms2_cl"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="5dp" >
+
+                <ImageView
+                    android:id="@+id/checkbox_term3_on"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="visible"
+                    android:src="@drawable/btn_selector_checkbox_on"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/checkbox_term3_off"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="invisible"
+                    android:src="@drawable/btn_selector_checkbox_off"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/requirement_term3"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_option_light"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/checkbox_term3_on"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개인정보 수집 및 이용동의"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/requirement_term3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"/>
+
+                <ImageView
+                    android:id="@+id/view_more_term3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/terms3_cl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/terms2_cl"
+        <ImageView
+            android:id="@+id/join_btn"
+            android:layout_width="340dp"
+            android:layout_height="70dp"
+            android:src="@drawable/button_join_light"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="5dp" >
+            app:layout_constraintTop_toBottomOf="@id/join_terms_cl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="125dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp" />
 
-            <ImageView
-                android:id="@+id/checkbox_term3"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/btn_selector_checkbox_on"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
 
-            <ImageView
-                android:id="@+id/requirement_term3"
-                android:layout_width="35dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_option_light"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/checkbox_term3"
-                android:layout_marginStart="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="개인정보 수집 및 이용동의"
-                android:textSize="14dp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@id/requirement_term3"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="3dp"/>
 
-            <ImageView
-                android:id="@+id/view_more_term3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_arrow_right"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/join_btn"
-        android:layout_width="340dp"
-        android:layout_height="70dp"
-        android:src="@drawable/button_join_light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/join_terms_cl"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="32dp" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
