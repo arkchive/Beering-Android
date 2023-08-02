@@ -13,7 +13,10 @@
     <color name="light_gray">#F8F8F8</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="gray03">#E2E2E2</color>
+    <color name="gray02">#726C77</color>
     <color name="gray00">#F3F3F3</color>
     <color name="gray01">#A7A7A7</color>
     <color name="beering_black">#100F0F</color>
+    <color name="beering_red">#FF3838</color>
+    <color name="beering_green">#00B051</color>
 </resources>

@@ -17,12 +17,12 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/item_home_post_profile_cv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             app:cardCornerRadius="30dp"
             app:cardElevation="0dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginVertical="15dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginVertical="12dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -41,35 +41,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1주 전"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
+            android:textColor="@color/gray01"
+            android:textSize="8sp"
             app:layout_constraintStart_toEndOf="@id/item_home_post_profile_cv"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp" />
         <TextView
             android:id="@+id/item_home_post_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="맥믈리에"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/item_home_post_profile_cv"
             app:layout_constraintTop_toBottomOf="@id/item_home_post_date_tv"
-            android:layout_marginStart="15dp" />
+            android:layout_marginStart="12dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
 
             <ImageButton
                 android:id="@+id/home_like_ib"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_like_light"
@@ -81,19 +81,19 @@
                 android:id="@+id/home_like_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="5dp"
                 android:text="12"
-                android:textSize="17sp"
                 android:textColor="@color/black"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="7dp"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@id/home_like_ib"
                 app:layout_constraintStart_toEndOf="@id/home_like_ib" />
 
             <ImageButton
                 android:id="@+id/home_unlike_ib"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="13dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_unlike_light"
@@ -106,10 +106,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                android:textSize="17sp"
+                android:textSize="10sp"
                 android:textColor="@color/black"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="7dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="@id/home_like_ib"
                 app:layout_constraintStart_toEndOf="@id/home_unlike_ib" />
 
@@ -122,6 +122,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/img_home_post"
+        android:adjustViewBounds="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_home_header_cl" />
 
@@ -130,11 +131,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="15dp"
+        android:layout_marginHorizontal="16dp"
         android:maxLines="4"
         android:ellipsize="end"
         android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        android:textColor="@color/black"
+        android:textColor="@color/gray02"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_home_post_pic_iv"
         app:layout_constraintStart_toStartOf="parent" />
@@ -148,23 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="15dp"
         >
-
-        <TextView
-            android:id="@+id/item_home_post_view_more_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="더보기"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/black" />
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_view_more"
-            app:layout_constraintStart_toEndOf="@id/item_home_post_view_more_tv"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
