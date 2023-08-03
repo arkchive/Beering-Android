@@ -21,11 +21,7 @@
         <activity android:name=".DrinkDetailActivity"/>
         <activity android:name=".ReviewDetailActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SearchFilterActivity" />
         <activity android:name=".JoinActivity" />
@@ -38,7 +34,11 @@
         <activity
             android:name=".LoginRequestActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
