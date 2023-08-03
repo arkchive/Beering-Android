@@ -29,8 +29,7 @@
             android:layout_marginTop="47dp"
             android:text="로그인"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,12 +55,12 @@
             android:textSize="16sp"
             android:background="@null"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/login_id_delete"
+            app:layout_constraintEnd_toStartOf="@id/login_id_delete_iv"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
-            android:id="@+id/login_id_delete"
+            android:id="@+id/login_id_delete_iv"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/ic_delete_light"
@@ -97,15 +96,35 @@
             android:layout_height="32dp"
             android:backgroundTint="@color/gray01"
             android:hint="비밀번호를 입력해주세요."
+            android:inputType="textPassword"
             android:textSize="16sp"
             android:background="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/login_password_delete"
+            app:layout_constraintEnd_toStartOf="@id/login_password_delete_iv"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
-            android:id="@+id/login_password_delete"
+            android:id="@+id/login_password_invisible_iv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/login_password_delete_iv"/>
+
+        <ImageView
+            android:id="@+id/login_password_visible_iv"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_visible"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/login_password_delete_iv"/>
+
+        <ImageView
+            android:id="@+id/login_password_delete_iv"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/ic_delete_light"
@@ -155,7 +174,7 @@
         android:layout_width="2dp"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
-        android:background="@color/gray"
+        android:background="@color/gray01"
         app:layout_constraintEnd_toEndOf="@id/login_login_button_cl"
         app:layout_constraintStart_toStartOf="@id/login_login_button_cl"
         app:layout_constraintTop_toBottomOf="@id/login_login_button_cl" />
@@ -176,7 +195,7 @@
             android:layout_height="wrap_content"
             android:text="회원가입"
             android:textColor="@color/gray"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -202,7 +221,7 @@
             android:layout_height="wrap_content"
             android:text="비밀번호 찾기"
             android:textColor="@color/gray"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -314,6 +314,7 @@
 
 
         <Button
+            android:id="@+id/drink_detail_review_writing_btn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/beering_black"

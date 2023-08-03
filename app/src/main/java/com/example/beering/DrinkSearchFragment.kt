@@ -1,4 +1,5 @@
 package com.example.beering
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.databinding.FragmentDrinkSearchBinding
 import com.example.naverwebtoon.data.DrinkCover
+import com.google.gson.Gson
 
 class DrinkSearchFragment: Fragment() {
     lateinit var binding: FragmentDrinkSearchBinding
@@ -31,7 +33,7 @@ class DrinkSearchFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.drinkSearchTopCancelTv.setOnClickListener {
+        binding.drinkSearchTopSearchCancelIv.setOnClickListener {
             // api로 데이터 받아오는 부분 작성 -> 이거를 버튼 눌렀을때로 변경해야할듯
             val data : ArrayList<DrinkCover> = ArrayList()
 
@@ -64,24 +66,17 @@ class DrinkSearchFragment: Fragment() {
             }
 
             // 상세 페이지 구현시, 구현
-            /*
             drinkSearchAdapter!!.setOnItemClickListener(object : DrinkSearchAdapter.OnItemClickListener {
+                override fun onItemClick(drinkInfo: DrinkCover) {
+                    val intent = Intent(requireContext(), DrinkDetailActivity::class.java)
+                    intent.putExtra("drinkId", drinkInfo.id)
+                    startActivity(intent)
 
-
-                override fun onItemClick(webtoonInfo: WebtoonCover) {
-                    val webtoonBundle = Bundle()
-                    val webtoonDetailFragment = WebtoonDetailFragment()
-                    val dataJson = Gson().toJson(webtoonInfo)
-                    webtoonBundle.putString("webtoonInfo", dataJson)
-                    webtoonDetailFragment.arguments = webtoonBundle
-                    parentFragment!!.parentFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, webtoonDetailFragment).commit()
                 }
 
 
             })
 
-             */
 
             drinkSearchAdapter!!.setOnHeartClickListener(object : DrinkSearchAdapter.OnHeartClickListener {
                 override fun onButtonClick(position: Int) {
@@ -89,7 +84,15 @@ class DrinkSearchFragment: Fragment() {
                     drinkSearchAdapter!!.notifyItemChanged(position, "heartChange")
                 }
             })
+
         }
+
+        binding.drinkSearchButtonFilterMcv.setOnClickListener {
+            val intent = Intent(requireContext(), SearchFilterActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 

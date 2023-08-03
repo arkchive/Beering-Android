@@ -3,11 +3,13 @@ package com.example.beering
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.beering.data.changeLogin
 import com.example.beering.databinding.ActivityLoginRequestBinding
 
 class LoginRequestActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityLoginRequestBinding
+
 
     //test
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +17,8 @@ class LoginRequestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginRequestBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        changeLogin(this, false)
+
 
 
         binding.loginRequestButtonJoinCl.setOnClickListener {

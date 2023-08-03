@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
-class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
-    RecyclerView.Adapter<DrinkSearchAdapter.ViewHolder>() {
+class DrinkFavoriteAdapter(private val itemList: ArrayList<DrinkCover>) :
+    RecyclerView.Adapter<DrinkFavoriteAdapter.ViewHolder>() {
 
 
     // 클릭시 상세페이지로
@@ -45,8 +45,16 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
             binding.itemDrinkSearchResultTitleKrTv.text = drinkInfo.titleKr
             binding.itemDrinkSearchResultTitleEnTv.text = drinkInfo.titleEn
 
-            binding.itemDrinkSearchResultCl.setOnClickListener {
+            if (drinkInfo.isHeart) {
+                binding.itemDrinkSearchResultHeartOnIv.visibility = View.VISIBLE
+                binding.itemDrinkSearchResultHeartOffIv.visibility = View.INVISIBLE
+            } else {
+                binding.itemDrinkSearchResultHeartOnIv.visibility = View.INVISIBLE
+                binding.itemDrinkSearchResultHeartOffIv.visibility = View.VISIBLE
+            }
 
+
+            binding.itemDrinkSearchResultCl.setOnClickListener {
                 itemClickListener.onItemClick(drinkInfo)
             }
 
@@ -69,13 +77,13 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DrinkSearchAdapter.ViewHolder {
+    ): DrinkFavoriteAdapter.ViewHolder {
         val binding =
             ItemDrinkSearchResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: DrinkSearchAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DrinkFavoriteAdapter.ViewHolder, position: Int) {
         holder.bind(itemList[position])
         holder.bindHeart(position)
 
@@ -87,11 +95,10 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
                 if (payload is String) {
 
                     if (payload == "heartChange") {
-                        if(itemList[position].isHeart){
+                        if (itemList[position].isHeart) {
                             holder.heartOn.visibility = View.INVISIBLE
                             holder.heartOff.visibility = View.VISIBLE
-                        }
-                        else {
+                        } else {
                             holder.heartOn.visibility = View.VISIBLE
                             holder.heartOff.visibility = View.INVISIBLE
                         }
