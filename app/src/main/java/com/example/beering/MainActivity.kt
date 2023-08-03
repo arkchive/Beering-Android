@@ -1,13 +1,11 @@
 package com.example.beering
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.beering.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -17,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val splashScreen = installSplashScreen()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

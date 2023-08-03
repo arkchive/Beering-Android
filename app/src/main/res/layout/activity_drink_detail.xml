@@ -11,12 +11,12 @@
 
         <ImageView
             android:id="@+id/button_back"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="3dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
-            android:padding="3dp"
-            android:src="@drawable/button_back"
+            android:src="@drawable/ic_arrow_left_large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -26,21 +26,21 @@
             android:layout_height="300dp"
             android:background="@color/gray01"
             android:elevation="-1dp"
-            android:src="@drawable/drink_detail_main_image"
             android:scaleType="centerCrop"
+            android:src="@drawable/drink_detail_main_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
             android:id="@+id/button_interest"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="25dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@id/button_back"
+            app:layout_constraintBottom_toBottomOf="@id/button_back">
 
             <ImageView
                 android:id="@+id/interest_off"
@@ -287,8 +287,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:padding="7dp"
-            android:src="@drawable/button_back"
-            android:scaleX="-1"
+            android:src="@drawable/ic_arrow_right_large"
             app:layout_constraintTop_toTopOf="@id/review_tv"
             app:layout_constraintEnd_toEndOf="@id/detail_information_tv"
             app:layout_constraintBottom_toBottomOf="@id/review_tv"/>

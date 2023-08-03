@@ -22,8 +22,6 @@ data class DrinkDetail (
         val score : Float, //별점
         val scoreCount : Int, // 별점 남긴 이용자 수
         val alcoholPercentage : Float // 도수
-        ) {
-        @PrimaryKey(autoGenerate = true)
-        var id : Int = 0
-        }
+        )
+
 
