@@ -7,7 +7,7 @@
 
     <CheckBox
         android:id="@+id/checkbox_term1"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="20dp"
         android:layout_margin="20dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,12 +26,13 @@
 
     <Button
         android:id="@+id/terms_button_cancel_bt"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/button_cancel"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/checkbox_term1"/>
+        app:layout_constraintTop_toTopOf="@id/checkbox_term1"
+        app:layout_constraintBottom_toBottomOf="@id/checkbox_term1"/>
 
     <View
         android:id="@+id/view1"

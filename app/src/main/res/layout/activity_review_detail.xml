@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrinkDetailActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/button_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/ic_arrow_white_large"
+            android:scaleX="-1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/main_image_iv"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:background="@color/gray01"
+            android:elevation="-1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_home_post"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_detail_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/review_detail_profile_cv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginVertical="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <ImageView
+                    android:id="@+id/review_detail_profile_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:background="@color/gray2"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/item_home_post_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="맥믈리에"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/review_detail_profile_cv"
+                app:layout_constraintTop_toTopOf="@id/review_detail_profile_cv"
+                app:layout_constraintBottom_toBottomOf="@id/review_detail_profile_cv"
+                android:layout_marginStart="15dp" />
+
+            <LinearLayout
+                android:id="@+id/review_detail_day_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/review_detail_profile_cv"
+                app:layout_constraintBottom_toBottomOf="@id/review_detail_profile_cv">
+
+                <TextView
+                    android:id="@+id/review_detail_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2023"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray01"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="년 "
+                    android:textSize="15sp"
+                    android:textColor="@color/gray01"/>
+                <TextView
+                    android:id="@+id/review_detail_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray01"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="월 "
+                    android:textSize="15sp"
+                    android:textColor="@color/gray01"/>
+                <TextView
+                    android:id="@+id/review_detail_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray01"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray01"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/review_detail_information_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:textColor="@color/beering_black"
+            android:textSize="16sp"
+            android:text="Lorem ipsum dolor sit amet consectetur.
+Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant ornare etiam sollicitudin risus sit faucibus asdfaffd asdfaf amet morbi molestie molestie arcu dig amet morbi molestie molesti."
+            app:layout_constraintTop_toBottomOf="@id/review_detail_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        
+        <TextView
+            android:id="@+id/review_detail_score_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총평"
+            android:textColor="@color/beering_black"
+            android:textSize="13sp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_information_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/review_detail_scoreNum_tv"
+            />
+
+        <TextView
+            android:id="@+id/review_detail_scoreNum_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.5"
+            android:textSize="40sp"
+            android:textColor="@color/beering_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_score_tv"/>
+
+        <LinearLayout
+            android:id="@+id/review_detail_score_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_scoreNum_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <FrameLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_off"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_half_on"
+                    android:visibility="invisible"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_off"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_half_on"
+                    android:visibility="invisible"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_off"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_half_on"
+                    android:visibility="invisible"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_off"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_half_on"
+                    android:visibility="invisible"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_off"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_half_on"
+                    android:visibility="invisible"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_detail_taste_cl"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:background="@color/gray00"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_score_ll">
+
+            <TextView
+                android:id="@+id/review_detail_taste_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="맛 "
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/review_detail_taste_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/review_detail_taste_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/review_detail_taste_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.5"
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_detail_incense_cl"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:background="@color/gray00"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_taste_cl">
+
+            <TextView
+                android:id="@+id/review_detail_incense_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="향 "
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/review_detail_incense_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/review_detail_incense_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/review_detail_incense_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.9"
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_detail_color_cl"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:background="@color/gray00"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_incense_cl">
+
+            <TextView
+                android:id="@+id/review_detail_color_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="색 "
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/review_detail_color_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/review_detail_color_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/review_detail_color_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.2"
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_detail_throat_cl"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:background="@color/gray00"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_color_cl"
+            app:layout_constraintBottom_toTopOf="@id/view1"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/review_detail_throat_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="목넘김 "
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/review_detail_throat_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@id/review_detail_throat_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_off"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star_half_on"
+                        android:visibility="invisible"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/review_detail_throat_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.7"
+                android:textColor="@color/beering_black"
+                android:textSize="14sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray03"
+            app:layout_constraintBottom_toTopOf="@id/review_detail_like_cl"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_throat_cl"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_detail_like_cl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view1"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageButton
+                android:id="@+id/home_like_ib"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_like_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/home_like_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="7dp"
+                app:layout_constraintBottom_toBottomOf="@id/home_like_ib"
+                app:layout_constraintStart_toEndOf="@id/home_like_ib" />
+
+            <ImageButton
+                android:id="@+id/home_unlike_ib"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="13dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_unlike_light"
+                app:layout_constraintStart_toEndOf="@id/home_like_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                            android:id="@+id/home_unlike_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginBottom="7dp"
+                            app:layout_constraintBottom_toBottomOf="@id/home_like_ib"
+                            app:layout_constraintStart_toEndOf="@id/home_unlike_ib" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
