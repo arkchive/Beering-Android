@@ -18,8 +18,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.beering.databinding.ActivityReviewWritingBinding
 import java.io.File
 import android.Manifest
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.naverwebtoon.data.DrinkCover
 
@@ -31,15 +34,44 @@ class ReviewWritingActivity: AppCompatActivity() {
     var reviewPictureAdapter: ReviewPictureAdapter? = null
     var reviewPictureList = ArrayList<Uri>()
 
+    //0~4번은 주류 개별 항목, 5번은 총평 항목
+    var RbCheckedList : MutableList<Boolean> = mutableListOf(false, false, false, false, false, false)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReviewWritingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
+
+        binding.reviewWritingCompleteButtonCl.isEnabled = false
+        binding.reviewWritingCompleteButtonCl.setOnClickListener {
+            // api 연결해서 내용들 서버에 보내기
+
+            //닫기
+            finish()
+        }
+
+        binding.reviewWritingImpressionEd.addTextChangedListener(object: TextWatcher {
+            // 입력 하기 전에 작동
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            //값 변경 시 실행되는 함수
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                isButtonEanble()
+            }
+
+            // 입력이 끝날 때 작동
+            override fun afterTextChanged(p0: Editable?) {}
+        })
+
+
+
+        // 사진 불러오기
         binding.reviewWritingPictureOffIv.setOnClickListener {
             selectGallery()
 
+            // 사진마다(item마다) 삭제버튼 적용
             reviewPictureAdapter!!.setOnCancelClickListener(object : ReviewPictureAdapter.OnCancelClickListener {
                 override fun onCancelClick(imageUri: Uri) {
                     num_picture -= 1
@@ -60,19 +92,102 @@ class ReviewWritingActivity: AppCompatActivity() {
 
         }
 
+
+        // 사진 불러오기
         binding.reviewWritingPictureOnIv.setOnClickListener {
             selectGallery()
         }
-
+        // 뒤로 나가기
         binding.reviewWritingBackIv.setOnClickListener {
             finish()
         }
+
+        // RatingBar 클릭했을 경우, 점수 표출
+        binding.reviewWritingRating1Rb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
+            binding.reviewWritingRating1ScoreTv.text = rating.toString()
+            RbCheckedList[0] = true
+            binding.reviewWritingRating1Mcv.setCardBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+            isButtonEanble()
+        }
+        binding.reviewWritingRating2Rb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
+            binding.reviewWritingRating2ScoreTv.text = rating.toString()
+            RbCheckedList[1] = true
+            binding.reviewWritingRating2Mcv.setCardBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+            isButtonEanble()
+        }
+        binding.reviewWritingRating3Rb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
+            binding.reviewWritingRating3ScoreTv.text = rating.toString()
+            RbCheckedList[2] = true
+            binding.reviewWritingRating3Mcv.setCardBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+            isButtonEanble()
+        }
+        binding.reviewWritingRating4Rb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
+            binding.reviewWritingRating4ScoreTv.text = rating.toString()
+            RbCheckedList[3] = true
+            binding.reviewWritingRating4Mcv.setCardBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+            isButtonEanble()
+        }
+        binding.reviewWritingRating5Rb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
+            binding.reviewWritingRating5ScoreTv.text = rating.toString()
+            RbCheckedList[4] = true
+            binding.reviewWritingRating5Mcv.setCardBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+            isButtonEanble()
+        }
+
+        binding.reviewWritingRatingTotalRb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
+            binding.reviewWritingRatingTotalScoreTv.text = rating.toString()
+            RbCheckedList[5] = true
+            binding.reviewWritingRatingTotalMcv.setCardBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+            isButtonEanble()
+        }
+
 
 
         reviewPictureAdapter = ReviewPictureAdapter((reviewPictureList))
         binding.reviewWritingPictureRv.adapter = reviewPictureAdapter
         binding.reviewWritingPictureRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+
+
+        // api로 갯수와 각각의 테스트 받아오기 (밑에꺼는 더미데이터)
+        val apiList : List<String> = listOf("맛", "목넘김","향", "색")
+
+
+
+
+        val ratingList : List<String> = apiList
+        if(ratingList.size < 5) {
+            binding.reviewWritingRating1Tv.text = ratingList.get(0)
+            binding.reviewWritingRating2Tv.text = ratingList.get(1)
+            binding.reviewWritingRating3Tv.text = ratingList.get(2)
+            binding.reviewWritingRating4Tv.text = ratingList.get(3)
+            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            RbCheckedList[4] = true
+        }
+        if(ratingList.size < 4) {
+            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
+            RbCheckedList[3] = true
+        }
+        if(ratingList.size < 3) {
+            binding.reviewWritingRating3Cl.visibility = View.INVISIBLE
+            RbCheckedList[2] = true
+        }
+        if(ratingList.size < 2) {
+            binding.reviewWritingRating2Cl.visibility = View.INVISIBLE
+            RbCheckedList[1] = true
+        }
+
+
+
+    }
+
+    fun isButtonEanble(){
+        if(binding.reviewWritingImpressionEd.text.isNotEmpty() && RbCheckedList.all { it })
+        {
+            binding.reviewWritingCompleteButtonCl.isEnabled = true
+            binding.reviewWritingCompleteButtonCl.setBackgroundColor(ContextCompat.getColor(this@ReviewWritingActivity, R.color.black))
+
+        }
     }
 
 

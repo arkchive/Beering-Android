@@ -35,7 +35,7 @@
             android:id="@+id/review_writing_note_tv"
             android:layout_width="0dp"
             android:layout_height="39dp"
-            android:layout_marginHorizontal="32dp"
+            android:layout_marginHorizontal="36dp"
             android:layout_marginTop="44dp"
             android:gravity="left|center"
             android:text="테이스팅 노트"
@@ -75,8 +75,9 @@
             android:id="@+id/review_writing_picture_tv"
             android:layout_width="0dp"
             android:layout_height="39dp"
-            android:layout_marginHorizontal="32dp"
+            android:layout_marginHorizontal="36dp"
             android:layout_marginTop="22dp"
+
             android:gravity="left|center"
             android:text="사진 첨부"
             android:textColor="@color/black"
@@ -156,28 +157,486 @@
             app:layout_constraintTop_toBottomOf="@id/review_writing_picture_tv" />
 
 
-        <TextView
-            android:id="@+id/review_writing_taste_tv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_writing_rating_cl"
             android:layout_width="0dp"
-            android:layout_height="39dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="160dp"
-            android:gravity="left|center"
-            android:text="맛"
-            android:textColor="@color/black"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/review_writing_picture_tv" />
+            app:layout_constraintTop_toBottomOf="@id/review_writing_picture_tv">
 
-        <View
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/review_writing_rating_1_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/review_writing_rating_1_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:gravity="left|center"
+                    android:text="맛"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="4dp"/>
+                <View
+                    android:id="@+id/review_writing_rating_1_v"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/review_writing_rating_1_tv"
+                    app:layout_constraintStart_toStartOf="@id/review_writing_rating_1_tv"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_1_tv" />
+
+
+
+                <com.willy.ratingbar.BaseRatingBar
+                    android:id="@+id/review_writing_rating_1_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_1_v"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_full"
+                    app:srb_clickable="true"
+                    app:srb_rating="0"
+                    app:srb_minimumStars="0"
+                    app:srb_numStars="5"
+                    app:srb_scrollable="true"
+                    app:srb_starHeight="40dp"
+                    app:srb_starWidth="40dp"
+                    app:srb_stepSize="0.5" />
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/review_writing_rating_1_mcv"
+                    android:layout_width="37dp"
+                    android:layout_height="29dp"
+                    app:cardBackgroundColor="@color/gray03"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_1_v"
+                    android:layout_marginTop="14dp">
+
+
+                    <TextView
+                        android:id="@+id/review_writing_rating_1_score_tv"
+                        android:layout_width="36dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/review_writing_rating_2_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_1_cl"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/review_writing_rating_2_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:gravity="left|center"
+                    android:text="맛"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="4dp"/>
+                <View
+                    android:id="@+id/review_writing_rating_2_v"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/review_writing_rating_2_tv"
+                    app:layout_constraintStart_toStartOf="@id/review_writing_rating_2_tv"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_2_tv" />
+
+
+                <com.willy.ratingbar.BaseRatingBar
+                    android:id="@+id/review_writing_rating_2_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_2_v"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_full"
+                    app:srb_clickable="true"
+                    app:srb_minimumStars="0"
+                    app:srb_numStars="5"
+                    app:srb_rating="0"
+                    app:srb_scrollable="true"
+                    app:srb_starHeight="40dp"
+                    app:srb_starWidth="40dp"
+                    app:srb_stepSize="0.5" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/review_writing_rating_2_mcv"
+                    android:layout_width="37dp"
+                    android:layout_height="29dp"
+                    app:cardBackgroundColor="@color/gray03"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_2_v"
+                    android:layout_marginTop="14dp">
+
+
+                    <TextView
+                        android:id="@+id/review_writing_rating_2_score_tv"
+                        android:layout_width="36dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/review_writing_rating_3_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_2_cl"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/review_writing_rating_3_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:gravity="left|center"
+                    android:text="맛"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="4dp"/>
+                <View
+                    android:id="@+id/review_writing_rating_3_v"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/review_writing_rating_3_tv"
+                    app:layout_constraintStart_toStartOf="@id/review_writing_rating_3_tv"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_3_tv" />
+
+
+                <com.willy.ratingbar.BaseRatingBar
+                    android:id="@+id/review_writing_rating_3_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_3_v"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_full"
+                    app:srb_clickable="true"
+                    app:srb_minimumStars="0"
+                    app:srb_numStars="5"
+                    app:srb_rating="0"
+                    app:srb_scrollable="true"
+                    app:srb_starHeight="40dp"
+                    app:srb_starWidth="40dp"
+                    app:srb_stepSize="0.5" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/review_writing_rating_3_mcv"
+                    android:layout_width="37dp"
+                    android:layout_height="29dp"
+                    app:cardBackgroundColor="@color/gray03"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_3_v"
+                    android:layout_marginTop="14dp">
+
+
+                    <TextView
+                        android:id="@+id/review_writing_rating_3_score_tv"
+                        android:layout_width="36dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/review_writing_rating_4_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_3_cl"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/review_writing_rating_4_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:gravity="left|center"
+                    android:text="맛"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="4dp"/>
+                <View
+                    android:id="@+id/review_writing_rating_4_v"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/review_writing_rating_4_tv"
+                    app:layout_constraintStart_toStartOf="@id/review_writing_rating_4_tv"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_4_tv" />
+
+
+                <com.willy.ratingbar.BaseRatingBar
+                    android:id="@+id/review_writing_rating_4_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_4_v"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_full"
+                    app:srb_clickable="true"
+                    app:srb_minimumStars="0"
+                    app:srb_numStars="5"
+                    app:srb_rating="0"
+                    app:srb_scrollable="true"
+                    app:srb_starHeight="40dp"
+                    app:srb_starWidth="40dp"
+                    app:srb_stepSize="0.5" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/review_writing_rating_4_mcv"
+                    android:layout_width="37dp"
+                    android:layout_height="29dp"
+                    app:cardBackgroundColor="@color/gray03"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_4_v"
+                    android:layout_marginTop="14dp">
+
+
+                    <TextView
+                        android:id="@+id/review_writing_rating_4_score_tv"
+                        android:layout_width="36dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/review_writing_rating_5_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_4_cl"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/review_writing_rating_5_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:gravity="left|center"
+                    android:text="맛"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="4dp"/>
+                <View
+                    android:id="@+id/review_writing_rating_5_v"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/review_writing_rating_5_tv"
+                    app:layout_constraintStart_toStartOf="@id/review_writing_rating_5_tv"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_5_tv" />
+
+
+                <com.willy.ratingbar.BaseRatingBar
+                    android:id="@+id/review_writing_rating_5_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_5_v"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_full"
+                    app:srb_clickable="true"
+                    app:srb_minimumStars="0"
+                    app:srb_numStars="5"
+                    app:srb_rating="0"
+                    app:srb_scrollable="true"
+                    app:srb_starHeight="40dp"
+                    app:srb_starWidth="40dp"
+                    app:srb_stepSize="0.5" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/review_writing_rating_5_mcv"
+                    android:layout_width="37dp"
+                    android:layout_height="29dp"
+                    app:cardBackgroundColor="@color/gray03"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/review_writing_rating_5_v"
+                    android:layout_marginTop="14dp">
+
+
+                    <TextView
+                        android:id="@+id/review_writing_rating_5_score_tv"
+                        android:layout_width="36dp"
+                        android:layout_height="41dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_writing_rating_total_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/review_writing_rating_cl"
+            android:layout_marginTop="64dp">
+
+            <TextView
+                android:id="@+id/review_writing_rating_total_tv"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:gravity="left|center"
+                android:text="총평"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="4dp"/>
+            <View
+                android:id="@+id/review_writing_rating_total_v"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="@id/review_writing_rating_total_tv"
+                app:layout_constraintStart_toStartOf="@id/review_writing_rating_total_tv"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_total_tv" />
+
+
+            <com.willy.ratingbar.BaseRatingBar
+                android:id="@+id/review_writing_rating_total_rb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:isIndicator="false"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_total_v"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srb_drawableEmpty="@drawable/ic_star_empty"
+                app:srb_drawableFilled="@drawable/ic_star_full"
+                app:srb_clickable="true"
+                app:srb_minimumStars="0"
+                app:srb_numStars="5"
+                app:srb_rating="0"
+                app:srb_scrollable="true"
+                app:srb_starHeight="40dp"
+                app:srb_starWidth="40dp"
+                app:srb_stepSize="0.5" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/review_writing_rating_total_mcv"
+                android:layout_width="37dp"
+                android:layout_height="29dp"
+                app:cardBackgroundColor="@color/gray03"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_writing_rating_total_v"
+                android:layout_marginTop="14dp">
+
+
+                <TextView
+                    android:id="@+id/review_writing_rating_total_score_tv"
+                    android:layout_width="36dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_writing_complete_button_cl"
             android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="@id/review_writing_taste_tv"
-            app:layout_constraintStart_toStartOf="@id/review_writing_taste_tv"
-            app:layout_constraintTop_toBottomOf="@id/review_writing_taste_tv" />
+            android:layout_height="52dp"
+            android:background="@color/gray03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintTop_toBottomOf="@id/review_writing_rating_total_cl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="131dp"
+            android:layout_marginBottom="47dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="작성 완료"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
