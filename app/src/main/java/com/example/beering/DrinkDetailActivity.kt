@@ -52,6 +52,11 @@ class DrinkDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.reviewMoreIv.setOnClickListener {
+            val intent = Intent(this, DrinkDetailReviewsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun initDummyData() {

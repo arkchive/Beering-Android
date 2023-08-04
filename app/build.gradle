@@ -5,7 +5,6 @@ plugins {
 
 }
 
-
 android {
     namespace 'com.example.beering'
     compileSdk 33
@@ -77,7 +76,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 
-
-
+    //splashscreen api
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 
 }
