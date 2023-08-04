@@ -102,6 +102,48 @@ class ReviewWritingActivity: AppCompatActivity() {
             finish()
         }
 
+        // api로 갯수와 각각의 테스트 받아오기 (밑에꺼는 더미데이터)
+        val apiList : List<String> = listOf("맛", "목넘김","향")
+
+
+
+
+        val ratingList : List<String> = apiList
+        if(ratingList.size < 2) {
+            binding.reviewWritingRating1Tv.text = ratingList.get(0)
+            binding.reviewWritingRating2Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating3Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+
+            RbCheckedList[1] = true
+            RbCheckedList[2] = true
+            RbCheckedList[3] = true
+            RbCheckedList[4] = true
+        }else if(ratingList.size < 3) {
+            binding.reviewWritingRating2Tv.text = ratingList.get(1)
+            binding.reviewWritingRating3Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            RbCheckedList[2] = true
+            RbCheckedList[3] = true
+            RbCheckedList[4] = true
+        } else if(ratingList.size < 4) {
+            binding.reviewWritingRating3Tv.text = ratingList.get(2)
+            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            RbCheckedList[3] = true
+            RbCheckedList[4] = true
+        } else if(ratingList.size < 5) {
+            binding.reviewWritingRating4Tv.text = ratingList.get(3)
+            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            RbCheckedList[4] = true
+        }
+
+
+
+
+
         // RatingBar 클릭했을 경우, 점수 표출
         binding.reviewWritingRating1Rb.setOnRatingChangeListener { ratingBar, rating, fromUser ->
             binding.reviewWritingRating1ScoreTv.text = rating.toString()
@@ -149,33 +191,6 @@ class ReviewWritingActivity: AppCompatActivity() {
 
 
 
-        // api로 갯수와 각각의 테스트 받아오기 (밑에꺼는 더미데이터)
-        val apiList : List<String> = listOf("맛", "목넘김","향", "색")
-
-
-
-
-        val ratingList : List<String> = apiList
-        if(ratingList.size < 5) {
-            binding.reviewWritingRating1Tv.text = ratingList.get(0)
-            binding.reviewWritingRating2Tv.text = ratingList.get(1)
-            binding.reviewWritingRating3Tv.text = ratingList.get(2)
-            binding.reviewWritingRating4Tv.text = ratingList.get(3)
-            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
-            RbCheckedList[4] = true
-        }
-        if(ratingList.size < 4) {
-            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
-            RbCheckedList[3] = true
-        }
-        if(ratingList.size < 3) {
-            binding.reviewWritingRating3Cl.visibility = View.INVISIBLE
-            RbCheckedList[2] = true
-        }
-        if(ratingList.size < 2) {
-            binding.reviewWritingRating2Cl.visibility = View.INVISIBLE
-            RbCheckedList[1] = true
-        }
 
 
 
