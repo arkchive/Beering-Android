@@ -7,11 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.databinding.ActivityDrinkDetailBinding
-import com.example.beering.databinding.ActivityJoinBinding
-import com.example.beering.databinding.ActivityReviewWritingBinding
-import com.example.naverwebtoon.data.DrinkCover
 import com.example.naverwebtoon.data.DrinkDetail
-import com.google.gson.Gson
 
 class DrinkDetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDrinkDetailBinding
