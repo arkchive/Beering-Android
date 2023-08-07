@@ -30,7 +30,6 @@ class JoinActivity: AppCompatActivity() {
         val passwordEdit = binding.joinPasswordEd
         val passwordAgainEdit = binding.joinPasswordAgainEd
         val nicknameEdit = binding.joinNicknameEd
-        val joinBtn = binding.joinBtn
 
 
         // 메시지 담을 변수
@@ -39,12 +38,9 @@ class JoinActivity: AppCompatActivity() {
         var passwordAgain: String = ""
         var nickname: String = ""
 
-        // 버튼 비활성화
-        joinBtn.isEnabled = false
-
-        // EditText 값 있을때만 버튼 활성화
+        // EditText 값 있을 때만 버튼 활성화
         // 아이디
-        idEdit.addTextChangedListener(object: TextWatcher {
+        idEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             // 값 변경 시 실행되는 함수
@@ -55,39 +51,59 @@ class JoinActivity: AppCompatActivity() {
 
                 // 값 유무에 따른 활성화 여부
                 if (id.isNotEmpty()) {
-                    idEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_black))
-                    binding.joinIdBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_black))
+                    idEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_black
+                        )
+                    )
+                    binding.joinIdBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_black
+                        )
+                    )
                     binding.joinIdIv1.setImageResource(R.drawable.ic_delete_dark)
-                    binding.joinIdIv2.setImageResource(R.drawable.ic_duplicate_dark)
+                    binding.joinIdIv21.visibility = View.INVISIBLE
+                    binding.joinIdIv22.visibility = View.VISIBLE
 
                     binding.joinIdIv1.setOnClickListener {
                         binding.joinIdEd.text.clear()
                         id = ""
                     }
 
-                    // 중복체크 클릭 시
-                    binding.joinIdIv2.setOnClickListener {
-                        //  TODO api 연결 후 중복 확인
-//                        if( 중복하면 ){
-//                            binding.joinIdBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
-//                            binding.joinIdNotice.setText("이미 사용하고 있는 아이디예요")
-//                            binding.joinIdNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
-//                            binding.joinIdNotice.visibility = View.VISIBLE
-//                        } else {
-//                            binding.joinIdBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
-//                            binding.joinIdNotice.setText("사용할 수 있는 아이디예요")
-//                            binding.joinIdNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
-//                            binding.joinIdNotice.visibility = View.VISIBLE
-//                        }
-                    }
-
                 } else {
                     idEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
-                    binding.joinIdBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
+                    binding.joinIdBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
                     binding.joinIdIv1.setImageResource(R.drawable.ic_delete_light)
-                    binding.joinIdIv2.setImageResource(R.drawable.ic_duplicate_light)
+                    binding.joinIdIv21.visibility = View.VISIBLE
+                    binding.joinIdIv22.visibility = View.INVISIBLE
                     binding.joinIdNotice.visibility = View.INVISIBLE
                 }
+
+                // 아이디 유효성 검사
+//                fun validateId(id:String) :Boolean {
+//                    binding.joinIdIv2.setOnClickListener {
+                //  TODO api 연결 후 중복 확인
+//                     if( 중복하면 ){
+//                         binding.joinIdBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
+//                         binding.joinIdNotice.setText("이미 사용하고 있는 아이디예요")
+//                         binding.joinIdNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
+//                         binding.joinIdNotice.visibility = View.VISIBLE
+//                     } else {
+//                         binding.joinIdBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
+//                         binding.joinIdNotice.setText("사용할 수 있는 아이디예요")
+//                         binding.joinIdNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
+//                         binding.joinIdNotice.visibility = View.VISIBLE
+//                     }
+//                    }
+//                    return (중복하면)
+//                }
 
             }
 
@@ -95,32 +111,58 @@ class JoinActivity: AppCompatActivity() {
         })
 
         // 비밀번호
-        passwordEdit.addTextChangedListener(object: TextWatcher {
+        passwordEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 password = passwordEdit.text.toString()
 
-                if(password.isNotEmpty()) {
-                    passwordEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_black))
-                    binding.joinPasswordBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
+                if (password.isNotEmpty()) {
+                    passwordEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_black
+                        )
+                    )
+                    binding.joinPasswordBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_red
+                        )
+                    )
                     binding.joinPasswordIv.setImageResource(R.drawable.ic_delete_dark)
                     binding.joinPasswordInvisibleIv.visibility = View.VISIBLE
 
                     binding.joinPasswordIv.setOnClickListener {
                         binding.joinPasswordEd.text.clear()
                         password = ""
+                        validatePasswordAgain(passwordAgain, password)
+                    }
+                    if(validatePassword(password)) {
+                        binding.joinPasswordBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
+                    }
+                    if(passwordAgain!="") {
+                        validatePasswordAgain(passwordAgain, password)
                     }
 
+
                 } else {
-                    passwordEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
-                    binding.joinPasswordBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
+                    passwordEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
+                    binding.joinPasswordBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
                     binding.joinPasswordIv.setImageResource(R.drawable.ic_delete_light)
                     binding.joinPasswordVisibleIv.visibility = View.INVISIBLE
                     binding.joinPasswordInvisibleIv.visibility = View.INVISIBLE
                 }
-
-                // TODO 비밀번호 조건 충족 체크
 
                 // 비밀번호 토글 활성화
                 binding.joinPasswordInvisibleIv.setOnClickListener {
@@ -129,26 +171,42 @@ class JoinActivity: AppCompatActivity() {
                     binding.joinPasswordVisibleIv.visibility = View.VISIBLE
                 }
                 binding.joinPasswordVisibleIv.setOnClickListener {
-                    binding.joinPasswordEd.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                    binding.joinPasswordEd.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                     binding.joinPasswordInvisibleIv.visibility = View.VISIBLE
                     binding.joinPasswordVisibleIv.visibility = View.INVISIBLE
                 }
 
             }
 
-            override fun afterTextChanged(s: Editable?) {}
+            override fun afterTextChanged(s: Editable?) {
+                if(validatePassword(password) && validatePasswordAgain(passwordAgain, password)) {
+                    binding.joinBtnLight.visibility = View.INVISIBLE
+                    binding.joinBtnDark.visibility = View.VISIBLE
+                }
+            }
         })
 
         // 비밀번호 한번 더 입력
-        passwordAgainEdit.addTextChangedListener(object: TextWatcher {
+        passwordAgainEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 passwordAgain = passwordAgainEdit.text.toString()
 
-                if(passwordAgain.isNotEmpty()) {
-                    passwordAgainEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_black))
-                    binding.joinPasswordAgainBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
+                if (passwordAgain.isNotEmpty()) {
+                    passwordAgainEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_black
+                        )
+                    )
+                    binding.joinPasswordAgainBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_red
+                        )
+                    )
                     binding.joinPasswordAgainIv.setImageResource(R.drawable.ic_delete_dark)
                     binding.joinPasswordAgainInvisibleIv.visibility = View.VISIBLE
 
@@ -157,27 +215,37 @@ class JoinActivity: AppCompatActivity() {
                         passwordAgain = ""
                     }
 
-                    // 비밀번호 일치 조건문
-                    if(passwordAgain == password){
-                        binding.joinPasswordAgainBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
-                        binding.joinPasswordAgainNotice.setText("비밀번호가 일치해요")
-                        binding.joinPasswordAgainNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
-                        binding.joinPasswordAgainNotice.visibility = View.VISIBLE
-
-                    } else {
-                        binding.joinPasswordAgainBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
-                        binding.joinPasswordAgainNotice.setText("비밀번호가 일치하지 않아요")
-                        binding.joinPasswordAgainNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
-                        binding.joinPasswordAgainNotice.visibility = View.VISIBLE
-                    }
+                    validatePasswordAgain(passwordAgain, password)
 
                 } else {
-                    passwordAgainEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
-                    binding.joinPasswordAgainBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
+                    passwordAgainEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
+                    binding.joinPasswordAgainBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
                     binding.joinPasswordAgainIv.setImageResource(R.drawable.ic_delete_light)
                     binding.joinPasswordAgainVisibleIv.visibility = View.INVISIBLE
                     binding.joinPasswordAgainInvisibleIv.visibility = View.INVISIBLE
                     binding.joinPasswordAgainNotice.visibility = View.INVISIBLE
+                }
+
+                binding.joinPasswordAgainInvisibleIv.setOnClickListener {
+                    binding.joinPasswordAgainEd.inputType = InputType.TYPE_CLASS_TEXT
+                    binding.joinPasswordAgainInvisibleIv.visibility = View.INVISIBLE
+                    binding.joinPasswordAgainVisibleIv.visibility = View.VISIBLE
+                }
+                binding.joinPasswordAgainVisibleIv.setOnClickListener {
+                    binding.joinPasswordAgainEd.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                    binding.joinPasswordAgainInvisibleIv.visibility = View.VISIBLE
+                    binding.joinPasswordAgainVisibleIv.visibility = View.INVISIBLE
                 }
 
             }
@@ -187,15 +255,25 @@ class JoinActivity: AppCompatActivity() {
         })
 
         // 닉네임
-        nicknameEdit.addTextChangedListener(object: TextWatcher {
+        nicknameEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 nickname = nicknameEdit.text.toString()
 
-                if(nickname.isNotEmpty()) {
-                    nicknameEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_black))
-                    binding.joinNicknameBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_black))
+                if (nickname.isNotEmpty()) {
+                    nicknameEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_black
+                        )
+                    )
+                    binding.joinNicknameBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.beering_black
+                        )
+                    )
                     binding.joinNicknameIv1.setImageResource(R.drawable.ic_delete_dark)
 
                     binding.joinNicknameIv1.setOnClickListener {
@@ -203,29 +281,107 @@ class JoinActivity: AppCompatActivity() {
                         nickname = ""
                     }
 
-                    // TODO 닉네임 조건 두개 충족 시 중복체크 버튼 활성화
+                    // TODO 닉네임 유효성 검사
+                    // 닉네임이 영어, 한글 문자, 그리고 숫자로만 이루어져 있는지 확인
+                    val containsValidCharacters = nickname.matches(Regex("[a-zA-Zㄱ-ㅎ가-힣0-9]+"))
+                    if (containsValidCharacters) {
+                        binding.conditionText.setTextColor(
+                            ContextCompat.getColor(
+                                this@JoinActivity,
+                                R.color.beering_black
+                            )
+                        )
+                        binding.check5.setImageResource(R.drawable.ic_check_dark)
+                    } else {
+                        binding.conditionText.setTextColor(
+                            ContextCompat.getColor(
+                                this@JoinActivity,
+                                R.color.gray01
+                            )
+                        )
+                        binding.check5.setImageResource(R.drawable.ic_check_light)
+                    }
 
-                    // TODO 닉네임 중복체크 클릭 시
-//                    binding.joinNicknameIv2.setOnClickListener {
-//                        if( 중복하면 ){
-//                            binding.joinNicknameBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
-//                            binding.joinNicknameNotice.setText("이미 사용하고 있는 닉네임이에요")
-//                            binding.joinNicknameNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
-//                            binding.joinNicknameNotice.visibility = View.VISIBLE
-//                        } else {
-//                            binding.joinNicknameBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
-//                            binding.joinNicknameNotice.setText("사용할 수 있는 닉네임이에요")
-//                            binding.joinNicknameNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
-//                            binding.joinNicknameNotice.visibility = View.VISIBLE
-//                        }
+                    // 닉네임의 길이가 1에서 10자 사이인지 확인
+                    val isLengthValid = nickname.length in 1..10
+                    if (isLengthValid) {
+                        binding.conditionLength2.setTextColor(
+                            ContextCompat.getColor(
+                                this@JoinActivity,
+                                R.color.beering_black
+                            )
+                        )
+                        binding.check6.setImageResource(R.drawable.ic_check_dark)
+                    } else {
+                        binding.conditionLength2.setTextColor(
+                            ContextCompat.getColor(
+                                this@JoinActivity,
+                                R.color.gray01
+                            )
+                        )
+                        binding.check6.setImageResource(R.drawable.ic_check_light)
+                    }
+
+                    if (containsValidCharacters && isLengthValid) {
+                        binding.joinNicknameIv21.visibility = View.INVISIBLE
+                        binding.joinNicknameIv22.visibility = View.VISIBLE
+                    }else {
+                        binding.joinNicknameIv21.visibility = View.VISIBLE
+                        binding.joinNicknameIv22.visibility = View.INVISIBLE
+                    }
+
+//                 TODO 닉네임 중복체크 클릭 시
+//                 binding.joinNicknameIv22.setOnClickListener {
+//                    if( 중복하면 ){
+//                        binding.joinNicknameBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
+//                        binding.joinNicknameNotice.setText("이미 사용하고 있는 닉네임이에요")
+//                        binding.joinNicknameNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_red))
+//                        binding.conditionText.visibility = View.INVISIBLE
+//                        binding.conditionLength2.visibility = View.INVISIBLE
+//                        binding.check5.visibility = View.INVISIBLE
+//                        binding.check6.visibility = View.INVISIBLE
+//                        binding.joinNicknameNotice.visibility = View.VISIBLE
+//                    } else {
+//                        binding.joinNicknameBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
+//                        binding.joinNicknameNotice.setText("사용할 수 있는 닉네임이에요")
+//                        binding.joinNicknameNotice.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.beering_green))
+//                        binding.conditionText.visibility = View.INVISIBLE
+//                        binding.conditionLength2.visibility = View.INVISIBLE
+//                        binding.check5.visibility = View.INVISIBLE
+//                        binding.check6.visibility = View.INVISIBLE
+//                        binding.joinNicknameNotice.visibility = View.VISIBLE
 //                    }
+//                }
+
 
 
                 } else {
-                    nicknameEdit.setTextColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
-                    binding.joinNicknameBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity, R.color.gray01))
+                    nicknameEdit.setTextColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
+                    binding.joinNicknameBar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this@JoinActivity,
+                            R.color.gray01
+                        )
+                    )
                     binding.joinNicknameIv1.setImageResource(R.drawable.ic_delete_light)
+                    binding.conditionText.setTextColor(ContextCompat.getColor(
+                        this@JoinActivity,
+                        R.color.gray01))
+                    binding.check5.setImageResource(R.drawable.ic_check_light)
+                    binding.conditionLength2.setTextColor(ContextCompat.getColor(
+                        this@JoinActivity,
+                        R.color.gray01))
+                    binding.check6.setImageResource(R.drawable.ic_check_light)
+                    binding.joinNicknameIv21.visibility = View.VISIBLE
+                    binding.joinNicknameIv22.visibility = View.INVISIBLE
                 }
+
+
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -272,9 +428,130 @@ class JoinActivity: AppCompatActivity() {
 
         }
 
-        // TODO 회원가입 버튼 활성화
-
-
-
     }
+
+    // 비밀번호 유효성 검사
+    fun validatePassword(password: String): Boolean {
+        // 비밀번호가 영문자를 포함하는지 확인
+        val containsEnglishChars = password.matches(Regex(".*[a-zA-Z].*"))
+        if (containsEnglishChars) {
+            binding.conditionEng.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_black
+                )
+            )
+            binding.check1.setImageResource(R.drawable.ic_check_dark)
+        } else {
+            binding.conditionEng.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.gray01
+                )
+            )
+            binding.check1.setImageResource(R.drawable.ic_check_light)
+        }
+
+        // 비밀번호가 특수문자를 포함하는지 확인
+        val containsSpecialChars = password.matches(Regex(".*[!@#\\\$%].*"))
+        if (containsSpecialChars) {
+            binding.conditionCharacter.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_black
+                )
+            )
+            binding.check2.setImageResource(R.drawable.ic_check_dark)
+        } else {
+            binding.conditionCharacter.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.gray01
+                )
+            )
+            binding.check2.setImageResource(R.drawable.ic_check_light)
+        }
+
+        // 비밀번호가 숫자를 포함하는지 확인
+        val containsNumbers = password.matches(Regex(".*[0-9].*"))
+        if (containsNumbers) {
+            binding.conditionNum.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_black
+                )
+            )
+            binding.check3.setImageResource(R.drawable.ic_check_dark)
+        } else {
+            binding.conditionNum.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.gray01
+                )
+            )
+            binding.check3.setImageResource(R.drawable.ic_check_light)
+        }
+
+        // 비밀번호의 길이가 8자에서 20자 사이인지 확인
+        val isLengthValid = password.length in 8..20
+        if (isLengthValid) {
+            binding.conditionLength.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_black
+                )
+            )
+            binding.check4.setImageResource(R.drawable.ic_check_dark)
+        } else {
+            binding.conditionLength.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.gray01
+                )
+            )
+            binding.check4.setImageResource(R.drawable.ic_check_light)
+        }
+
+        return containsEnglishChars && containsSpecialChars && containsNumbers && isLengthValid
+    }
+
+    fun validatePasswordAgain(passwordAgain:String, password:String):Boolean {
+        // 비밀번호 일치 조건문
+        if (passwordAgain == password) {
+            binding.joinPasswordAgainBar.setBackgroundColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_green
+                )
+            )
+            binding.joinPasswordAgainNotice.setText("비밀번호가 일치해요")
+            binding.joinPasswordAgainNotice.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_green
+                )
+            )
+            binding.joinPasswordAgainNotice.visibility = View.VISIBLE
+
+
+        } else {
+            binding.joinPasswordAgainBar.setBackgroundColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_red
+                )
+            )
+            binding.joinPasswordAgainNotice.setText("비밀번호가 일치하지 않아요")
+            binding.joinPasswordAgainNotice.setTextColor(
+                ContextCompat.getColor(
+                    this@JoinActivity,
+                    R.color.beering_red
+                )
+            )
+            binding.joinPasswordAgainNotice.visibility = View.VISIBLE
+        }
+
+        return (passwordAgain == password)
+    }
+
 }
