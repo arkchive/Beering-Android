@@ -22,6 +22,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.naverwebtoon.data.DrinkCover
@@ -111,10 +112,22 @@ class ReviewWritingActivity: AppCompatActivity() {
         val ratingList : List<String> = apiList
         if(ratingList.size < 2) {
             binding.reviewWritingRating1Tv.text = ratingList.get(0)
-            binding.reviewWritingRating2Cl.visibility = View.INVISIBLE
-            binding.reviewWritingRating3Cl.visibility = View.INVISIBLE
-            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
-            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating2Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+            binding.reviewWritingRating3Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+            binding.reviewWritingRating4Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+            binding.reviewWritingRating5Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
 
             RbCheckedList[1] = true
             RbCheckedList[2] = true
@@ -122,21 +135,40 @@ class ReviewWritingActivity: AppCompatActivity() {
             RbCheckedList[4] = true
         }else if(ratingList.size < 3) {
             binding.reviewWritingRating2Tv.text = ratingList.get(1)
-            binding.reviewWritingRating3Cl.visibility = View.INVISIBLE
-            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
-            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating3Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+            binding.reviewWritingRating4Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+            binding.reviewWritingRating5Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+
             RbCheckedList[2] = true
             RbCheckedList[3] = true
             RbCheckedList[4] = true
         } else if(ratingList.size < 4) {
             binding.reviewWritingRating3Tv.text = ratingList.get(2)
-            binding.reviewWritingRating4Cl.visibility = View.INVISIBLE
-            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating4Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
+            binding.reviewWritingRating5Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
             RbCheckedList[3] = true
             RbCheckedList[4] = true
         } else if(ratingList.size < 5) {
             binding.reviewWritingRating4Tv.text = ratingList.get(3)
-            binding.reviewWritingRating5Cl.visibility = View.INVISIBLE
+            binding.reviewWritingRating5Cl.let {
+                val parent = it.parent as? ViewGroup
+                parent?.removeView(it)
+            }
             RbCheckedList[4] = true
         }
 
