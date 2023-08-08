@@ -117,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
         loginBtn.setOnClickListener {
 
             //api 연결
-            val signUpService = getRetrofit_async().create(LoginApiService::class.java)
+            val signUpService = getRetrofit_sync().create(LoginApiService::class.java)
             val user = LoginRequest(binding.loginIdEd.text.toString(), binding.loginPasswordEd.text.toString())
             signUpService.signUp(user).enqueue(object : retrofit2.Callback<LoginResponse>{
                 override fun onResponse(
