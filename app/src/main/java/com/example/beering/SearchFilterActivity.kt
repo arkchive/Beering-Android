@@ -9,23 +9,23 @@ import com.example.beering.databinding.ActivitySearchFilterBinding
 
 class SearchFilterActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchFilterBinding
+
+    // 선택상태 저장 변수
     var isName = false
     var isReview = false
     var isLowPrice = false
     var isScore = false
+
     var isTypeBeer = false
     var isTypeWine = false
     var isTypeTraditional = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchFilterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.buttonClose.setOnClickListener{
-//            val intent = Intent(this, ??? ::class.java)
-//            startActivity(intent)
-//        }
 
         binding.filter1Name.setOnClickListener{
             isName = !isName
@@ -59,12 +59,33 @@ class SearchFilterActivity : AppCompatActivity() {
             updateTypeTraditional(isTypeTraditional)
         }
 
+
     }
+
+
+
+
 
     fun updateFilterName (state: Boolean){
         if (state){
             binding.filter1NameOn.visibility = View.VISIBLE
             binding.filter1NameOff.visibility = View.GONE
+
+            if(isReview) {
+                isReview = !isReview
+                binding.filter1ReviewOn.visibility = View.GONE
+                binding.filter1ReviewOff.visibility = View.VISIBLE
+            }
+            if(isLowPrice) {
+                isLowPrice = !isLowPrice
+                binding.filter1LowPriceOn.visibility = View.GONE
+                binding.filter1LowPriceOff.visibility = View.VISIBLE
+            }
+            if(isScore) {
+                isTypeBeer = !isTypeBeer
+                binding.filter1ScoreOn.visibility = View.GONE
+                binding.filter1ScoreOff.visibility = View.VISIBLE
+            }
         }else {
             binding.filter1NameOn.visibility = View.GONE
             binding.filter1NameOff.visibility = View.VISIBLE
@@ -74,6 +95,22 @@ class SearchFilterActivity : AppCompatActivity() {
         if (state){
             binding.filter1ReviewOn.visibility = View.VISIBLE
             binding.filter1ReviewOff.visibility = View.GONE
+
+            if(isName) {
+                isName = !isName
+                binding.filter1NameOn.visibility = View.GONE
+                binding.filter1NameOff.visibility = View.VISIBLE
+            }
+            if(isLowPrice) {
+                isLowPrice = !isLowPrice
+                binding.filter1LowPriceOn.visibility = View.GONE
+                binding.filter1LowPriceOff.visibility = View.VISIBLE
+            }
+            if(isScore) {
+                isTypeBeer = !isTypeBeer
+                binding.filter1ScoreOn.visibility = View.GONE
+                binding.filter1ScoreOff.visibility = View.VISIBLE
+            }
         }else {
             binding.filter1ReviewOn.visibility = View.GONE
             binding.filter1ReviewOff.visibility = View.VISIBLE
@@ -83,6 +120,22 @@ class SearchFilterActivity : AppCompatActivity() {
         if (state){
             binding.filter1LowPriceOn.visibility = View.VISIBLE
             binding.filter1LowPriceOff.visibility = View.GONE
+
+            if(isName) {
+                isName = !isName
+                binding.filter1NameOn.visibility = View.GONE
+                binding.filter1NameOff.visibility = View.VISIBLE
+            }
+            if(isReview) {
+                isReview = !isReview
+                binding.filter1ReviewOn.visibility = View.GONE
+                binding.filter1ReviewOff.visibility = View.VISIBLE
+            }
+            if(isScore) {
+                isTypeBeer = !isTypeBeer
+                binding.filter1ScoreOn.visibility = View.GONE
+                binding.filter1ScoreOff.visibility = View.VISIBLE
+            }
         }else {
             binding.filter1LowPriceOn.visibility = View.GONE
             binding.filter1LowPriceOff.visibility = View.VISIBLE
@@ -92,6 +145,22 @@ class SearchFilterActivity : AppCompatActivity() {
         if (state){
             binding.filter1ScoreOn.visibility = View.VISIBLE
             binding.filter1ScoreOff.visibility = View.GONE
+
+            if(isName) {
+                isName = !isName
+                binding.filter1NameOn.visibility = View.GONE
+                binding.filter1NameOff.visibility = View.VISIBLE
+            }
+            if(isReview) {
+                isReview = !isReview
+                binding.filter1ReviewOn.visibility = View.GONE
+                binding.filter1ReviewOff.visibility = View.VISIBLE
+            }
+            if(isLowPrice) {
+                isLowPrice = !isLowPrice
+                binding.filter1LowPriceOn.visibility = View.GONE
+                binding.filter1LowPriceOff.visibility = View.VISIBLE
+            }
         }else {
             binding.filter1ScoreOn.visibility = View.GONE
             binding.filter1ScoreOff.visibility = View.VISIBLE
@@ -103,6 +172,17 @@ class SearchFilterActivity : AppCompatActivity() {
         if (state) {
             binding.beerOnIv.visibility = View.VISIBLE
             binding.beerOffIv.visibility = View.GONE
+
+            if(isTypeWine) {
+                isTypeWine = !isTypeWine
+                binding.wineOnIv.visibility = View.GONE
+                binding.wineOffIv.visibility = View.VISIBLE
+            }
+            if(isTypeTraditional){
+                isTypeTraditional = !isTypeTraditional
+                binding.traditionalOffIv.visibility = View.VISIBLE
+                binding.traditionalOnIv.visibility = View.GONE
+            }
         } else {
             binding.beerOffIv.visibility = View.VISIBLE
             binding.beerOnIv.visibility = View.GONE
@@ -112,6 +192,17 @@ class SearchFilterActivity : AppCompatActivity() {
         if (state) {
             binding.wineOnIv.visibility = View.VISIBLE
             binding.wineOffIv.visibility = View.GONE
+
+            if(isTypeBeer) {
+                isTypeBeer = !isTypeBeer
+                binding.beerOnIv.visibility = View.GONE
+                binding.beerOffIv.visibility = View.VISIBLE
+            }
+            if(isTypeTraditional){
+                isTypeTraditional = !isTypeTraditional
+                binding.traditionalOffIv.visibility = View.VISIBLE
+                binding.traditionalOnIv.visibility = View.GONE
+            }
         } else {
             binding.wineOffIv.visibility = View.VISIBLE
             binding.wineOnIv.visibility = View.GONE
@@ -121,6 +212,17 @@ class SearchFilterActivity : AppCompatActivity() {
         if (state) {
             binding.traditionalOnIv.visibility = View.VISIBLE
             binding.traditionalOffIv.visibility = View.GONE
+
+            if(isTypeWine) {
+                isTypeWine = !isTypeWine
+                binding.wineOnIv.visibility = View.GONE
+                binding.wineOffIv.visibility = View.VISIBLE
+            }
+            if(isTypeBeer) {
+                isTypeBeer = !isTypeBeer
+                binding.beerOnIv.visibility = View.GONE
+                binding.beerOffIv.visibility = View.VISIBLE
+            }
         } else {
             binding.traditionalOffIv.visibility = View.VISIBLE
             binding.traditionalOnIv.visibility = View.GONE
