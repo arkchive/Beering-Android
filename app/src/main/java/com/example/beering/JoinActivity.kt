@@ -1,20 +1,14 @@
 package com.example.beering
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.beering.api.ApiClient
 import com.example.beering.databinding.ActivityJoinBinding
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class JoinActivity: AppCompatActivity() {
     lateinit var binding: ActivityJoinBinding
@@ -425,16 +419,18 @@ class JoinActivity: AppCompatActivity() {
         }
 
 
-        // TODO 이용약관 내용 정해지면, 각 dialog에 맞는 내용 채워주는 코드 작성해야함.
+        // 이용약관 다이얼로그
         binding.viewMoreTerm1.setOnClickListener {
-            val term1Dialog = TermsDialog()
+            val term1Dialog = Term1Dialog()
             term1Dialog.show(supportFragmentManager,"term1Dialog")
         }
         binding.viewMoreTerm2.setOnClickListener {
-
+            val term2Dialog = Term2Dialog()
+            term2Dialog.show(supportFragmentManager,"term2Dialog")
         }
         binding.viewMoreTerm3.setOnClickListener {
-
+            val term3Dialog = Term3Dialog()
+            term3Dialog.show(supportFragmentManager,"term3Dialog")
         }
     }
 

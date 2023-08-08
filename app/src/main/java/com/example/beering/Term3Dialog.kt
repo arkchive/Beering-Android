@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.beering.databinding.DialogTermsBinding
+import com.example.beering.databinding.DialogTerm3Binding
 
-class TermsDialog: DialogFragment() {
-    lateinit var binding: DialogTermsBinding
+class Term3Dialog: DialogFragment() {
+    lateinit var binding: DialogTerm3Binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DialogTermsBinding.inflate(inflater, container, false)
+        binding = DialogTerm3Binding.inflate(inflater, container, false)
 
         binding.termsButtonCancelBt.setOnClickListener{
             dismiss()
