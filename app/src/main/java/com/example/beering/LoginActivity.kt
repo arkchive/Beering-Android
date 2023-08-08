@@ -146,16 +146,13 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.d("SIGNIN/FAILURE", t.message.toString())
+                    binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
+                    binding.loginErrorTv.visibility = View.VISIBLE
+                    binding.loginIdV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+                    binding.loginPasswordV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
                 }
 
             })
-
-
-
-
-
-
 
 
 
