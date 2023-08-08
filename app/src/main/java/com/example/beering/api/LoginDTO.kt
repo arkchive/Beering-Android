@@ -1,5 +1,7 @@
 package com.example.beering.data
 
+import com.example.beering.api.Jwt
+
 // 로그인 request
 data class LoginRequest(
     val username: String,
@@ -26,8 +28,3 @@ data class LoginError(
     val message : String
 )
 
-// 토큰
-data class Jwt(
-    val accessToken: String,
-    val refreshToken: String
-)

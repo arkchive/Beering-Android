@@ -8,6 +8,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
+const val BASE_URL = "https://api.beering.shop"
+
 // 토큰 요청 (비동기 방식)
 fun okHttpClient_header(header: String) : OkHttpClient {
     val builder = OkHttpClient.Builder()
@@ -27,14 +29,14 @@ class HeaderInterceptor constructor(private val token: String) : Interceptor {
         return chain.proceed(newRequest)
     }
 }
-fun getRetrofit_token(token: String): Retrofit{
+fun getRetrofit_header(header: String): Retrofit{
     // 각 API 호출을 담당할 API 클라이언트 클래스
     // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://beering-72501f868a10.herokuapp.com")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .client((okHttpClient_header(token)))
+        .client((okHttpClient_header(header)))
         .build()
 
     return retrofit
@@ -53,7 +55,7 @@ fun getRetrofit_async(): Retrofit{
     // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://beering-72501f868a10.herokuapp.com")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client((okHttpClient()))
         .build()
@@ -67,7 +69,7 @@ fun getRetrofit_sync(): Retrofit{
     // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://beering-72501f868a10.herokuapp.com")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -83,7 +85,7 @@ class ApiClient {
     // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://beering-72501f868a10.herokuapp.com")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

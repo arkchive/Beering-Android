@@ -1,6 +1,5 @@
 package com.example.beering.api
 
-import com.example.beering.data.Jwt
 import com.google.gson.annotations.SerializedName
 
 data class TokenRequest(
@@ -12,4 +11,10 @@ data class TokenResponse(
     val responseCode : Int,
     val responseMessage : String,
     @SerializedName("result") val jwt : Jwt
+)
+
+// 토큰
+data class Jwt(
+    val accessToken: String,
+    val refreshToken: String
 )

@@ -13,7 +13,7 @@ import retrofit2.Response
 
 fun token(context: Context) : Int {
 
-    val tokenApi = getRetrofit_token(getRefreshToken(context).toString()).create(TokenApiService::class.java)
+    val tokenApi = getRetrofit_header(getRefreshToken(context).toString()).create(TokenApiService::class.java)
     val refreshToken = TokenRequest(getRefreshToken(context).toString())
     var responseCode : Int = 0
 
