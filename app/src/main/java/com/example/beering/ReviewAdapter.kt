@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beering.databinding.ItemReviewBinding
-import com.example.naverwebtoon.data.DrinkCover
 import com.example.naverwebtoon.data.DrinkDetail
 
 class ReviewAdapter(private  val itemList : ArrayList<DrinkDetail>) : RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){

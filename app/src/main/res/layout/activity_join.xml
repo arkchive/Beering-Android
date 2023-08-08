@@ -102,12 +102,22 @@
                     android:text="이미 사용하고 있는 아이디예요" />
 
                 <ImageView
-                    android:id="@+id/join_id_iv2"
+                    android:id="@+id/join_id_iv2_1"
                     android:layout_width="42dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_duplicate_light"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/join_id_ed"
+                    android:layout_marginTop="15dp" />
+
+                <ImageView
+                    android:id="@+id/join_id_iv2_2"
+                    android:layout_width="42dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_duplicate_dark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_id_ed"
+                    android:visibility="invisible"
                     android:layout_marginTop="15dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -421,11 +431,21 @@
                     android:text="이미 사용하고 있는 닉네임이에요" />
 
                 <ImageView
-                    android:id="@+id/join_nickname_iv2"
+                    android:id="@+id/join_nickname_iv2_1"
                     android:layout_width="42dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_duplicate_light"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
+                    android:layout_marginTop="15dp" />
+
+                <ImageView
+                    android:id="@+id/join_nickname_iv2_2"
+                    android:layout_width="42dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_duplicate_dark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toBottomOf="@id/join_nickname_ed"
                     android:layout_marginTop="15dp" />
 
@@ -622,13 +642,26 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/join_btn"
+            android:id="@+id/join_btn_light"
             android:layout_width="340dp"
             android:layout_height="70dp"
             android:src="@drawable/button_join_light"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/join_terms_cl"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="125dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp" />
+
+        <ImageView
+            android:id="@+id/join_btn_dark"
+            android:layout_width="340dp"
+            android:layout_height="70dp"
+            android:src="@drawable/button_join_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/join_terms_cl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="invisible"
             android:layout_marginBottom="125dp"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp" />
