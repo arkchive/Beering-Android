@@ -2,6 +2,7 @@ package com.example.beering.data
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import com.example.beering.api.Jwt
 
 fun changeLogin(context: Context, state : Boolean){
     val spf = context.getSharedPreferences("login",  AppCompatActivity.MODE_PRIVATE)

@@ -1,14 +1,14 @@
 package com.example.beering.api
 
-data class HomeResponse(
+data class MyResponse(
     val isSuccess : Boolean,
     val responseCode : Int,
     val responseMessage : String,
-    val result : HomeResult
+    val result : MyResult
 
 )
 
-data class HomeResult(
+data class MyResult(
     val username : String,
     val nickname : String,
     val url : String,

@@ -3,8 +3,8 @@ package com.example.beering.api
 import retrofit2.Call
 import retrofit2.http.POST
 
-interface HomeApiService {
+interface MyApiService {
 
     @POST("/members/me")
-    fun getHome(): Call<HomeResponse>
+    fun getMy(): Call<MyResponse>
 }
