@@ -2,17 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 갤러리 권한 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 갤러리 권한 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-
 
     <application
         android:allowBackup="true"
@@ -24,37 +14,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Beering"
         tools:targetApi="31">
-      
+
+        <activity android:name=".DrinkDetailActivity"/>
+        <activity android:name=".ReviewDetailActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".SearchFilterActivity" />
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".DrinkFavoriteActivity" />
+        <activity android:name=".ReviewWritingActivity"/>
+        <activity android:name=".MyReviewsActivity"/>
+        <activity android:name=".DrinkDetailReviewsActivity"/>
         <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Beering.Splash">
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".LoginRequestActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DrinkDetailActivity" />
-        <activity android:name=".DrinkDetailReviewsActivity" />
-        <activity android:name=".ReviewDetailActivity" />
-        <activity android:name=".SearchFilterActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".JoinActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".DrinkFavoriteActivity" />
-
-        <activity android:name=".ReviewWritingActivity"/>
-        <activity android:name=".MyReviewsActivity"/>
-
-        <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".LoginRequestActivity"/>
     </application>
 
 </manifest>

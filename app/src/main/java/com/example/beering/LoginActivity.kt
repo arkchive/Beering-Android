@@ -7,13 +7,16 @@ import android.text.InputType
 import android.text.InputType.TYPE_CLASS_TEXT
 import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import com.example.beering.data.changeLogin
+import com.example.beering.data.*
 import com.example.beering.databinding.ActivityLoginBinding
+import retrofit2.Call
+import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
@@ -112,14 +115,51 @@ class LoginActivity : AppCompatActivity() {
 
         //버튼 이벤트
         loginBtn.setOnClickListener {
+
             //api 연결
+            val signUpService = getRetrofit_sync().create(LoginApiService::class.java)
+            val user = LoginRequest(binding.loginIdEd.text.toString(), binding.loginPasswordEd.text.toString())
+            signUpService.signUp(user).enqueue(object : retrofit2.Callback<LoginResponse>{
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    val resp = response.body()
+                    if(resp!!.isSuccess){
+                        Log.d("SIGNUP/SUCCESS", resp.toString())
+                        val userToken = resp!!.result.jwtInfo
+                        setToken(this@LoginActivity, userToken)
+                        Log.d("getRefreshToken", getRefreshToken(this@LoginActivity).toString())
 
 
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-            changeLogin(this, true)
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        finish()
+                        changeLogin(this@LoginActivity, true)
+
+                    } else {
+                        binding.loginErrorTv.text = resp!!.responseMessage
+                        binding.loginErrorTv.visibility = View.VISIBLE
+                        binding.loginIdV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+                        binding.loginPasswordV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Log.d("SIGNUP/FAILURE", t.message.toString())
+                }
+
+            })
+
+
+
+
+
+
+
+
 
         }
 
