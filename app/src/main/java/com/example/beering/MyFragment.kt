@@ -34,12 +34,15 @@ class MyFragment : Fragment() {
             binding.myMyReviewsButtonIv.isEnabled = true
             binding.myMyReviewsUnderlineV.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
-
-
             binding.myFavoriteDrinkTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
             binding.myFavoriteDrinkButtonIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.black))
             binding.myFavoriteDrinkButtonIv.isEnabled = true
             binding.myFavoriteDrinkUnderlineV.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
+
+            binding.myFavoriteReviewTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            binding.myFavoriteReviewButtonIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.black))
+            binding.myFavoriteReviewButtonIv.isEnabled = true
+            binding.myFavoriteReviewUnderlineV.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
 
         } else {
             binding.myMyReviewsTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray01))
@@ -53,6 +56,11 @@ class MyFragment : Fragment() {
             binding.myFavoriteDrinkButtonIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.gray01))
             binding.myFavoriteDrinkButtonIv.isEnabled = false
             binding.myFavoriteDrinkUnderlineV.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray01))
+
+            binding.myFavoriteReviewTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.gray01))
+            binding.myFavoriteReviewButtonIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.gray01))
+            binding.myFavoriteReviewButtonIv.isEnabled = false
+            binding.myFavoriteReviewUnderlineV.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray01))
         }
 
         binding.myMyReviewsButtonIv.setOnClickListener {

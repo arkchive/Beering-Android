@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.beering.api.ApiClient
 import com.example.beering.databinding.ActivityJoinBinding
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
