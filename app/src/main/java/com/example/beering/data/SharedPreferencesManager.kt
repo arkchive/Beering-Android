@@ -18,3 +18,28 @@ fun stateLogin(context: Context) : Boolean{
 
 }
 
+
+fun setToken(context: Context, token: Jwt){
+    val spf = context.getSharedPreferences("token",  AppCompatActivity.MODE_PRIVATE)
+    val editor = spf.edit()
+
+    editor.putString("accessToken", token.accessToken)
+    editor.putString("refreshToken", token.refreshToken)
+    editor.apply()
+}
+
+fun getAccessToken(context: Context) : String?{
+    val spf = context.getSharedPreferences("token",  AppCompatActivity.MODE_PRIVATE)
+
+    return spf.getString("accessToken", "")
+
+}
+
+fun getRefreshToken(context: Context) : String? {
+    val spf = context.getSharedPreferences("token",  AppCompatActivity.MODE_PRIVATE)
+
+    return spf.getString("refreshToken", "")
+
+}
+
+
