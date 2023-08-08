@@ -1,475 +1,516 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-xmlns:app="http://schemas.android.com/apk/res-auto">
-
-<ImageView
-    android:id="@+id/button_close"
-    android:layout_width="45dp"
-    android:layout_height="45dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="30dp"
-    android:layout_marginEnd="30dp"
-    android:src="@drawable/button_cancel"
-    />
-
-<TextView
-    android:id="@+id/filter1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text=" 정렬기준"
-    android:textAppearance="@style/TextSearchFilter"
-    android:layout_marginStart="30dp"
-    android:layout_marginTop="70dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
-
-<View
-    android:id="@+id/view1"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="2dp"
-    android:background="@color/beering_black"
-    android:layout_marginHorizontal="30dp"
-    android:layout_marginTop="10dp"
-    app:layout_constraintStart_toStartOf="@id/filter1"
-    app:layout_constraintTop_toBottomOf="@id/filter1"/>
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout
-    android:id="@+id/filter1_linear"
-    android:layout_width="0dp"
-    android:layout_height="40dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginHorizontal="30dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/view1">
-
-    <FrameLayout
-        android:id="@+id/filter1_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_name_off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/gray03"
-            android:elevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="이름순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_name_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/beering_black"
-            android:elevation="0dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="이름순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/filter1_review"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_review_off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/gray03"
-            android:elevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="리뷰많은순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_review_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/beering_black"
-            android:elevation="0dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="리뷰많은순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"/>
-        </com.google.android.material.card.MaterialCardView>
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/filter1_lowPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_lowPrice_off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/gray03"
-            android:elevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="최저가순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_lowPrice_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/beering_black"
-            android:elevation="0dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="최저가순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/filter1_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_score_off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/gray03"
-            android:elevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="평점순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/filter1_score_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="@color/beering_black"
-            android:elevation="0dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="평점순"
-                android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="16sp"
-                />
-        </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
-
-</LinearLayout>
-
-<TextView
-    android:id="@+id/filter_type"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text=" 주종"
-    android:textAppearance="@style/TextSearchFilter"
-    android:layout_marginStart="30dp"
-    android:layout_marginTop="60dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/filter1_linear"/>
-
-<View
-    android:id="@+id/view2"
-    android:layout_width="match_parent"
-    android:layout_height="2dp"
-    android:background="@color/beering_black"
-    android:layout_marginHorizontal="30dp"
-    android:layout_marginTop="10dp"
-    app:layout_constraintStart_toStartOf="@id/filter_type"
-    app:layout_constraintTop_toBottomOf="@id/filter_type"/>
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/beer_cl"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/view2"
-    app:layout_constraintStart_toStartOf="parent"
-    android:layout_marginTop="15dp"
-    app:layout_constraintEnd_toStartOf="@id/wine_cl"
-    >
-
-    <FrameLayout
-        android:id="@+id/beer_fl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:id="@+id/button_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/beer_off_iv"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:src="@drawable/beer_off"/>
-
-        <ImageView
-            android:id="@+id/beer_on_iv"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:src="@drawable/beer_on"
-            android:visibility="invisible"/>
-
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="맥주"
-        android:textColor="@color/beering_black"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/beer_fl"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/wine_cl"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="@id/beer_cl"
-    app:layout_constraintStart_toEndOf="@id/beer_cl"
-    app:layout_constraintEnd_toEndOf="@id/traditional_cl"
-    >
-
-    <FrameLayout
-        android:id="@+id/wine_fl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/wine_off_iv"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:src="@drawable/wine_off"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageView
-            android:id="@+id/wine_on_iv"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:src="@drawable/wine_on"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="invisible"/>
-
-    </FrameLayout>
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/button_cancel"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="와인"
-        android:textColor="@color/beering_black"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wine_fl"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/traditional_cl"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="@id/wine_cl"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@id/wine_cl"
-    >
-
-    <FrameLayout
-        android:id="@+id/traditional_fl"
+        android:id="@+id/filter1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text=" 정렬기준"
+        android:textAppearance="@style/TextSearchFilter"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageView
-            android:id="@+id/traditional_off_iv"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:src="@drawable/traditional_off"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/beering_black"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/filter1"
+        app:layout_constraintTop_toBottomOf="@id/filter1"/>
 
-        <ImageView
-            android:id="@+id/traditional_on_iv"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:src="@drawable/traditional_on"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="invisible"/>
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="전통주"
-        android:textColor="@color/beering_black"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
+    <LinearLayout
+        android:id="@+id/filter1_linear"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/traditional_fl"/>
+        app:layout_constraintTop_toBottomOf="@id/view1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/filter1_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-<TextView
-    android:id="@+id/filter_price"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text=" 가격대"
-    android:textAppearance="@style/TextSearchFilter"
-    android:layout_marginStart="30dp"
-    android:layout_marginTop="60dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/beer_cl"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_name_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/gray03"
+                android:elevation="0dp">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="@id/filter_price"
-    app:layout_constraintStart_toEndOf="@id/filter_price"
-    android:layout_marginBottom="2dp"
-    android:layout_marginStart="15dp"
-    >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="이름순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_name_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/beering_black"
+                android:elevation="0dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="이름순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/filter1_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_review_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/gray03"
+                android:elevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="리뷰많은순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_review_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/beering_black"
+                android:elevation="0dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="리뷰많은순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/filter1_lowPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_lowPrice_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/gray03"
+                android:elevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="최저가순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_lowPrice_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/beering_black"
+                android:elevation="0dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="최저가순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/filter1_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_score_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/gray03"
+                android:elevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="평점순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filter1_score_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/beering_black"
+                android:elevation="0dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="평점순"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/filter_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 주종"
+        android:textAppearance="@style/TextSearchFilter"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter1_linear"/>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/beering_black"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/filter_type"
+        app:layout_constraintTop_toBottomOf="@id/filter_type"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/beer_cl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@id/wine_cl"
+        >
+
+        <FrameLayout
+            android:id="@+id/beer_fl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/beer_off_iv"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/beer_off"/>
+
+            <ImageView
+                android:id="@+id/beer_on_iv"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:src="@drawable/beer_on"
+                android:visibility="invisible"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="맥주"
+            android:textColor="@color/beering_black"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/beer_fl"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/wine_cl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/beer_cl"
+        app:layout_constraintStart_toEndOf="@id/beer_cl"
+        app:layout_constraintEnd_toEndOf="@id/traditional_cl"
+        >
+
+        <FrameLayout
+            android:id="@+id/wine_fl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/wine_off_iv"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:src="@drawable/wine_off"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/wine_on_iv"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:src="@drawable/wine_on"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="와인"
+            android:textColor="@color/beering_black"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wine_fl"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/traditional_cl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/wine_cl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/wine_cl"
+        >
+
+        <FrameLayout
+            android:id="@+id/traditional_fl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/traditional_off_iv"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:src="@drawable/traditional_off"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/traditional_on_iv"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:src="@drawable/traditional_on"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="전통주"
+            android:textColor="@color/beering_black"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/traditional_fl"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/filter_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 가격대"
+        android:textAppearance="@style/TextSearchFilter"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/beer_cl"/>
+
+
 
     <TextView
         android:id="@+id/filter_price_min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="단위 : 원"
         android:textSize="15sp"
-        android:textColor="@color/gray01"
+        android:textColor="@color/gray02"
+        app:layout_constraintBottom_toBottomOf="@id/filter_price"
+        app:layout_constraintStart_toEndOf="@id/filter_price"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="15dp"/>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/beering_black"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/filter_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_price"/>
+
+    <LinearLayout
+        android:id="@+id/editText_min"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@color/gray00"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@id/view3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginTop="15dp">
 
-    <TextView
-        android:id="@+id/filter_price_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" ~ "
-        android:textSize="15sp"
-        android:textColor="@color/gray01"
-        app:layout_constraintStart_toEndOf="@id/filter_price_min"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/transparent"
+            android:textColorHighlight="@color/transparent"
+            android:hint="0"
+            android:textSize="15sp"
+            android:textColor="@color/beering_black"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/filter_price_max"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="100,000"
-        android:textSize="15sp"
-        android:textColor="@color/gray01"
-        app:layout_constraintStart_toEndOf="@id/filter_price_"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:background="@color/gray01"
+        app:layout_constraintStart_toEndOf="@id/editText_min"
+        app:layout_constraintEnd_toStartOf="@id/editText_max"
+        app:layout_constraintTop_toTopOf="@id/editText_min"
+        app:layout_constraintBottom_toBottomOf="@id/editText_min"/>
 
-<View
-    android:id="@+id/view3"
-    android:layout_width="match_parent"
-    android:layout_height="2dp"
-    android:background="@color/beering_black"
-    android:layout_marginHorizontal="30dp"
-    android:layout_marginTop="10dp"
-    app:layout_constraintStart_toStartOf="@id/filter_price"
-    app:layout_constraintTop_toBottomOf="@id/filter_price"/>
+    <LinearLayout
+        android:id="@+id/editText_max"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@color/gray00"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toTopOf="@id/editText_min"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:background="@color/beering_black"
-    android:text="주류보기"
-    android:textColor="@color/white"
-    android:textSize="18sp"
-    android:layout_marginHorizontal="25dp"
-    android:layout_marginBottom="50dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/transparent"
+            android:textColorHighlight="@color/transparent"
+            android:hint="99,999 +"
+            android:textSize="15sp"
+            android:textColor="@color/beering_black"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/button_search_cv"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:backgroundTint="@color/beering_black"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/button_search_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="주류보기"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

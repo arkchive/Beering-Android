@@ -6,10 +6,10 @@
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Beering"
@@ -25,6 +25,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".DrinkFavoriteActivity" />
         <activity android:name=".ReviewWritingActivity"/>
+        <activity android:name=".MyReviewsActivity"/>
+        <activity android:name=".DrinkDetailReviewsActivity"/>
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustNothing" />

@@ -426,7 +426,8 @@ class JoinActivity: AppCompatActivity() {
 
         // TODO 이용약관 내용 정해지면, 각 dialog에 맞는 내용 채워주는 코드 작성해야함.
         binding.viewMoreTerm1.setOnClickListener {
-
+            val term1Dialog = TermsDialog()
+            term1Dialog.show(supportFragmentManager,"term1Dialog")
         }
         binding.viewMoreTerm2.setOnClickListener {
 
@@ -434,7 +435,6 @@ class JoinActivity: AppCompatActivity() {
         binding.viewMoreTerm3.setOnClickListener {
 
         }
-
     }
 
     // 비밀번호 유효성 검사
