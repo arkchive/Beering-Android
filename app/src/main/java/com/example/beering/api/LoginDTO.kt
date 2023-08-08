@@ -1,13 +1,12 @@
 package com.example.beering.data
 
-import com.google.gson.annotations.SerializedName
-
+// 로그인 request
 data class LoginRequest(
     val username: String,
     val password: String,
 )
 
-
+// 로그인 response
 data class LoginResponse(
     val isSuccess: Boolean,
     val responseCode: Int,
@@ -15,6 +14,7 @@ data class LoginResponse(
     val result: LoginResult
 )
 
+// result저장, erros는 따로 list형식으로 들어옴.
 data class LoginResult(
     val memberId: Int,
     val jwtInfo: Jwt,
@@ -26,6 +26,7 @@ data class LoginError(
     val message : String
 )
 
+// 토큰
 data class Jwt(
     val accessToken: String,
     val refreshToken: String

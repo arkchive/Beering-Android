@@ -1,4 +1,4 @@
-package com.example.beering
+package com.example.beering.api
 
 import com.example.beering.data.Member
 import com.example.beering.data.MemberResponse
