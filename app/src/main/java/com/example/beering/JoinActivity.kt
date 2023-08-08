@@ -12,9 +12,12 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.beering.databinding.ActivityJoinBinding
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class JoinActivity: AppCompatActivity() {
     lateinit var binding: ActivityJoinBinding
+    private val apiClient = ApiClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,10 @@ class JoinActivity: AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             finish()
         }
+
+        // api 연결
+        val joinResponse = apiClient.joinApiService
+
 
         // 객체 생성
         val idEdit = binding.joinIdEd
