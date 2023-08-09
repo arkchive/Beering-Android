@@ -445,6 +445,7 @@
         android:layout_marginTop="15dp">
 
         <EditText
+            android:id="@+id/editText_min_ed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/transparent"
@@ -454,6 +455,7 @@
             android:textColor="@color/beering_black"
             android:gravity="center"
             android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
             />
     </LinearLayout>
 
@@ -477,6 +479,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
+            android:id="@+id/editText_max_ed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/transparent"
@@ -485,6 +488,7 @@
             android:textSize="15sp"
             android:textColor="@color/beering_black"
             android:gravity="center"
+            android:inputType="numberDecimal"
             />
 
     </LinearLayout>
