@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-const val BASE_URL = "https://api.beering.shop"
+const val BASE_URL = "https://beering-72501f868a10.herokuapp.com/"
 
 // 토큰 요청 (비동기 방식)
 fun okHttpClient_header(header: String) : OkHttpClient {
