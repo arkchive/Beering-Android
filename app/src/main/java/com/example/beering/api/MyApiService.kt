@@ -1,10 +1,11 @@
 package com.example.beering.api
 
 import retrofit2.Call
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface MyApiService {
 
-    @POST("/members/me")
+    @GET("/members/me")
     fun getMy(): Call<MyResponse>
 }

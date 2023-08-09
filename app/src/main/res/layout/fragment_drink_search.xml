@@ -108,20 +108,24 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/drink_search_type_mcv"
-                    android:layout_width="37dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray03"
+                    android:background="@null"
+                    app:cardBackgroundColor="@color/black"
                     app:cardCornerRadius="24dp"
+                    android:visibility="gone"
                     app:cardElevation="0dp">
 
 
                     <TextView
-                        android:layout_width="36dp"
+                        android:id="@+id/drink_search_type_tv"
+                        android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="주종"
+                        android:layout_marginHorizontal="8dp"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -129,20 +133,23 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/drink_search_sort_mcv"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray03"
+                    app:cardBackgroundColor="@color/black"
                     app:cardCornerRadius="24dp"
+                    android:visibility="gone"
                     app:cardElevation="0dp">
 
 
                     <TextView
+                        android:id="@+id/drink_search_sort_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="정렬 기준"
+                        android:layout_marginHorizontal="8dp"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -150,20 +157,23 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/drink_search_price_mcv"
-                    android:layout_width="47dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray03"
+                    app:cardBackgroundColor="@color/black"
+                    android:visibility="gone"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="0dp">
 
 
                     <TextView
+                        android:id="@+id/drink_search_price_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="가격대"
+                        android:layout_marginHorizontal="8dp"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 

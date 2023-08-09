@@ -1,5 +1,6 @@
 package com.example.beering
 
+import android.app.Activity
 import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,8 @@ import com.example.beering.databinding.ActivitySearchFilterBinding
 
 class SearchFilterActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchFilterBinding
+
+    val FILTER_REQUEST_CODE = 123
 
     // 선택상태 저장 변수
     var isName = false
@@ -57,6 +60,36 @@ class SearchFilterActivity : AppCompatActivity() {
         binding.traditionalCl.setOnClickListener {
             isTypeTraditional = !isTypeTraditional
             updateTypeTraditional(isTypeTraditional)
+        }
+
+        binding.buttonSearchCv.setOnClickListener {
+            // 액티비티에서 데이터를 전달하고 프래그먼트로 이동하는 부분
+            val bundle = Bundle().apply {
+                putBoolean("isName", isName)
+                putBoolean("isReview", isReview)
+                putBoolean("isLowPrice", isLowPrice)
+                putBoolean("isScore", isScore)
+
+                putBoolean("isTypeBeer", isTypeBeer)
+                putBoolean("isTypeWine", isTypeWine)
+                putBoolean("isTypeTraditional", isTypeTraditional)
+                val inputText_min = binding.editTextMinEd.text?.toString() ?: ""
+                val minPrice = inputText_min.toIntOrNull() ?: -1
+
+                val inputText_max = binding.editTextMaxEd.text?.toString() ?: ""
+                val maxPrice = inputText_max.toIntOrNull() ?: -1
+
+                putInt("minPrice",minPrice)
+                putInt("maxPrice", maxPrice)
+            }
+
+            val intent = Intent()
+            intent.putExtras(bundle)
+            setResult(Activity.RESULT_OK,intent)
+
+            finish()
+
+
         }
 
 

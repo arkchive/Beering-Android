@@ -33,10 +33,10 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
     }
 
 
-    inner class ViewHolder(val binding: ItemDrinkSearchResultBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        val heartOn: ImageView = itemView.findViewById(R.id.item_drink_search_result_heart_on_iv)
-        val heartOff: ImageView = itemView.findViewById(R.id.item_drink_search_result_heart_off_iv)
+    inner class ViewHolder(val binding: ItemDrinkSearchResultBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        val heartOn: ImageView = binding.itemDrinkSearchResultHeartOnIv
+        val heartOff: ImageView = binding.itemDrinkSearchResultHeartOffIv
 
         fun bind(drinkInfo: DrinkCover) {
             binding.itemDrinkSearchResultImgIv.setImageResource(drinkInfo.img)
@@ -86,11 +86,10 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
                 if (payload is String) {
 
                     if (payload == "heartChange") {
-                        if(itemList[position].isHeart){
+                        if (itemList[position].isHeart) {
                             holder.heartOn.visibility = View.INVISIBLE
                             holder.heartOff.visibility = View.VISIBLE
-                        }
-                        else {
+                        } else {
                             holder.heartOn.visibility = View.VISIBLE
                             holder.heartOff.visibility = View.INVISIBLE
                         }
