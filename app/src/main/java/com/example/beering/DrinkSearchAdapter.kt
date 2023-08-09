@@ -1,10 +1,13 @@
 package com.example.beering
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.beering.data.getMemberId
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
@@ -45,7 +48,6 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
             binding.itemDrinkSearchResultTitleEnTv.text = drinkInfo.titleEn
 
             binding.itemDrinkSearchResultCl.setOnClickListener {
-
                 itemClickListener.onItemClick(drinkInfo)
             }
 

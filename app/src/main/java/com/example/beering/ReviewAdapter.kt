@@ -13,7 +13,6 @@ class ReviewAdapter(private  val itemList : ArrayList<DrinkDetail>) : RecyclerVi
         fun bind(drinkDetail : DrinkDetail) {
             binding.itemReviewNameTv.text = drinkDetail.titleKr
             binding.drinkDetailReviewTv.text = drinkDetail.information
-
         }
     }
 

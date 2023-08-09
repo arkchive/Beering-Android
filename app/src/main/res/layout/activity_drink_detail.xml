@@ -181,6 +181,7 @@
             </FrameLayout>
 
             <TextView
+                android:id="@+id/drink_detail_toal_rating_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="4.7"
@@ -213,7 +214,7 @@
 
 
         <TextView
-            android:id="@+id/alcohol_percentage"
+            android:id="@+id/alcohol_percentage_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.7"
