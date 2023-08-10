@@ -56,17 +56,18 @@ class DrinkSearchFragment : Fragment() {
                 // api로 데이터 받아오는 부분 작성 -> 이거를 버튼 눌렀을때로 변경해야할듯
 
                 val drinkSearchService =
-                    getRetrofit_header(getAccessToken(requireContext()).toString()).create(
+                    getRetrofit_async().create(
                         DrinkSearchApiService::class.java
                     )
                 val category = searchSort.joinToString(",")
-                drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, category, searchPrice_min, searchPrice_max).enqueue(object : retrofit2.Callback<DrinkSearchResponse> {
+                drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, category, searchPrice_min, searchPrice_max).enqueue(object : retrofit2.Callback<DrinkCoverResponse> {
                     override fun onResponse(
-                        call: Call<DrinkSearchResponse>,
-                        response: Response<DrinkSearchResponse>
+                        call: Call<DrinkCoverResponse>,
+                        response: Response<DrinkCoverResponse>
                     ) {
                         val resp = response.body()
                         drinkSearchAdapter?.clearItems()
+                        searchSort.clear()
                         if(response.isSuccessful){
                             if (resp!!.isSuccess) {
                                 for(drink in resp.result.content){
@@ -77,7 +78,8 @@ class DrinkSearchFragment : Fragment() {
                                                 drink.nameEn,
                                                 drink.manufacturer,
                                                 drink.drinkId,
-                                                null
+                                                null,
+                                                true
                                             )
                                         )
                                     } else {
@@ -87,7 +89,8 @@ class DrinkSearchFragment : Fragment() {
                                                 drink.nameEn,
                                                 drink.manufacturer,
                                                 drink.drinkId,
-                                                drink.imageUrlList[0]
+                                                drink.imageUrlList[0],
+                                                true
                                             )
                                         )
                                     }
@@ -128,7 +131,7 @@ class DrinkSearchFragment : Fragment() {
 
                     }
 
-                    override fun onFailure(call: Call<DrinkSearchResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<DrinkCoverResponse>, t: Throwable) {
                         val builder = AlertDialog.Builder(context)
                         builder.setTitle("요청 오류")
                         builder.setMessage("서버에 요청을 실패하였습니다.")

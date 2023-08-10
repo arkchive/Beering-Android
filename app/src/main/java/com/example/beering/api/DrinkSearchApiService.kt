@@ -13,5 +13,5 @@ interface DrinkSearchApiService {
         @Query("category") category: String?,
         @Query("minPrice") minPrice: Int?,
         @Query("maxPrice") maxPrice: Int?,
-    ): Call<DrinkSearchResponse>
+    ): Call<DrinkCoverResponse>
 }
