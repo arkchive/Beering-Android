@@ -1,6 +1,5 @@
 package com.example.beering
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,17 +8,16 @@ import com.bumptech.glide.Glide
 import com.example.beering.api.ReviewsContent
 import com.example.beering.databinding.ItemHomeBinding
 
-class DrinkDetailReviewsAdapter(private val reviews: List<ReviewsContent>) : RecyclerView.Adapter<DrinkDetailReviewsAdapter.ViewHolder>()
-{
+class LikeReviewsAdapter (private val reviews: List<ReviewsContent>): RecyclerView.Adapter<LikeReviewsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): DrinkDetailReviewsAdapter.ViewHolder {
+    ): LikeReviewsAdapter.ViewHolder {
         val binding = ItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: DrinkDetailReviewsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LikeReviewsAdapter.ViewHolder, position: Int) {
         holder.bind(reviews[position])
     }
 
@@ -27,7 +25,7 @@ class DrinkDetailReviewsAdapter(private val reviews: List<ReviewsContent>) : Rec
         return reviews.size
     }
 
-    inner class ViewHolder(val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemHomeBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(review: ReviewsContent) {
             binding.itemHomePostNameTv.text = review.nickName
             binding.itemHomePostDateTv.text = review.diffFromCurrentTime
@@ -50,4 +48,5 @@ class DrinkDetailReviewsAdapter(private val reviews: List<ReviewsContent>) : Rec
             binding.itemHomePostContentTv.text = review.content
         }
     }
+
 }

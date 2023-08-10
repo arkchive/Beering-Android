@@ -31,7 +31,7 @@
                 android:id="@+id/item_home_post_profile_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/img_default_profile"
                 android:background="@color/gray2"/>
 
         </com.google.android.material.card.MaterialCardView>

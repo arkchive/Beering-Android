@@ -39,13 +39,13 @@ class MyReviewsActivity : AppCompatActivity() {
                     recyclerView.layoutManager = LinearLayoutManager(this@MyReviewsActivity)
                 } else {
 
+                }
             }
-        }
 
-        override fun onFailure(call: Call<ReviewsResponse>, t: Throwable) {
-            TODO("Not yet implemented")
-        }
-    })
+            override fun onFailure(call: Call<ReviewsResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
 
     }
 
