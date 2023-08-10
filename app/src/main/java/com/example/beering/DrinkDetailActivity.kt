@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.beering.api.*
 import com.example.beering.data.getAccessToken
@@ -54,7 +55,7 @@ class DrinkDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.reviewMoreIv.setOnClickListener {
+        binding.reviewMoreCl.setOnClickListener {
             val intent = Intent(this, DrinkDetailReviewsActivity::class.java)
             startActivity(intent)
         }
@@ -103,10 +104,10 @@ class DrinkDetailActivity : AppCompatActivity() {
                     val isliked = resp.result.liked
                     updateInterest(isliked)
 
-//                    reviewPreviews = resp.result.reviewPreviews
-//                    reviewAdapter = ReviewAdapter(reviewPreviews!!)
-//                    binding.reviewRv.adapter = reviewAdapter
-//                    binding.reviewRv.layoutManager = LinearLayoutManager(this@DrinkDetailActivity, LinearLayoutManager.HORIZONTAL, false)
+                    val reviews = resp.result.reviewPreviews
+                    reviewAdapter = ReviewAdapter(reviews)
+                    binding.reviewRv.adapter = reviewAdapter
+                    binding.reviewRv.layoutManager = LinearLayoutManager(this@DrinkDetailActivity, LinearLayoutManager.HORIZONTAL, false)
 
                 }
             }

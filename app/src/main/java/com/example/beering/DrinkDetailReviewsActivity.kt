@@ -18,5 +18,7 @@ class DrinkDetailReviewsActivity : AppCompatActivity() {
             val fragmentManager: FragmentManager = supportFragmentManager
             fragmentManager.popBackStack()
         }
+
+
     }
 }

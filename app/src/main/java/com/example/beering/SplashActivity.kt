@@ -10,6 +10,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.MediaController
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.bumptech.glide.Glide
 import com.example.beering.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -23,6 +24,9 @@ class SplashActivity : AppCompatActivity() {
 
         loadSplashScreen()
 
+        Glide.with(this)
+            .load(R.drawable.logo_test)
+            .into(binding.logoVideo)
     }
 
     fun loadSplashScreen(){
@@ -31,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, LoginRequestActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, 4300)
 
 
     }
