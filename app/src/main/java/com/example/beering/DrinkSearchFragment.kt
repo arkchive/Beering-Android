@@ -76,7 +76,7 @@ class DrinkSearchFragment : Fragment() {
                     "타이거",
                     "Tiger",
                     "Pilsner Urquell Brewery",
-                    1,
+                    2,
                     R.drawable.img_temp_drink
                 )
             )
@@ -86,7 +86,7 @@ class DrinkSearchFragment : Fragment() {
                     "타이거",
                     "Tiger",
                     "Pilsner Urquell Brewery",
-                    1,
+                    3,
                     R.drawable.img_temp_drink
                 )
             )

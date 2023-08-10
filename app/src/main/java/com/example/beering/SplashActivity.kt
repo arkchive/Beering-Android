@@ -17,31 +17,11 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loadSplashScreen()
-
-//        val videoView = binding.logoVideo
-//        val splashLayout = binding.logoVideoSplash
-//
-//        val videoPath = "android.resource://" + packageName + "/" + R.raw.logo_video
-//
-//        val uri = Uri.parse(videoPath)
-//        videoView.setVideoURI(uri)
-//
-//        // 비디오가 준비되면 스플래시 화면을 숨기고 VideoView를 표시.
-//        videoView.setOnPreparedListener {
-//            splashLayout.visibility = View.GONE
-//            videoView.visibility = View.VISIBLE
-//        }
-//        videoView.start()
-
-//        val imageView = binding.logoVideo
-//        imageView.setImageResource(R.drawable.logo_test)
-//        val animationDrawable = imageView.drawable as? AnimationDrawable
-//        animationDrawable?.start()
 
     }
 

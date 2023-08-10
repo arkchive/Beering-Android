@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
-class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
+class DrinkSearchAdapter(private var itemList: ArrayList<DrinkCover>) :
     RecyclerView.Adapter<DrinkSearchAdapter.ViewHolder>() {
 
 
@@ -45,7 +45,6 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
             binding.itemDrinkSearchResultTitleEnTv.text = drinkInfo.titleEn
 
             binding.itemDrinkSearchResultCl.setOnClickListener {
-
                 itemClickListener.onItemClick(drinkInfo)
             }
 
@@ -77,7 +76,6 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
     override fun onBindViewHolder(holder: DrinkSearchAdapter.ViewHolder, position: Int) {
         holder.bind(itemList[position])
         holder.bindHeart(position)
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
