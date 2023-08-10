@@ -25,5 +25,6 @@ data class ReviewsContent(
     @SerializedName("content") val content: String,
     @SerializedName("diffFromCurrentTime") val diffFromCurrentTime: String,
     @SerializedName("like") val like: Int,
-    @SerializedName("dislike") val dislike: Int
+    @SerializedName("dislike") val dislike: Int,
+    @SerializedName("isTabomed") val isTabomed: String
     )

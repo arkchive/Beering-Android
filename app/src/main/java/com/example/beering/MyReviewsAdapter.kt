@@ -8,19 +8,20 @@ import com.bumptech.glide.Glide
 import com.example.beering.api.ReviewsContent
 import com.example.beering.databinding.ItemHomeBinding
 
-class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapter<HomeAdapter.ViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
+class MyReviewsAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapter<MyReviewsAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyReviewsAdapter.ViewHolder {
         val binding = ItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyReviewsAdapter.ViewHolder, position: Int) {
         holder.bind(reviews[position])
     }
 
     override fun getItemCount(): Int {
         return reviews.size
     }
+
     inner class ViewHolder(val binding: ItemHomeBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(review: ReviewsContent) {
             binding.itemHomePostNameTv.text = review.nickName
@@ -44,4 +45,5 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
             binding.itemHomePostContentTv.text = review.content
         }
     }
+
 }
