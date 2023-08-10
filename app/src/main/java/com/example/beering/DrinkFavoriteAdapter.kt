@@ -1,10 +1,12 @@
 package com.example.beering
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
@@ -39,7 +41,13 @@ class DrinkFavoriteAdapter(private val itemList: ArrayList<DrinkCover>) :
         val heartOff: ImageView = itemView.findViewById(R.id.item_drink_search_result_heart_off_iv)
 
         fun bind(drinkInfo: DrinkCover) {
-            // binding.itemDrinkSearchResultImgIv.setImageResource(drinkInfo.img)
+            Glide.with(binding.root.context)
+                .load(drinkInfo.img) // 불러올 이미지 url
+                .placeholder(R.drawable.img_temp_drink) // 이미지 로딩 시작하기 전 표시할 이미지
+                .error(R.drawable.img_temp_drink) // 로딩 에러 발생 시 표시할 이미지
+                .fallback(R.drawable.img_temp_drink) // 로드할 url 이 비어있을(null 등) 경우 표시할 이미지
+                .into(binding.itemDrinkSearchResultImgIv)
+
             binding.itemDrinkSearchResultManufactureTv.text = drinkInfo.manufacture
             binding.itemDrinkSearchResultTitleKrTv.text = drinkInfo.titleKr
             binding.itemDrinkSearchResultTitleEnTv.text = drinkInfo.titleEn
