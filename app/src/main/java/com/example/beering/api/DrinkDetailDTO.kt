@@ -18,7 +18,7 @@ data class DrinkDetailResult(
     val totalRating : Float,
     val reviewCount : Int,
     val reviewPreviews : List<ReviewPreview>,
-    val imageUrlList : List<String>,
+    val drinkImageUrlList : List<String>,
     val liked : Boolean
 )
 
