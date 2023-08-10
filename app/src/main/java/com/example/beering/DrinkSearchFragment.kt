@@ -1,6 +1,7 @@
 package com.example.beering
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,17 +43,17 @@ class DrinkSearchFragment: Fragment() {
                     R.drawable.img_temp_drink)
             )
             data.add(1,
-                DrinkCover("타이거",
-                    "Tiger",
-                    "Pilsner Urquell Brewery",
-                    1,
+                DrinkCover("하이네켄",
+                    "Heineken",
+                    "Urquell Pilsner Brewery",
+                    4,
                     R.drawable.img_temp_drink)
             )
             data.add(2,
-                DrinkCover("타이거",
-                    "Tiger",
-                    "Pilsner Urquell Brewery",
-                    1,
+                DrinkCover("카스",
+                    "Cass",
+                    "Brewery Pilsner Urquell",
+                    5,
                     R.drawable.img_temp_drink)
             )
 
@@ -67,6 +68,7 @@ class DrinkSearchFragment: Fragment() {
                 override fun onItemClick(drinkInfo: DrinkCover) {
                     val intent = Intent(requireContext(), DrinkDetailActivity::class.java)
                     intent.putExtra("drinkId", drinkInfo.id)
+                    Log.i("drinkId", drinkInfo.id.toString())
                     startActivity(intent)
 
                 }
@@ -88,12 +90,6 @@ class DrinkSearchFragment: Fragment() {
             val intent = Intent(requireContext(), SearchFilterActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
 
         drinkSearchAdapter = DrinkSearchAdapter((drinkSearchList))
         binding.drinkSearchResultRv.adapter = drinkSearchAdapter

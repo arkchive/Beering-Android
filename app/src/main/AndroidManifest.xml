@@ -20,7 +20,10 @@
             android:exported="true">
 
         </activity>
-        <activity android:name=".SearchFilterActivity" />
+        <activity android:name=".SearchFilterActivity"
+            android:exported="true">
+
+        </activity>
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".DrinkFavoriteActivity" />

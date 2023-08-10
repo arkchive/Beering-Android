@@ -26,5 +26,6 @@ data class ReviewPreview(
     val profile_image_url : Int,
     val nickname : String,
     val content : String,
-    val createAt : String
+    val createAt : String,
+    val totalRating : Float
 )

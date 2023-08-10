@@ -3,16 +3,19 @@ package com.example.beering
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.beering.api.ReviewPreview
 import com.example.beering.databinding.ItemReviewBinding
 import com.example.naverwebtoon.data.DrinkDetail
 
-class ReviewAdapter(private  val itemList : ArrayList<DrinkDetail>) : RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
+class ReviewAdapter(private  val itemList : List<ReviewPreview>) : RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
 
     inner class ViewHolder(val binding: ItemReviewBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(drinkDetail : DrinkDetail) {
-            binding.itemReviewNameTv.text = drinkDetail.titleKr
-            binding.drinkDetailReviewTv.text = drinkDetail.information
+        fun bind(reviewPreview: ReviewPreview) {
+            binding.itemReviewNameTv.text = reviewPreview.nickname
+            binding.drinkDetailReviewTv.text = reviewPreview.content
+            binding.itemReviewDateTv.text = reviewPreview.createAt
+            //
         }
     }
 

@@ -1,17 +1,14 @@
 package com.example.beering
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.beering.data.getMemberId
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
-class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
+class DrinkSearchAdapter(private var itemList: ArrayList<DrinkCover>) :
     RecyclerView.Adapter<DrinkSearchAdapter.ViewHolder>() {
 
 
@@ -79,7 +76,6 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
     override fun onBindViewHolder(holder: DrinkSearchAdapter.ViewHolder, position: Int) {
         holder.bind(itemList[position])
         holder.bindHeart(position)
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
