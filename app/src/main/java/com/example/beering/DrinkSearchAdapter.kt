@@ -1,5 +1,6 @@
 package com.example.beering
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,8 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
 
         val heartOn: ImageView = binding.itemDrinkSearchResultHeartOnIv
         val heartOff: ImageView = binding.itemDrinkSearchResultHeartOffIv
+        val binding_temp: ItemDrinkSearchResultBinding = binding
+        lateinit var drinkInfo_temp: DrinkCover
 
         fun bind(drinkInfo: DrinkCover) {
             Glide.with(binding.root.context)
@@ -58,18 +61,26 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
                 itemClickListener.onItemClick(drinkInfo)
             }
 
+            if (drinkInfo.isHeart) {
+                binding.itemDrinkSearchResultHeartOnIv.visibility = View.VISIBLE
+                binding.itemDrinkSearchResultHeartOffIv.visibility = View.INVISIBLE
+            } else {
+                binding.itemDrinkSearchResultHeartOnIv.visibility = View.INVISIBLE
+                binding.itemDrinkSearchResultHeartOffIv.visibility = View.VISIBLE
+            }
+
 
         }
 
         fun bindHeart(position: Int, drinkInfo: DrinkCover) {
             binding.itemDrinkSearchResultHeartOffIv.setOnClickListener {
                 heartClickListener.onButtonClick(position)
-                DrinkLike(binding.root.context, getMemberId(binding.root.context), drinkInfo.id)
+                drinkInfo_temp = drinkInfo
             }
 
             binding.itemDrinkSearchResultHeartOnIv.setOnClickListener {
                 heartClickListener.onButtonClick(position)
-                DrinkLike(binding.root.context, getMemberId(binding.root.context), drinkInfo.id)
+                drinkInfo_temp = drinkInfo
 
             }
         }
@@ -96,14 +107,16 @@ class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
                 if (payload is String) {
 
                     if (payload == "heartChange") {
+                        itemList[position].isHeart = !itemList[position].isHeart
                         if (itemList[position].isHeart) {
-                            holder.heartOn.visibility = View.INVISIBLE
-                            holder.heartOff.visibility = View.VISIBLE
-                        } else {
                             holder.heartOn.visibility = View.VISIBLE
                             holder.heartOff.visibility = View.INVISIBLE
+                        } else {
+                            holder.heartOn.visibility = View.INVISIBLE
+                            holder.heartOff.visibility = View.VISIBLE
                         }
-                        itemList[position].isHeart = !itemList[position].isHeart
+                        DrinkLike(holder.binding_temp.root.context, getMemberId(holder.binding_temp.root.context), holder.drinkInfo_temp.id)
+
                     }
                 }
             }
