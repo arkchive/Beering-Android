@@ -1,5 +1,6 @@
 package com.example.beering
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,8 +31,8 @@ class ReviewAdapter(private  val itemList : List<ReviewPreview>) : RecyclerView.
             binding.itemReviewNameTv.text = review.nickname
             binding.drinkDetailReviewTv.text = review.content
             binding.itemReviewDateTv.text = review.createAt
-            val rating = review.totalRating
-            updateReviewRating(rating)
+            val reviewRating = review.totalRating
+            updateReviewRating(reviewRating)
 
             Glide.with(binding.root)
                 .load(review.profile_image_url)
@@ -42,38 +43,40 @@ class ReviewAdapter(private  val itemList : List<ReviewPreview>) : RecyclerView.
                 .into(binding.itemReviewProfileIv)
         }
 
-        fun updateReviewRating(rating : Float){
+        private fun updateReviewRating(rating : Float){
             if(rating == 0.0f){
                 //빈 아이콘이 디폴트값
             } else if(rating > 0.0f && rating < 1.0f){
                 binding.reviewStar1HalfIv.visibility = View.VISIBLE
             }else if(rating == 1.0f || rating > 1.0f){
                 binding.reviewStar1FullIv.visibility = View.VISIBLE
-            }
-            // 누적
-            if(rating > 1.0f && rating < 2.0f){
-                binding.reviewStar2HalfIv.visibility = View.VISIBLE
-            }else if(rating == 2.0f || rating > 2.0f){
-                binding.reviewStar2FullIv.visibility = View.VISIBLE
+
+                if(rating > 1.0f && rating < 2.0f){
+                    binding.reviewStar2HalfIv.visibility = View.VISIBLE
+                }else if(rating == 2.0f || rating > 2.0f){
+                    binding.reviewStar2FullIv.visibility = View.VISIBLE
+
+                    if(rating > 2.0f && rating < 3.0f){
+                        binding.reviewStar3HalfIv.visibility = View.VISIBLE
+                    }else if(rating == 3.0f || rating > 3.0f){
+                        binding.reviewStar3FullIv.visibility = View.VISIBLE
+
+                        if(rating > 3.0f && rating < 4.0f){
+                            binding.reviewStar4HalfIv.visibility = View.VISIBLE
+                        }else if(rating == 4.0f || rating > 4.0f){
+                            binding.reviewStar4FullIv.visibility = View.VISIBLE
+
+                            if(rating > 4.0f && rating < 5.0f){
+                                binding.reviewStar5HalfIv.visibility = View.VISIBLE
+                            }else if(rating == 5.0f || rating > 5.0f){
+                                binding.reviewStar5FullIv.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }
             }
 
-            if(rating > 2.0f && rating < 3.0f){
-                binding.reviewStar3HalfIv.visibility = View.VISIBLE
-            }else if(rating == 3.0f || rating > 3.0f){
-                binding.reviewStar3FullIv.visibility = View.VISIBLE
-            }
 
-            if(rating > 3.0f && rating < 4.0f){
-                binding.reviewStar4HalfIv.visibility = View.VISIBLE
-            }else if(rating == 4.0f || rating > 4.0f){
-                binding.reviewStar4FullIv.visibility = View.VISIBLE
-            }
-
-            if(rating > 4.0f && rating < 5.0f){
-                binding.reviewStar5HalfIv.visibility = View.VISIBLE
-            }else if(rating == 5.0f || rating > 5.0f){
-                binding.reviewStar5FullIv.visibility = View.VISIBLE
-            }
         }
     }
 }

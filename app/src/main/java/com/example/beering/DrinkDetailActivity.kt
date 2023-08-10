@@ -18,8 +18,6 @@ import retrofit2.Response
 class DrinkDetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDrinkDetailBinding
 
-    var reviewPreviews : List<ReviewPreview>? = null
-
     var isInterest = false
 
     var reviewAdapter: ReviewAdapter? = null
@@ -84,9 +82,11 @@ class DrinkDetailActivity : AppCompatActivity() {
 
                     val nameKr = resp!!.result.nameKr
                     binding.mainNameTv.text = nameKr
+
                     val totalRating = resp.result.totalRating
                     binding.drinkDetailToalRatingTv.text = totalRating.toString()
-                    updateRationg(totalRating)
+                    updateRating(totalRating)
+
                     val reviewCount = resp.result.reviewCount
                     binding.drinkDetailReviewCountTv.text = reviewCount.toString()
                     val alcohol = resp.result.alcohol
@@ -99,6 +99,9 @@ class DrinkDetailActivity : AppCompatActivity() {
                     val imageUrl = resp.result.drinkImageUrlList[0]
                     Glide.with(this@DrinkDetailActivity)
                         .load(imageUrl)
+                        .placeholder(R.drawable.drink_detail_main_image)
+                        .error(R.drawable.drink_detail_main_image)
+                        .fallback(R.drawable.drink_detail_main_image)
                         .into(binding.mainImageIv)
 
                     val isliked = resp.result.liked
@@ -129,12 +132,12 @@ class DrinkDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun updateRationg(rating : Float){
+    fun updateRating(rating : Float){
         if(rating == 0.0f){
-            //빈 아이콘이 디폴트값
+            //
         } else if(rating > 0.0f && rating < 1.0f){
             binding.star1Half.visibility = View.VISIBLE
-        }else if(rating == 1.0f || rating > 1.0f){
+        }else if(rating == 1.0f || rating > 1.0f) {
             binding.star1Full.visibility = View.VISIBLE
         }
         // 누적
