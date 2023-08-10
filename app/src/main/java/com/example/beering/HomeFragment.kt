@@ -4,10 +4,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.beering.api.HomeApiService
+import com.example.beering.api.ReviewsContent
+import com.example.beering.api.ReviewsResponse
+import com.example.beering.api.getRetrofit_header
+import com.example.beering.data.getAccessToken
 import com.example.beering.databinding.FragmentHomeBinding
+import retrofit2.Call
+import retrofit2.Response
 
 class HomeFragment: Fragment() {
     lateinit var binding:FragmentHomeBinding
+    lateinit var homeAdapter: HomeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,9 +25,32 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        val recyclerView: RecyclerView = binding.homePostRv
 
+        // api 연결
+        val homeService =
+            getRetrofit_header(getAccessToken(requireContext()).toString()).create(HomeApiService::class.java)
+        homeService.getHome().enqueue(object : retrofit2.Callback<ReviewsResponse>{
+            override fun onResponse(
+                call: Call<ReviewsResponse>, response: Response<ReviewsResponse>
+            ){
+                val resp = response.body()
+                if(resp!!.isSuccess) {
+                    val reviews = resp.result.content
+                    homeAdapter = HomeAdapter(reviews)
+                    recyclerView.adapter = homeAdapter
+                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                }else {
+
+                }
+            }
+
+            override fun onFailure(call: Call<ReviewsResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+        return binding.root
     }
-    var homeAdapter: HomeAdapter?= null
 
 }

@@ -3,7 +3,7 @@ package com.example.beering.data
 import com.google.gson.annotations.SerializedName
 
 data class Member(
-    @SerializedName("username") val id: String,
+    @SerializedName("username") val username: String,
     @SerializedName("password") val password: String,
     @SerializedName("nickname") val nickname: String,
     @SerializedName("agreements") val agreements: List<MemberAgreements>
@@ -11,7 +11,7 @@ data class Member(
 
 data class MemberAgreements(
     @SerializedName("name") val name: String,
-    @SerializedName("isAgreed") val isAgreed:Boolean
+    @SerializedName("isAgreed") var isAgreed:Boolean
 )
 
 data class MemberResponse(
