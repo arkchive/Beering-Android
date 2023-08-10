@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.beering.api.*
 import com.example.beering.data.getAccessToken
@@ -16,8 +17,6 @@ import retrofit2.Response
 
 class DrinkDetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDrinkDetailBinding
-
-    var reviewPreviews : List<ReviewPreview>? = null
 
     var isInterest = false
 
@@ -54,7 +53,7 @@ class DrinkDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.reviewMoreIv.setOnClickListener {
+        binding.reviewMoreCl.setOnClickListener {
             val intent = Intent(this, DrinkDetailReviewsActivity::class.java)
             startActivity(intent)
         }
@@ -83,9 +82,11 @@ class DrinkDetailActivity : AppCompatActivity() {
 
                     val nameKr = resp!!.result.nameKr
                     binding.mainNameTv.text = nameKr
+
                     val totalRating = resp.result.totalRating
                     binding.drinkDetailToalRatingTv.text = totalRating.toString()
-                    updateRationg(totalRating)
+                    updateRating(totalRating)
+
                     val reviewCount = resp.result.reviewCount
                     binding.drinkDetailReviewCountTv.text = reviewCount.toString()
                     val alcohol = resp.result.alcohol
@@ -98,15 +99,18 @@ class DrinkDetailActivity : AppCompatActivity() {
                     val imageUrl = resp.result.drinkImageUrlList[0]
                     Glide.with(this@DrinkDetailActivity)
                         .load(imageUrl)
+                        .placeholder(R.drawable.drink_detail_main_image)
+                        .error(R.drawable.drink_detail_main_image)
+                        .fallback(R.drawable.drink_detail_main_image)
                         .into(binding.mainImageIv)
 
                     val isliked = resp.result.liked
                     updateInterest(isliked)
 
-//                    reviewPreviews = resp.result.reviewPreviews
-//                    reviewAdapter = ReviewAdapter(reviewPreviews!!)
-//                    binding.reviewRv.adapter = reviewAdapter
-//                    binding.reviewRv.layoutManager = LinearLayoutManager(this@DrinkDetailActivity, LinearLayoutManager.HORIZONTAL, false)
+                    val reviews = resp.result.reviewPreviews
+                    reviewAdapter = ReviewAdapter(reviews)
+                    binding.reviewRv.adapter = reviewAdapter
+                    binding.reviewRv.layoutManager = LinearLayoutManager(this@DrinkDetailActivity, LinearLayoutManager.HORIZONTAL, false)
 
                 }
             }
@@ -128,12 +132,12 @@ class DrinkDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun updateRationg(rating : Float){
+    fun updateRating(rating : Float){
         if(rating == 0.0f){
-            //빈 아이콘이 디폴트값
+            //
         } else if(rating > 0.0f && rating < 1.0f){
             binding.star1Half.visibility = View.VISIBLE
-        }else if(rating == 1.0f || rating > 1.0f){
+        }else if(rating == 1.0f || rating > 1.0f) {
             binding.star1Full.visibility = View.VISIBLE
         }
         // 누적
