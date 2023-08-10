@@ -123,6 +123,9 @@ class DrinkFavoriteActivity : AppCompatActivity() {
         drinkFavoriteAdapter = DrinkFavoriteAdapter((drinkFavoriteList))
         binding.drinkFavoriteRv.adapter = drinkFavoriteAdapter
         binding.drinkFavoriteRv.layoutManager = GridLayoutManager(this,2)
+        binding.drinkFavoriteBackIv.setOnClickListener {
+            finish()
+        }
 
     }
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.beering.api.DrinkLike
+import com.example.beering.data.getMemberId
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
@@ -68,14 +70,16 @@ class DrinkFavoriteAdapter(private val itemList: ArrayList<DrinkCover>) :
 
         }
 
-        fun bindHeart(position: Int) {
+        fun bindHeart(position: Int, drinkInfo: DrinkCover) {
             binding.itemDrinkSearchResultHeartOffIv.setOnClickListener {
                 heartClickListener.onButtonClick(position)
+                DrinkLike(binding.root.context, getMemberId(binding.root.context), drinkInfo.id)
 
             }
 
             binding.itemDrinkSearchResultHeartOnIv.setOnClickListener {
                 heartClickListener.onButtonClick(position)
+                DrinkLike(binding.root.context, getMemberId(binding.root.context), drinkInfo.id)
 
             }
         }
@@ -92,7 +96,7 @@ class DrinkFavoriteAdapter(private val itemList: ArrayList<DrinkCover>) :
 
     override fun onBindViewHolder(holder: DrinkFavoriteAdapter.ViewHolder, position: Int) {
         holder.bind(itemList[position])
-        holder.bindHeart(position)
+        holder.bindHeart(position,itemList[position])
 
     }
 
