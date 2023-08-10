@@ -28,6 +28,15 @@
         <activity android:name=".ReviewWritingActivity" />
         <activity android:name=".MyReviewsActivity" />
         <activity android:name=".LikeReviewsActivity" />
+        <activity android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Beering.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".DrinkDetailReviewsActivity" />
         <activity
             android:name=".MainActivity"
@@ -35,11 +44,7 @@
         <activity
             android:name=".LoginRequestActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

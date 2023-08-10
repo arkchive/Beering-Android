@@ -24,6 +24,7 @@ class DrinkDetailReviewsActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener{
             finish()
+
             val fragmentManager: FragmentManager = supportFragmentManager
             fragmentManager.popBackStack()
         }
