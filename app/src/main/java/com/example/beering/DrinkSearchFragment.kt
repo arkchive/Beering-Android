@@ -56,7 +56,7 @@ class DrinkSearchFragment : Fragment() {
                 // api로 데이터 받아오는 부분 작성 -> 이거를 버튼 눌렀을때로 변경해야할듯
 
                 val drinkSearchService =
-                    getRetrofit_async().create(
+                    getRetrofit_header(getAccessToken(requireContext()).toString()).create(
                         DrinkSearchApiService::class.java
                     )
                 val category = searchSort.joinToString(",")
@@ -79,7 +79,7 @@ class DrinkSearchFragment : Fragment() {
                                                 drink.manufacturer,
                                                 drink.drinkId,
                                                 null,
-                                                true
+                                                drink.isLiked
                                             )
                                         )
                                     } else {
@@ -90,7 +90,7 @@ class DrinkSearchFragment : Fragment() {
                                                 drink.manufacturer,
                                                 drink.drinkId,
                                                 drink.imageUrlList[0],
-                                                true
+                                                drink.isLiked
                                             )
                                         )
                                     }

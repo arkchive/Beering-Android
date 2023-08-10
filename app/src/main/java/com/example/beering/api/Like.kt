@@ -2,6 +2,7 @@ package com.example.beering.api
 
 import android.app.AlertDialog
 import android.content.Context
+import android.util.Log
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.beering.data.getAccessToken
 import retrofit2.Call
