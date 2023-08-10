@@ -48,19 +48,6 @@ fun getRefreshToken(context: Context) : String? {
 
 }
 
-//멤버 조회를 위한 id값 저장
-fun setMemberId(context: Context, id :Int){
-    val spf = context.getSharedPreferences("id", AppCompatActivity.MODE_PRIVATE)
-    val editor = spf.edit()
-
-    editor.putInt("memberId", id)
-    editor.apply()
-}
-
-fun getMemberId(context: Context) : Int {
-    val spf = context.getSharedPreferences("id", AppCompatActivity.MODE_PRIVATE)
-    return spf.getInt("memberId", -1)
-}
 
 
 

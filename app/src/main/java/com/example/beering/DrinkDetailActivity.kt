@@ -5,17 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentManager
+import com.bumptech.glide.Glide
+import com.example.beering.api.*
+import com.example.beering.data.getAccessToken
 import com.example.beering.databinding.ActivityDrinkDetailBinding
-import com.example.naverwebtoon.data.DrinkDetail
+import retrofit2.Call
+import retrofit2.Response
+
 
 class DrinkDetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDrinkDetailBinding
 
+    var reviewPreviews : List<ReviewPreview>? = null
+
     var isInterest = false
 
     var reviewAdapter: ReviewAdapter? = null
-    var reviewList = ArrayList<DrinkDetail>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,24 +29,24 @@ class DrinkDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 데이터를 받아서 처리
-        val drinkId = intent.getStringExtra("drinkId")?.toInt()
-        Log.d("test", drinkId.toString())
+        val intent = intent
+        var drinkId : Int? = null
 
-        // 받은 데이터 사용
-        if (drinkId != null) {
-            // id를 바탕으로 api 연결
+        if (intent != null) {
+            drinkId = intent.getIntExtra("drinkId", -1)
+            Log.d("drinkId", drinkId.toString())
+
+            //api연결
+            if (drinkId != null) {
+                setDrinkDetail(drinkId)
+            }
         }
-
-        initDummyData()
-
-        reviewAdapter = ReviewAdapter(reviewList)
-        binding.reviewRv.adapter = reviewAdapter
-        binding.reviewRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         binding.buttonInterest.setOnClickListener {
             isInterest = !isInterest
             updateInterest(isInterest)
         }
+
 
 
         binding.drinkDetailReviewWritingBtn.setOnClickListener {
@@ -53,38 +59,64 @@ class DrinkDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.buttonBack.setOnClickListener{
+            finish()
+
+            val fragmentManager: FragmentManager = supportFragmentManager
+            fragmentManager.popBackStack()
+        }
     }
 
-    private fun initDummyData() {
-        reviewList = arrayListOf(
-            DrinkDetail(
-                "하이네켄",
-                R.drawable.login_request_banner,
-                "이 맥주는 정말 맛있고 아주 달콤합니다. 이 맥주는 놀랍게도 수입맥주가 아니라 !!!!! 우리나라 조선시대에 만들어진 맥주입니돳 블라블라",
-                4.5f,
-                100,
-                4.7f
-            ),
-            DrinkDetail(
-                "하이두켄",
-                R.drawable.login_request_banner,
-                "이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷 이 맥주는 아주ㅅ 씁니닷",
-                4.5f,
-                105,
-                4.7f
-            ),
-            DrinkDetail(
-                "하이세켄",
-                R.drawable.login_request_banner,
-                "이 맥주는 딱히 설명할 것이 없네유ㅠㅠ",
-                4.5f,
-                200,
-                4.7f
-            )
-        )
 
+    private fun setDrinkDetail(drinkId : Int) {
+        val drinkDetailService =
+            getRetrofit_header(getAccessToken(this).toString()).create(DrinkDetailApiService::class.java)
+        drinkDetailService.getDrinkDetail(drinkId).enqueue(object : retrofit2.Callback<DrinkDetailResponse>{
+            override fun onResponse(
+                call: Call<DrinkDetailResponse>,
+                response: Response<DrinkDetailResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val resp = response.body()
 
-    }
+                    Log.i("GETDRINKDETAIL/SUCCESS", resp.toString())
+
+                    val nameKr = resp!!.result.nameKr
+                    binding.mainNameTv.text = nameKr
+                    val totalRating = resp.result.totalRating
+                    binding.drinkDetailToalRatingTv.text = totalRating.toString()
+                    updateRationg(totalRating)
+                    val reviewCount = resp.result.reviewCount
+                    binding.drinkDetailReviewCountTv.text = reviewCount.toString()
+                    val alcohol = resp.result.alcohol
+                    binding.alcoholPercentageTv.text = alcohol.toString()
+                    val description = resp.result.description
+                    binding.detailInformationTv.text = description
+                    val manufacturer = resp.result.manufacturer
+                    binding.beerCategory.text = manufacturer
+
+                    val imageUrl = resp.result.drinkImageUrlList[0]
+                    Glide.with(this@DrinkDetailActivity)
+                        .load(imageUrl)
+                        .into(binding.mainImageIv)
+
+                    val isliked = resp.result.liked
+                    updateInterest(isliked)
+
+//                    reviewPreviews = resp.result.reviewPreviews
+//                    reviewAdapter = ReviewAdapter(reviewPreviews!!)
+//                    binding.reviewRv.adapter = reviewAdapter
+//                    binding.reviewRv.layoutManager = LinearLayoutManager(this@DrinkDetailActivity, LinearLayoutManager.HORIZONTAL, false)
+
+                }
+            }
+            override fun onFailure(call: Call<DrinkDetailResponse>, t: Throwable) {
+                Log.i("GETDRINKDETAIL/FAILURE", t.message.toString())
+            }
+
+            })
+
+        }
 
     fun updateInterest(state : Boolean) {
         if (state) { // 찜하기 on 상태
@@ -96,5 +128,38 @@ class DrinkDetailActivity : AppCompatActivity() {
         }
     }
 
+    fun updateRationg(rating : Float){
+        if(rating == 0.0f){
+            //빈 아이콘이 디폴트값
+        } else if(rating > 0.0f && rating < 1.0f){
+            binding.star1Half.visibility = View.VISIBLE
+        }else if(rating == 1.0f || rating > 1.0f){
+            binding.star1Full.visibility = View.VISIBLE
+        }
+        // 누적
+        if(rating > 1.0f && rating < 2.0f){
+            binding.star2Half.visibility = View.VISIBLE
+        }else if(rating == 2.0f || rating > 2.0f){
+            binding.star2Full.visibility = View.VISIBLE
+        }
 
+        if(rating > 2.0f && rating < 3.0f){
+            binding.star3Half.visibility = View.VISIBLE
+        }else if(rating == 3.0f || rating > 3.0f){
+            binding.star3Full.visibility = View.VISIBLE
+        }
+
+        if(rating > 3.0f && rating < 4.0f){
+            binding.star4Half.visibility = View.VISIBLE
+        }else if(rating == 4.0f || rating > 4.0f){
+            binding.star4Full.visibility = View.VISIBLE
+        }
+
+        if(rating > 4.0f && rating < 5.0f){
+            binding.star5Half.visibility = View.VISIBLE
+        }else if(rating == 5.0f || rating > 5.0f){
+            binding.star5Full.visibility = View.VISIBLE
+        }
+
+    }
 }

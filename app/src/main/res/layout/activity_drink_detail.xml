@@ -62,7 +62,7 @@
             android:id="@+id/main_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="하이네캔"
+            android:text=""
             android:textStyle="bold"
             android:textSize="25sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -83,107 +83,108 @@
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/star_1_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/star_1_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/star_2_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/star_2_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/star_3_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/star_3_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/star_4_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/star_4_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/star_5_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/star_5_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <TextView
+                android:id="@+id/drink_detail_toal_rating_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="4.7"
+                android:text=""
                 android:textSize="15sp"
                 android:textColor="@color/beering_black"
                 android:layout_marginStart="5dp"/>
@@ -195,7 +196,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/gray01"
-            android:text="100"
+            android:text=""
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@id/star_ll"
             app:layout_constraintTop_toTopOf="@id/star_ll"
@@ -213,10 +214,10 @@
 
 
         <TextView
-            android:id="@+id/alcohol_percentage"
+            android:id="@+id/alcohol_percentage_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4.7"
+            android:text=""
             android:textSize="15sp"
             android:textColor="@color/beering_black"
             app:layout_constraintBottom_toBottomOf="@id/star_ll"
@@ -248,9 +249,7 @@
             android:id="@+id/detail_information_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text=" 1873년 네덜란드에서 탄생한 하이네켄은 190여 개국에서 판매되며 150년간 세계인의 사랑을 받는 글로벌 프리미엄 맥주 브랜드입니다.
- 보리, 물, 흡 그리고 특별한 효모 A-Yeast 로 이루어진
-완벽한 레시피로 한결같이 신선하고 뛰어난 품질을 자랑하는 하이네켄입니다."
+            android:text=""
             android:textColor="@color/beering_black"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="45dp"

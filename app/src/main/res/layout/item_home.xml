@@ -117,12 +117,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/item_home_post_pic_iv"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_home_image_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_home_post"
-        android:adjustViewBounds="true"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_home_header_cl" />
 
@@ -138,7 +137,7 @@
         android:textColor="@color/gray02"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_home_post_pic_iv"
+        app:layout_constraintTop_toBottomOf="@id/item_home_image_rv"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
