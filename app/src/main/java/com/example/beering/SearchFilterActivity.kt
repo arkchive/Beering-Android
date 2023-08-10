@@ -6,6 +6,8 @@ import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.beering.databinding.ActivitySearchFilterBinding
 
 class SearchFilterActivity : AppCompatActivity() {
@@ -62,6 +64,12 @@ class SearchFilterActivity : AppCompatActivity() {
             updateTypeTraditional(isTypeTraditional)
         }
 
+        binding.buttonClose.setOnClickListener{
+            finish()
+
+            val fragmentManager: FragmentManager = supportFragmentManager
+            fragmentManager.popBackStack()
+        }
         binding.buttonSearchCv.setOnClickListener {
             // 액티비티에서 데이터를 전달하고 프래그먼트로 이동하는 부분
             val bundle = Bundle().apply {
@@ -206,16 +214,6 @@ class SearchFilterActivity : AppCompatActivity() {
             binding.beerOnIv.visibility = View.VISIBLE
             binding.beerOffIv.visibility = View.GONE
 
-            if(isTypeWine) {
-                isTypeWine = !isTypeWine
-                binding.wineOnIv.visibility = View.GONE
-                binding.wineOffIv.visibility = View.VISIBLE
-            }
-            if(isTypeTraditional){
-                isTypeTraditional = !isTypeTraditional
-                binding.traditionalOffIv.visibility = View.VISIBLE
-                binding.traditionalOnIv.visibility = View.GONE
-            }
         } else {
             binding.beerOffIv.visibility = View.VISIBLE
             binding.beerOnIv.visibility = View.GONE
@@ -226,16 +224,6 @@ class SearchFilterActivity : AppCompatActivity() {
             binding.wineOnIv.visibility = View.VISIBLE
             binding.wineOffIv.visibility = View.GONE
 
-            if(isTypeBeer) {
-                isTypeBeer = !isTypeBeer
-                binding.beerOnIv.visibility = View.GONE
-                binding.beerOffIv.visibility = View.VISIBLE
-            }
-            if(isTypeTraditional){
-                isTypeTraditional = !isTypeTraditional
-                binding.traditionalOffIv.visibility = View.VISIBLE
-                binding.traditionalOnIv.visibility = View.GONE
-            }
         } else {
             binding.wineOffIv.visibility = View.VISIBLE
             binding.wineOnIv.visibility = View.GONE
@@ -246,16 +234,6 @@ class SearchFilterActivity : AppCompatActivity() {
             binding.traditionalOnIv.visibility = View.VISIBLE
             binding.traditionalOffIv.visibility = View.GONE
 
-            if(isTypeWine) {
-                isTypeWine = !isTypeWine
-                binding.wineOnIv.visibility = View.GONE
-                binding.wineOffIv.visibility = View.VISIBLE
-            }
-            if(isTypeBeer) {
-                isTypeBeer = !isTypeBeer
-                binding.beerOnIv.visibility = View.GONE
-                binding.beerOffIv.visibility = View.VISIBLE
-            }
         } else {
             binding.traditionalOffIv.visibility = View.VISIBLE
             binding.traditionalOnIv.visibility = View.GONE
