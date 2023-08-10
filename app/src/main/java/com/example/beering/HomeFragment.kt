@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.beering.api.HomeApiService
-import com.example.beering.api.ReviewsContent
+import com.example.beering.api.ReviewsApiService
 import com.example.beering.api.ReviewsResponse
 import com.example.beering.api.getRetrofit_header
 import com.example.beering.data.getAccessToken
@@ -29,8 +28,8 @@ class HomeFragment: Fragment() {
 
         // api 연결
         val homeService =
-            getRetrofit_header(getAccessToken(requireContext()).toString()).create(HomeApiService::class.java)
-        homeService.getHome().enqueue(object : retrofit2.Callback<ReviewsResponse>{
+            getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
+        homeService.getReviews().enqueue(object : retrofit2.Callback<ReviewsResponse>{
             override fun onResponse(
                 call: Call<ReviewsResponse>, response: Response<ReviewsResponse>
             ){
