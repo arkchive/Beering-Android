@@ -5,7 +5,7 @@ import com.example.beering.api.Jwt
 // 로그인 request
 data class LoginRequest(
     val username: String,
-    val password: String,
+    val password: String
 )
 
 // 로그인 response
