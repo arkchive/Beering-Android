@@ -39,7 +39,7 @@ class DrinkFavoriteAdapter(private val itemList: ArrayList<DrinkCover>) :
         val heartOff: ImageView = itemView.findViewById(R.id.item_drink_search_result_heart_off_iv)
 
         fun bind(drinkInfo: DrinkCover) {
-            binding.itemDrinkSearchResultImgIv.setImageResource(drinkInfo.img)
+            // binding.itemDrinkSearchResultImgIv.setImageResource(drinkInfo.img)
             binding.itemDrinkSearchResultManufactureTv.text = drinkInfo.manufacture
             binding.itemDrinkSearchResultTitleKrTv.text = drinkInfo.titleKr
             binding.itemDrinkSearchResultTitleEnTv.text = drinkInfo.titleEn
@@ -111,9 +111,7 @@ class DrinkFavoriteAdapter(private val itemList: ArrayList<DrinkCover>) :
         }
     }
 
-    fun setBindHeart(position: Int, bindHeart: Boolean) {
-        itemList[position].BindHeart = bindHeart
-    }
+
 
     override fun getItemCount(): Int = itemList.size
 

@@ -40,14 +40,15 @@
 
 
             <EditText
+                android:id="@+id/drink_search_top_search_ed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:background="@color/transparent"
                 android:hint="주류를 검색해보세요"
-                android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:maxLines="1"
+                android:imeOptions="actionSearch"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/drink_search_top_search_cancel_iv"

@@ -5,10 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.beering.api.DrinkLike
+import com.example.beering.data.getMemberId
 import com.example.beering.databinding.ItemDrinkSearchResultBinding
 import com.example.naverwebtoon.data.DrinkCover
 
-class DrinkSearchAdapter(private var itemList: ArrayList<DrinkCover>) :
+class DrinkSearchAdapter(private val itemList: ArrayList<DrinkCover>) :
     RecyclerView.Adapter<DrinkSearchAdapter.ViewHolder>() {
 
 
@@ -39,26 +42,34 @@ class DrinkSearchAdapter(private var itemList: ArrayList<DrinkCover>) :
         val heartOff: ImageView = binding.itemDrinkSearchResultHeartOffIv
 
         fun bind(drinkInfo: DrinkCover) {
-            binding.itemDrinkSearchResultImgIv.setImageResource(drinkInfo.img)
+            Glide.with(binding.root.context)
+                .load(drinkInfo.img) // 불러올 이미지 url
+                .placeholder(R.drawable.img_temp_drink) // 이미지 로딩 시작하기 전 표시할 이미지
+                .error(R.drawable.img_temp_drink) // 로딩 에러 발생 시 표시할 이미지
+                .fallback(R.drawable.img_temp_drink) // 로드할 url 이 비어있을(null 등) 경우 표시할 이미지
+                .into(binding.itemDrinkSearchResultImgIv)
+
             binding.itemDrinkSearchResultManufactureTv.text = drinkInfo.manufacture
             binding.itemDrinkSearchResultTitleKrTv.text = drinkInfo.titleKr
             binding.itemDrinkSearchResultTitleEnTv.text = drinkInfo.titleEn
 
             binding.itemDrinkSearchResultCl.setOnClickListener {
+
                 itemClickListener.onItemClick(drinkInfo)
             }
 
 
         }
 
-        fun bindHeart(position: Int) {
+        fun bindHeart(position: Int, drinkInfo: DrinkCover) {
             binding.itemDrinkSearchResultHeartOffIv.setOnClickListener {
                 heartClickListener.onButtonClick(position)
-
+                DrinkLike(binding.root.context, getMemberId(binding.root.context), drinkInfo.id)
             }
 
             binding.itemDrinkSearchResultHeartOnIv.setOnClickListener {
                 heartClickListener.onButtonClick(position)
+                DrinkLike(binding.root.context, getMemberId(binding.root.context), drinkInfo.id)
 
             }
         }
@@ -75,7 +86,8 @@ class DrinkSearchAdapter(private var itemList: ArrayList<DrinkCover>) :
 
     override fun onBindViewHolder(holder: DrinkSearchAdapter.ViewHolder, position: Int) {
         holder.bind(itemList[position])
-        holder.bindHeart(position)
+        holder.bindHeart(position,itemList[position])
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
@@ -101,8 +113,10 @@ class DrinkSearchAdapter(private var itemList: ArrayList<DrinkCover>) :
         }
     }
 
-    fun setBindHeart(position: Int, bindHeart: Boolean) {
-        itemList[position].BindHeart = bindHeart
+
+    fun clearItems() {
+        itemList.clear() // 기존 아이템 제거
+        notifyDataSetChanged() // 데이터 변경 알림
     }
 
     override fun getItemCount(): Int = itemList.size
