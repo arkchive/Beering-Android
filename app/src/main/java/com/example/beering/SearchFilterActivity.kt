@@ -11,7 +11,6 @@ import com.example.beering.databinding.ActivitySearchFilterBinding
 class SearchFilterActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchFilterBinding
 
-    val FILTER_REQUEST_CODE = 123
 
     // 선택상태 저장 변수
     var isName = false

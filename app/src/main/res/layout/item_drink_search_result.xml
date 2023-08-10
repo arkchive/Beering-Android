@@ -10,11 +10,12 @@
         android:id="@+id/item_drink_search_result_img_iv"
         android:layout_width="match_parent"
         android:layout_height="187dp"
-        android:background="@color/gray2"
-        android:scaleType="centerCrop"
+        android:background="@color/transparent"
+        android:scaleType="centerInside"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/item_drink_search_result_title_kr_tv"

@@ -102,25 +102,27 @@ class MyFragment : Fragment() {
                     call: Call<MyResponse>,
                     response: Response<MyResponse>
                 ) {
-                    val resp = response.body()
-                    if (resp!!.isSuccess) {
-                        binding.myProfileNicknameTv.text = resp!!.result.nickname
-                        binding.myProfileEmailTv.text = resp!!.result.username
-                        val defaultImage = R.drawable.img_default_profile
-                        val url = resp!!.result.url
+                    if(response.isSuccessful) {
+                        val resp = response.body()
+                        if (resp!!.isSuccess) {
+                            binding.myProfileNicknameTv.text = resp!!.result.nickname
+                            binding.myProfileEmailTv.text = resp!!.result.username
+                            val defaultImage = R.drawable.img_default_profile
+                            val url = resp!!.result.url
 
-                        Glide.with(this@MyFragment)
-                            .load(url) // 불러올 이미지 url
-                            .placeholder(defaultImage) // 이미지 로딩 시작하기 전 표시할 이미지
-                            .error(defaultImage) // 로딩 에러 발생 시 표시할 이미지
-                            .fallback(defaultImage) // 로드할 url 이 비어있을(null 등) 경우 표시할 이미지
-                            .circleCrop() // 동그랗게 자르기
-                            .into(binding.myProfileImgIv)
+                            Glide.with(this@MyFragment)
+                                .load(url) // 불러올 이미지 url
+                                .placeholder(defaultImage) // 이미지 로딩 시작하기 전 표시할 이미지
+                                .error(defaultImage) // 로딩 에러 발생 시 표시할 이미지
+                                .fallback(defaultImage) // 로드할 url 이 비어있을(null 등) 경우 표시할 이미지
+                                .circleCrop() // 동그랗게 자르기
+                                .into(binding.myProfileImgIv)
 
 
-                    } else {
-                        if(resp.responseCode == 2003) token(requireContext())
+                        } else {
+                            if (resp.responseCode == 2003) token(requireContext())
 
+                        }
                     }
                 }
 

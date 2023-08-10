@@ -30,6 +30,8 @@ class DrinkFavoriteActivity : AppCompatActivity() {
         // api로 데이터 받아오는 부분 작성
         val data : ArrayList<DrinkCover> = ArrayList()
 
+
+        /*
         data.add(0,
             DrinkCover("타이거",
                 "Tiger",
@@ -61,6 +63,8 @@ class DrinkFavoriteActivity : AppCompatActivity() {
             initData(data)
         }
 
+         */
+
         drinkFavoriteAdapter!!.setOnItemClickListener(object : DrinkFavoriteAdapter.OnItemClickListener {
             override fun onItemClick(drinkInfo: DrinkCover) {
 
@@ -73,7 +77,6 @@ class DrinkFavoriteActivity : AppCompatActivity() {
 
         drinkFavoriteAdapter!!.setOnHeartClickListener(object : DrinkFavoriteAdapter.OnHeartClickListener {
             override fun onButtonClick(position: Int) {
-                drinkFavoriteAdapter!!.setBindHeart(position, true)
                 drinkFavoriteAdapter!!.notifyItemChanged(position, "heartChange")
             }
         })

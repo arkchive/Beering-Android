@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginPasswordInvisibleIv.setOnClickListener {
-            binding.loginPasswordEd.inputType = InputType.TYPE_CLASS_TEXT
+            binding.loginPasswordEd.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
             binding.loginPasswordInvisibleIv.visibility = View.INVISIBLE
             binding.loginPasswordVisibleIv.visibility = View.VISIBLE
         }
@@ -115,47 +116,7 @@ class LoginActivity : AppCompatActivity() {
 
         //버튼 이벤트
         loginBtn.setOnClickListener {
-
-            //api 연결
-            val signInService = getRetrofit_sync().create(LoginApiService::class.java)
-            val user = LoginRequest(binding.loginIdEd.text.toString(), binding.loginPasswordEd.text.toString())
-            signInService.signIn(user).enqueue(object : retrofit2.Callback<LoginResponse>{
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-                    val resp = response.body()
-                    if(resp!!.isSuccess){
-                        val userToken = resp!!.result.jwtInfo
-                        setToken(this@LoginActivity, userToken)
-
-
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-                        finish()
-                        changeLogin(this@LoginActivity, true)
-
-                    } else {
-                        binding.loginErrorTv.text = resp!!.responseMessage
-                        binding.loginErrorTv.visibility = View.VISIBLE
-                        binding.loginIdV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
-                        binding.loginPasswordV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
-
-                    }
-                }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
-                    binding.loginErrorTv.visibility = View.VISIBLE
-                    binding.loginIdV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
-                    binding.loginPasswordV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
-                }
-
-            })
-
-
-
+            singIn()
         }
 
         binding.loginIdDeleteIv.setOnClickListener {
@@ -167,6 +128,59 @@ class LoginActivity : AppCompatActivity() {
             binding.loginPasswordEd.text.clear()
             password = ""
         }
+
+        binding.loginPasswordEd.setOnKeyListener { view, i, keyEvent ->
+            if ((keyEvent.action == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)) {
+                if(loginBtn.isEnabled == true){
+                    singIn()
+                }
+                true
+
+            } else false
+        }
+
+    }
+
+    fun singIn(){
+        //api 연결
+        val signInService = getRetrofit_sync().create(LoginApiService::class.java)
+        val user = LoginRequest(binding.loginIdEd.text.toString(), binding.loginPasswordEd.text.toString())
+        signInService.signIn(user).enqueue(object : retrofit2.Callback<LoginResponse>{
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                val resp = response.body()
+                if(resp!!.isSuccess){
+                    val userToken = resp!!.result.jwtInfo
+                    setToken(this@LoginActivity, userToken)
+
+
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                    changeLogin(this@LoginActivity, true)
+                    setMemberId(this@LoginActivity, resp.result.memberId)
+
+                } else {
+                    binding.loginErrorTv.text = resp!!.responseMessage
+                    binding.loginErrorTv.visibility = View.VISIBLE
+                    binding.loginIdV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+                    binding.loginPasswordV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
+                binding.loginErrorTv.visibility = View.VISIBLE
+                binding.loginIdV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+                binding.loginPasswordV.setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.beering_red))
+            }
+
+        })
+
 
     }
 
