@@ -10,4 +10,10 @@ interface LikeApiService {
         @Path(value = "memberId") memberId : Int,
         @Path(value = "drinkId") drinkId : Int
     ): Call<DrinkLikeResponse>
+
+    @POST("/members/{memberId}/reviews/{reviewId}/tabom?isUp=")
+    fun reviewlike(
+        @Path(value = "memberId") memberId: Int,
+        @Path(value = "reviewId") reviewId: Int
+    ): Call<DrinkLikeResponse>
 }

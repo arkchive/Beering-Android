@@ -19,10 +19,29 @@ import com.example.beering.data.MemberResponse
 import com.example.beering.databinding.ActivityJoinBinding
 import retrofit2.Call
 import retrofit2.Response
+import java.net.URLEncoder
 import javax.security.auth.callback.Callback
 
 class JoinActivity: AppCompatActivity() {
     lateinit var binding: ActivityJoinBinding
+    var idBool:Boolean = false
+    var passwordBool:Boolean = false
+    var nicknameBool:Boolean = false
+    var checkbox1Bool:Boolean = false
+    var checkbox2Bool:Boolean = false
+
+    // api 연결
+    val joinService = getRetrofit_sync().create(JoinApiService::class.java)
+
+    // 메시지 담을 변수
+    var username: String = ""
+    var password: String = ""
+    var passwordAgain: String = ""
+    var nickname: String = ""
+    var agreementList: MutableList<MemberAgreements> = mutableListOf(
+        MemberAgreements("SERVICE", false),
+        MemberAgreements("PERSONAL", false),
+        MemberAgreements("MARKETING", false))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,34 +52,11 @@ class JoinActivity: AppCompatActivity() {
             finish()
         }
 
-        // api 연결
-        val joinService = getRetrofit_sync().create(JoinApiService::class.java)
-
-
         // 객체 생성
         val usernameEdit = binding.joinIdEd
         val passwordEdit = binding.joinPasswordEd
         val passwordAgainEdit = binding.joinPasswordAgainEd
         val nicknameEdit = binding.joinNicknameEd
-
-        var idBool:Boolean = false
-        var passwordBool:Boolean = false
-        var nicknameBool:Boolean = false
-        var checkbox1Bool:Boolean = false
-        var checkbox2Bool:Boolean = false
-
-
-
-        // 메시지 담을 변수
-        var username: String = ""
-        var password: String = ""
-        var passwordAgain: String = ""
-        var nickname: String = ""
-        var agreementList: MutableList<MemberAgreements> = mutableListOf(
-            MemberAgreements("SERVICE", false),
-            MemberAgreements("PERSONAL", false),
-            MemberAgreements("MARKETING", false)
-        )
 
         // EditText 값 있을 때만 버튼 활성화
         // 아이디
@@ -114,7 +110,9 @@ class JoinActivity: AppCompatActivity() {
                 // TODO 아이디 이메일 형식 체크
                 binding.joinIdIv22.setOnClickListener {
                 // api 연결 후 중복 확인
-                    joinService.checkUsernameValidate(username).enqueue(object : retrofit2.Callback<MemberResponse> {
+                    val cleanEmail = username.trim()
+                    Log.d("username", cleanEmail)
+                    joinService.checkUsernameValidate(cleanEmail).enqueue(object : retrofit2.Callback<MemberResponse> {
                         override fun onResponse(
                             call: Call<MemberResponse>,
                             response: Response<MemberResponse>,
@@ -442,6 +440,7 @@ class JoinActivity: AppCompatActivity() {
             checkbox1Bool = true
             val serviceAgreement = agreementList.find {it.name == "SERVICE"}
             serviceAgreement?.isAgreed = true
+            validJoin()
         }
         binding.checkboxTerm1Off.setOnClickListener {
             binding.checkboxTerm1Off.visibility = View.INVISIBLE
@@ -449,6 +448,7 @@ class JoinActivity: AppCompatActivity() {
             checkbox1Bool = false
             val serviceAgreement = agreementList.find {it.name == "SERVICE"}
             serviceAgreement?.isAgreed = false
+            validJoin()
         }
 
         binding.checkboxTerm2On.setOnClickListener {
@@ -457,6 +457,7 @@ class JoinActivity: AppCompatActivity() {
             checkbox2Bool = true
             val personalAgreement = agreementList.find {it.name == "PERSONAL"}
             personalAgreement?.isAgreed = true
+            validJoin()
         }
         binding.checkboxTerm2Off.setOnClickListener {
             binding.checkboxTerm2Off.visibility = View.INVISIBLE
@@ -464,6 +465,7 @@ class JoinActivity: AppCompatActivity() {
             checkbox2Bool = false
             val personalAgreement = agreementList.find {it.name == "PERSONAL"}
             personalAgreement?.isAgreed = false
+            validJoin()
         }
 
         binding.checkboxTerm3On.setOnClickListener {
@@ -471,12 +473,15 @@ class JoinActivity: AppCompatActivity() {
             binding.checkboxTerm3Off.visibility = View.VISIBLE
             val marketingAgreement = agreementList.find {it.name == "MARKETING"}
             marketingAgreement?.isAgreed = true
+            validJoin()
+
         }
         binding.checkboxTerm3Off.setOnClickListener {
             binding.checkboxTerm3Off.visibility = View.INVISIBLE
             binding.checkboxTerm3On.visibility = View.VISIBLE
             val marketingAgreement = agreementList.find {it.name == "MARKETING"}
             marketingAgreement?.isAgreed = false
+            validJoin()
         }
 
 
@@ -494,35 +499,6 @@ class JoinActivity: AppCompatActivity() {
             term3Dialog.show(supportFragmentManager,"term3Dialog")
         }
 
-        // 회원가입 버튼 활성화 그리고 api 연결
-        if(idBool && passwordBool && nicknameBool && checkbox1Bool && checkbox2Bool) {
-           binding.joinBtnLight.visibility = View.INVISIBLE
-           binding.joinBtnDark.visibility = View.VISIBLE
-
-           binding.joinBtnDark.setOnClickListener {
-               val member = Member(username, password, nickname, agreementList)
-
-               val call = joinService.signUp(member)
-
-               call.enqueue(object : retrofit2.Callback<MemberResponse> {
-                   override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>){
-                       if(response.isSuccessful) {
-                           val memberResponse = response.body()
-                           if(memberResponse?.isSuccess == true){
-                               val intent = Intent(this@JoinActivity, LoginActivity::class.java)
-                               startActivity(intent)
-                           } else {
-                                Toast.makeText(this@JoinActivity, "로그인을 실패하였습니다.",Toast.LENGTH_SHORT)
-                           }
-                       }
-                   }
-
-                   override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
-                       Toast.makeText(this@JoinActivity, "서버에 요청을 실패하였습니다.",Toast.LENGTH_SHORT)
-                   }
-               })
-           }
-        }
 
     }
 
@@ -648,5 +624,38 @@ class JoinActivity: AppCompatActivity() {
 
         return (passwordAgain == password)
     }
+
+    fun validJoin() {
+        // 회원가입 버튼 활성화 그리고 api 연결
+        if(idBool && passwordBool && nicknameBool && checkbox1Bool && checkbox2Bool) {
+            binding.joinBtnLight.visibility = View.INVISIBLE
+            binding.joinBtnDark.visibility = View.VISIBLE
+
+            binding.joinBtnDark.setOnClickListener {
+                val member = Member(username, password, nickname, agreementList)
+
+                val call = joinService.signUp(member)
+
+                call.enqueue(object : retrofit2.Callback<MemberResponse> {
+                    override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>){
+                        if(response.isSuccessful) {
+                            val memberResponse = response.body()
+                            if(memberResponse?.isSuccess == true){
+                                val intent = Intent(this@JoinActivity, LoginActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(this@JoinActivity, "로그인을 실패하였습니다.",Toast.LENGTH_SHORT)
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
+                        Toast.makeText(this@JoinActivity, "서버에 요청을 실패하였습니다.",Toast.LENGTH_SHORT)
+                    }
+                })
+            }
+        }
+    }
+
 
 }
