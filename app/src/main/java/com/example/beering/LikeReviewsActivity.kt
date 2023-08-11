@@ -8,6 +8,7 @@ import com.example.beering.api.ReviewsApiService
 import com.example.beering.api.ReviewsResponse
 import com.example.beering.api.getRetrofit_header
 import com.example.beering.data.getAccessToken
+import com.example.beering.data.getMemberId
 import com.example.beering.databinding.ActivityLikeReviewsBinding
 import com.example.beering.databinding.ActivityMyReviewsBinding
 import retrofit2.Call

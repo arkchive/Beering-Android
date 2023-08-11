@@ -17,6 +17,11 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
     private lateinit var itemClickListener: HomeAdapter.OnItemClickListener
     private lateinit var likeClickListener: HomeAdapter.OnLikeClickListener
 
+    companion object {
+        const val PAYLOAD_LIKE = "payload_like"
+        const val PAYLOAD_DISLIKE = "payload_dislike"
+    }
+
     interface OnItemClickListener {
         fun onItemClick(review: ReviewsContent)
     }
@@ -45,42 +50,37 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: MutableList<Any>) {
         if(payloads.isNotEmpty()) {
-            for (payload in payloads) {
-                if(payload is String) {
-                    if(payload == "likeChange") {
-                        if(reviews[position].isTabomed == "true") {
-                            if(holder.likeDark.visibility == View.INVISIBLE){
-                                holder.binding.homeLikeLightIb.visibility = View.INVISIBLE
-                                holder.binding.homeLikeDarkIb.visibility = View.VISIBLE
-                                holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                                holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
-                            } else {
-                                holder.binding.homeLikeLightIb.visibility = View.VISIBLE
-                                holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                                holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                                holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
-                            }
-                        } else if(reviews[position].isTabomed == "false") {
-                            if(holder.unlikeDark.visibility == View.INVISIBLE){
-                                holder.binding.homeLikeLightIb.visibility = View.VISIBLE
-                                holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                                holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                                holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
-                            } else {
-                                holder.binding.homeLikeLightIb.visibility = View.VISIBLE
-                                holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                                holder.binding.homeUnlikeLightIb.visibility = View.INVISIBLE
-                                holder.binding.homeUnlikeDarkIb.visibility = View.VISIBLE
-                            }
-                        } else if(reviews[position].isTabomed == "null") {
-                            holder.binding.homeLikeLightIb.visibility = View.VISIBLE
-                            holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                            holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                            holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
-                        }
+            val payload = payloads[0] as String
+
+            when(payload) {
+                PAYLOAD_LIKE -> {
+                    if(holder.likeDark.visibility == View.INVISIBLE){
+                        holder.binding.homeLikeLightIb.visibility = View.INVISIBLE
+                        holder.binding.homeLikeDarkIb.visibility = View.VISIBLE
+                        holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
+                        holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+                    } else {
+                        holder.binding.homeLikeLightIb.visibility = View.VISIBLE
+                        holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
+                        holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
+                        holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+                    }
+                }
+                PAYLOAD_DISLIKE -> {
+                    if(holder.unlikeDark.visibility == View.INVISIBLE){
+                        holder.binding.homeLikeLightIb.visibility = View.VISIBLE
+                        holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
+                        holder.binding.homeUnlikeLightIb.visibility = View.VISIBLE
+                        holder.binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+                    } else {
+                        holder.binding.homeLikeLightIb.visibility = View.VISIBLE
+                        holder.binding.homeLikeDarkIb.visibility = View.INVISIBLE
+                        holder.binding.homeUnlikeLightIb.visibility = View.INVISIBLE
+                        holder.binding.homeUnlikeDarkIb.visibility = View.VISIBLE
                     }
                 }
             }
+
         } else {
             super.onBindViewHolder(holder, position, payloads)
         }
@@ -128,36 +128,43 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
             binding.homeLikeLightIb.setOnClickListener {
                 likeClickListener.onButtonClick(position)
                 ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = true)
-                binding.homeLikeLightIb.visibility = View.INVISIBLE
-                binding.homeLikeDarkIb.visibility = View.VISIBLE
-                binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+//                binding.homeLikeLightIb.visibility = View.INVISIBLE
+//                binding.homeLikeDarkIb.visibility = View.VISIBLE
+//                binding.homeUnlikeLightIb.visibility = View.VISIBLE
+//                binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+                notifyItemChanged(position, PAYLOAD_LIKE)
 
             }
             binding.homeLikeDarkIb.setOnClickListener {
                 likeClickListener.onButtonClick(position)
                 ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = true)
-                binding.homeLikeLightIb.visibility = View.VISIBLE
-                binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+//                binding.homeLikeLightIb.visibility = View.VISIBLE
+//                binding.homeLikeDarkIb.visibility = View.INVISIBLE
+//                binding.homeUnlikeLightIb.visibility = View.VISIBLE
+//                binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+                notifyItemChanged(position, PAYLOAD_LIKE)
+
 
             }
             binding.homeUnlikeLightIb.setOnClickListener {
                 likeClickListener.onButtonClick(position)
                 ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = false)
-                binding.homeLikeLightIb.visibility = View.VISIBLE
-                binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                binding.homeUnlikeLightIb.visibility = View.INVISIBLE
-                binding.homeUnlikeDarkIb.visibility = View.VISIBLE
+//                binding.homeLikeLightIb.visibility = View.VISIBLE
+//                binding.homeLikeDarkIb.visibility = View.INVISIBLE
+//                binding.homeUnlikeLightIb.visibility = View.INVISIBLE
+//                binding.homeUnlikeDarkIb.visibility = View.VISIBLE
+                notifyItemChanged(position, PAYLOAD_DISLIKE)
+
             }
             binding.homeUnlikeDarkIb.setOnClickListener {
                 likeClickListener.onButtonClick(position)
                 ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = false)
-                binding.homeLikeLightIb.visibility = View.VISIBLE
-                binding.homeLikeDarkIb.visibility = View.INVISIBLE
-                binding.homeUnlikeLightIb.visibility = View.VISIBLE
-                binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+//                binding.homeLikeLightIb.visibility = View.VISIBLE
+//                binding.homeLikeDarkIb.visibility = View.INVISIBLE
+//                binding.homeUnlikeLightIb.visibility = View.VISIBLE
+//                binding.homeUnlikeDarkIb.visibility = View.INVISIBLE
+                notifyItemChanged(position, PAYLOAD_DISLIKE)
+
             }
 
         }
