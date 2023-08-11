@@ -3,6 +3,7 @@ package com.example.beering.api
 import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface LikeApiService {
     @POST("/members/{memberId}/drinks/{drinkId}/favorites")
@@ -11,9 +12,10 @@ interface LikeApiService {
         @Path(value = "drinkId") drinkId : Int
     ): Call<DrinkLikeResponse>
 
-    @POST("/members/{memberId}/reviews/{reviewId}/tabom?isUp=")
+    @POST("/members/{memberId}/reviews/{reviewId}/tabom")
     fun reviewlike(
         @Path(value = "memberId") memberId: Int,
-        @Path(value = "reviewId") reviewId: Int
+        @Path(value = "reviewId") reviewId: Int,
+        @Query(value = "isUp") isUp: Boolean
     ): Call<DrinkLikeResponse>
 }
