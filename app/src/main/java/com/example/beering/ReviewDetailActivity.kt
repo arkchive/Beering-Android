@@ -51,6 +51,7 @@ class ReviewDetailActivity : AppCompatActivity() {
                 response: Response<ReviewDetailResponse>
             ) {
                 if (response.isSuccessful) {
+
                     val resp = response.body()
 
                     Log.i("GETREVIEWDETAIL/SUCCESS", resp.toString())
