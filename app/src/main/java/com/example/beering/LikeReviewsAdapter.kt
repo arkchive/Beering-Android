@@ -21,6 +21,8 @@ class LikeReviewsAdapter (private val reviews: List<ReviewsContent>): RecyclerVi
         holder.bind(reviews[position])
     }
 
+
+
     override fun getItemCount(): Int {
         return reviews.size
     }
