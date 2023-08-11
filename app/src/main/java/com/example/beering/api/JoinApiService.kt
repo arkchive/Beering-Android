@@ -17,4 +17,8 @@ interface JoinApiService {
 
     @GET("/members/validate/nickname")
     fun checkNicknameValidate(@Query("nickname") nickname: String): Call<MemberResponse>
+
+
+
+
 }
