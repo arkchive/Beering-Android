@@ -84,7 +84,8 @@ class DrinkDetailActivity : AppCompatActivity() {
                     binding.mainNameTv.text = nameKr
 
                     val totalRating = resp.result.totalRating
-                    binding.drinkDetailToalRatingTv.text = totalRating.toString()
+                    val rating = String.format("%.2f", totalRating)
+                    binding.drinkDetailToalRatingTv.text = rating.toString()
                     updateRating(totalRating)
 
                     val reviewCount = resp.result.reviewCount
