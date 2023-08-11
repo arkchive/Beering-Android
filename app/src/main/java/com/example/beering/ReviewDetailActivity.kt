@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.beering.api.*
@@ -19,7 +20,12 @@ class ReviewDetailActivity : AppCompatActivity() {
         binding = ActivityReviewDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonBack.setOnClickListener{
+            finish()
 
+            val fragmentManager: FragmentManager = supportFragmentManager
+            fragmentManager.popBackStack()
+        }
 
         // 데이터를 받아서 처리
         val intent = intent
@@ -49,11 +55,11 @@ class ReviewDetailActivity : AppCompatActivity() {
 
                     Log.i("GETREVIEWDETAIL/SUCCESS", resp.toString())
 
-                    binding.itemHomePostNameTv.text = resp!!.result.nickName
-                    binding.reviewDetailDateTv.text = resp.result.createAt
-                    binding.reviewDetailInformationTv.text = resp.result.content
+//                    binding.itemHomePostNameTv.text = resp!!.result.nickName
+                    binding.reviewDetailDateTv.text = resp!!.result.createAt
+//                    binding.reviewDetailInformationTv.text = resp.result.content
                     binding.reviewDetailScoreNumTv.text = resp.result.totalRating.toString()
-                    val reviewRating = resp.result.totalRating
+                    val reviewRating = resp!!.result.totalRating
                     updateReviewRating(reviewRating)
                     binding.reviewDetailScoreNumTv.text= reviewRating.toString()
 
