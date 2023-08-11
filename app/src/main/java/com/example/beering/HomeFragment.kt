@@ -48,9 +48,11 @@ class HomeFragment: Fragment() {
                             // 리뷰 상세보기 페이지
                             val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
                             intent.putExtra("reviewId", review.reviewId)
-
+                            startActivity(intent)
                         }
                     })
+
+
 
                     homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
                         override fun onButtonClick(position: Int) {
@@ -77,6 +79,11 @@ class HomeFragment: Fragment() {
 
         })
 
+        //삭제해야 함.
+        binding.itemHomePostProfileCv.setOnClickListener {
+            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
+            startActivity(intent)
+        }
 
         return binding.root
     }
