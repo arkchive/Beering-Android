@@ -20,7 +20,7 @@ data class ReviewsContent(
     @SerializedName("memberId") val memberId: Int,
     @SerializedName("nickName") val nickName: String,
     @SerializedName("profileImage") val profileImage: String,
-    @SerializedName("reviewId") val reviewId: String,
+    @SerializedName("reviewId") val reviewId: Int,
     @SerializedName("reviewImageUrls") val reviewImageUrls: List<String>,
     @SerializedName("content") val content: String,
     @SerializedName("diffFromCurrentTime") val diffFromCurrentTime: String,
