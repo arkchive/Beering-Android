@@ -27,6 +27,7 @@
         <activity android:name=".DrinkFavoriteActivity" />
         <activity android:name=".ReviewWritingActivity" />
         <activity android:name=".MyReviewsActivity" />
+        <activity android:name=".LikeReviewsActivity" />
         <activity android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Beering.Splash">

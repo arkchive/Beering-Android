@@ -71,6 +71,7 @@ fun getRetrofit_sync(): Retrofit{
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .client((okHttpClient()))
         .build()
 
     return retrofit
