@@ -2,7 +2,7 @@ package com.example.beering.api
 
 import com.google.gson.annotations.SerializedName
 
-// 리뷰 등록
+// 리뷰 등록 폼
 data class ReviewWritingFormResponse(
     val isSuccess : Boolean,
     val responseCode : Int,
@@ -15,7 +15,18 @@ data class ReviewWritingForm(
     val name: String
 )
 
+// 리뷰 등록
 
+data class ReviewWritingRequest(
+    val content : String,
+    val totalRating : Float,
+    val selectedOptions : List<ReviewSelectedOptions>
+)
+
+data class ReviewSelectedOptions(
+    val reviewOptionId : Int,
+    val rating : Float
+)
 data class ReviewWritingResponse(
     val isSuccess : Boolean,
     val responseCode : Int,
@@ -29,13 +40,4 @@ data class ReviewWritingResult(
 )
 
 
-data class ReviewWritingRequest(
-    val content : String,
-    val totalRating : Float,
-    val selectedOptions : List<ReviewSelectedOptions>
-)
 
-data class ReviewSelectedOptions(
-    val reviewOptionId : Int,
-    val rating : Float
-)
