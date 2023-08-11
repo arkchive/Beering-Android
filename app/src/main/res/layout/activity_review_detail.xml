@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/gray2"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:src="@drawable/img_default_profile" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="맥믈리에"
+                android:text="빵빵이"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/review_detail_profile_cv"
@@ -80,7 +80,7 @@
                     android:id="@+id/review_detail_date_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2023"
+                    android:text="2023년 8월 11일 "
                     android:layout_marginEnd="15dp"
                     android:textColor="@color/gray01"
                     android:textSize="15sp"
@@ -124,6 +124,8 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
             android:text="4.5"
             android:textSize="40sp"
             android:textColor="@color/beering_black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/review_detail_score_tv"/>
@@ -859,7 +861,7 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 android:id="@+id/review_like_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
+                android:text="0"
                 android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="5dp"
