@@ -295,9 +295,6 @@ class ReviewWritingActivity: AppCompatActivity() {
                     }
                 }
             })
-
-
-
         }
 
 

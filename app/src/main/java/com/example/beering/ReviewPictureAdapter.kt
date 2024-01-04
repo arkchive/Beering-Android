@@ -30,7 +30,6 @@ class ReviewPictureAdapter(private val imageList: List<Uri>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(imageUri : Uri) {
-
             Glide.with(binding.pictureIv.context)
                 .load(imageUri)
                 .fitCenter()
@@ -39,9 +38,6 @@ class ReviewPictureAdapter(private val imageList: List<Uri>) :
             binding.cancelIv.setOnClickListener {
                 cancelClickListener.onCancelClick(imageUri)
             }
-
-
-
         }
     }
 
