@@ -13,6 +13,7 @@ import java.io.File
 import android.app.AlertDialog
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beering.api.ReviewSelectedOptions
@@ -45,7 +46,7 @@ class ReviewWritingActivity: AppCompatActivity() {
     var reviewRatingTotal: Float = 0F
 
     val apiList : MutableList<String> = ArrayList()
-    val drinkId: Int = 1  // 더미 데이터
+    val drinkId: Int = 2  // 더미 데이터
 
 
     var reviewPictureAdapter: ReviewPictureAdapter? = null
@@ -209,17 +210,28 @@ class ReviewWritingActivity: AppCompatActivity() {
             for(i in reviewOptionIdList){
                 reviewSelectedOptions.add(ReviewSelectedOptions(i, reviewratingList[i-1]))
             }
-            val jsonData = ReviewWritingRequest(binding.reviewWritingImpressionEd.text.toString(), reviewRatingTotal, reviewSelectedOptions)
-            val jsonDataJson = Gson().toJson(jsonData)
-            val requestBody =jsonDataJson.toRequestBody("application/json".toMediaType())
 
+
+            val jsonData = ReviewWritingRequest(binding.reviewWritingImpressionEd.text.toString(), reviewRatingTotal, reviewSelectedOptions)
+            val requestDtoJson = Gson().toJson(jsonData)
+            val requestDtoPart = MultipartBody.Part.createFormData("requestDto", null, requestDtoJson.toRequestBody("application/json".toMediaType()))
+
+            if(imageFiles.isEmpty()){
+                imageFiles.add(File(""))
+            }
+            Log.d("test", imageFiles.toString())
 
             val imageParts = imageFiles.map { file ->
                 val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
-                MultipartBody.Part.createFormData("images", file.name, requestBody)
+                MultipartBody.Part.createFormData("reviewImages", file.name, requestBody)
             }
 
-            reviewWritingService.post(requestBody, imageParts, getMemberId(this@ReviewWritingActivity), drinkId).enqueue(object : retrofit2.Callback<ReviewWritingResponse> {
+            Log.d("test2", imageParts.toString())
+
+
+
+
+            reviewWritingService.post(requestDtoPart, imageParts, getMemberId(this@ReviewWritingActivity), drinkId).enqueue(object : retrofit2.Callback<ReviewWritingResponse> {
                 override fun onResponse(
                     call: Call<ReviewWritingResponse>,
                     response: Response<ReviewWritingResponse>
@@ -232,6 +244,8 @@ class ReviewWritingActivity: AppCompatActivity() {
                             builder.setMessage("리뷰가 등록되었습니다.")
                             builder.setPositiveButton("네") { dialog, which ->
                                 dialog.dismiss()
+                                //닫기
+                                finish()
                             }
                             val dialog = builder.create()
                             dialog.show()
@@ -244,6 +258,7 @@ class ReviewWritingActivity: AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ReviewWritingResponse>, t: Throwable) {
+                    Log.e("ReviewWritingActivity", "API 요청 실패", t)
                     val builder = AlertDialog.Builder(this@ReviewWritingActivity)
                     builder.setTitle("요청 오류")
                     builder.setMessage("서버에 요청을 실패하였습니다.")
@@ -256,8 +271,7 @@ class ReviewWritingActivity: AppCompatActivity() {
 
             })
 
-            //닫기
-            finish()
+
         }
 
         binding.reviewWritingImpressionEd.addTextChangedListener(object: TextWatcher {
@@ -284,6 +298,12 @@ class ReviewWritingActivity: AppCompatActivity() {
                 override fun onCancelClick(imageUri: Uri) {
                     num_picture -= 1
                     reviewPictureList.remove(imageUri)
+                    imageUri?.let {
+
+                        // 서버 업로드를 위해 파일 형태로 변환한다
+                        var imageFile = File(getRealPathFromURI(it))
+                        imageFiles.remove(imageFile)
+                    }
                     reviewPictureAdapter!!.notifyDataSetChanged()
                     binding.reviewWritingPictureNumTv.text = num_picture.toString()
 
@@ -349,6 +369,7 @@ class ReviewWritingActivity: AppCompatActivity() {
         if(result.resultCode == RESULT_OK){
             // 이미지를 받으면 ImageView에 적용한다
             val imageUri = result.data?.data
+
             imageUri?.let{
 
                 // 서버 업로드를 위해 파일 형태로 변환한다
@@ -371,6 +392,8 @@ class ReviewWritingActivity: AppCompatActivity() {
                 }
 
             }
+
+
         }
     }
 

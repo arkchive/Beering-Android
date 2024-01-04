@@ -27,11 +27,6 @@ class MyFragment : Fragment() {
         binding = FragmentMyBinding.inflate(inflater, container, false)
 
 
-        // 내 리뷰 모아보기 설정
-
-
-        
-
         // 로그인 상태에 따른 화면 설정
         if (stateLogin(requireContext())) {
             binding.myMyReviewsTv.setTextColor(
@@ -212,6 +207,11 @@ class MyFragment : Fragment() {
 
         binding.myFavoriteDrinkButtonIv.setOnClickListener {
             val intent = Intent(requireContext(), DrinkFavoriteActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.myFavoriteReviewButtonIv.setOnClickListener {
+            val intent = Intent(requireContext(), LikeReviewsActivity::class.java)
             startActivity(intent)
         }
 

@@ -270,26 +270,37 @@
             app:layout_constraintTop_toBottomOf="@id/detail_information_tv"
             app:layout_constraintStart_toStartOf="@id/main_name_tv"/>
 
-        <TextView
-            android:id="@+id/review_more_tv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/review_more_cl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="더보기"
-            android:layout_marginEnd="2dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintTop_toTopOf="@id/review_tv"
             app:layout_constraintBottom_toBottomOf="@id/review_tv"
-            app:layout_constraintEnd_toStartOf="@id/review_more_iv"/>
+            app:layout_constraintEnd_toEndOf="@id/detail_information_tv">
 
-        <ImageView
-            android:id="@+id/review_more_iv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:padding="7dp"
-            android:src="@drawable/ic_arrow_right_large"
-            app:layout_constraintTop_toTopOf="@id/review_tv"
-            app:layout_constraintEnd_toEndOf="@id/detail_information_tv"
-            app:layout_constraintBottom_toBottomOf="@id/review_tv"/>
+            <TextView
+                android:id="@+id/review_more_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기"
+                android:layout_marginEnd="2dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toStartOf="@id/review_more_iv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/review_more_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_arrow_right_large"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/review_more_tv"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <View
                 android:id="@+id/view1"

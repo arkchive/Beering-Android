@@ -8,25 +8,28 @@ import com.example.beering.api.ReviewsApiService
 import com.example.beering.api.ReviewsResponse
 import com.example.beering.api.getRetrofit_header
 import com.example.beering.data.getAccessToken
+import com.example.beering.databinding.ActivityLikeReviewsBinding
 import com.example.beering.databinding.ActivityMyReviewsBinding
 import retrofit2.Call
 import retrofit2.Response
 
-class MyReviewsActivity : AppCompatActivity() {
-    lateinit var binding : ActivityMyReviewsBinding
-    lateinit var myreviewsAdapter : MyReviewsAdapter
+class LikeReviewsActivity: AppCompatActivity() {
+    lateinit var binding : ActivityLikeReviewsBinding
+    lateinit var likeReviewsAdapter : LikeReviewsAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMyReviewsBinding.inflate(layoutInflater)
-        val recyclerView: RecyclerView = binding.myReviewsPostRv
+        binding = ActivityLikeReviewsBinding.inflate(layoutInflater)
+        val recyclerView: RecyclerView = binding.likeReviewsPostRv
         setContentView(binding.root)
 
         binding.btnBack.setOnClickListener {
             finish()
         }
 
-        val myReviewsService = getRetrofit_header(getAccessToken(this).toString()).create(ReviewsApiService::class.java)
-        myReviewsService.getReviews().enqueue(object: retrofit2.Callback<ReviewsResponse>{
+        val likeReviewsService = getRetrofit_header(getAccessToken(this).toString()).create(
+            ReviewsApiService::class.java)
+        likeReviewsService.getReviews().enqueue(object: retrofit2.Callback<ReviewsResponse>{
             override fun onResponse(
                 call: Call<ReviewsResponse>,
                 response: Response<ReviewsResponse>
@@ -34,9 +37,9 @@ class MyReviewsActivity : AppCompatActivity() {
                 val resp = response.body()
                 if (resp!!.isSuccess) {
                     val reviews = resp.result.content
-                    myreviewsAdapter = MyReviewsAdapter(reviews)
-                    recyclerView.adapter = myreviewsAdapter
-                    recyclerView.layoutManager = LinearLayoutManager(this@MyReviewsActivity)
+                    likeReviewsAdapter = LikeReviewsAdapter(reviews)
+                    recyclerView.adapter = likeReviewsAdapter
+                    recyclerView.layoutManager = LinearLayoutManager(this@LikeReviewsActivity)
                 } else {
 
                 }
@@ -50,4 +53,3 @@ class MyReviewsActivity : AppCompatActivity() {
     }
 
 }
-
