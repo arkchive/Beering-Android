@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DrinkDetailReviewsActivity">
+    tools:context=".feature.review.drinkDetailReviews.DrinkDetailReviewsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/drink_detail_reviews_header_cl"
