@@ -32,33 +32,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/review_detail_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_image_iv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteY="301dp"
+            app:layout_constraintTop_toBottomOf="@id/main_image_iv"
+            app:layout_constraintBottom_toTopOf="@id/review_detail_information_tv">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/review_detail_profile_cv"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="15dp"
                 app:cardCornerRadius="30dp"
                 app:cardElevation="0dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginVertical="15dp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/review_detail_profile_iv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher_foreground"
-                    android:background="@color/gray2"/>
+                    android:background="@color/gray2"
+                    android:src="@drawable/img_default_profile" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -66,64 +68,25 @@
                 android:id="@+id/item_home_post_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="맥믈리에"
+                android:layout_marginStart="15dp"
+                android:text="빵빵이"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/review_detail_profile_cv"
-                app:layout_constraintTop_toTopOf="@id/review_detail_profile_cv"
                 app:layout_constraintBottom_toBottomOf="@id/review_detail_profile_cv"
-                android:layout_marginStart="15dp" />
-
-            <LinearLayout
-                android:id="@+id/review_detail_day_ll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/review_detail_profile_cv"
-                app:layout_constraintBottom_toBottomOf="@id/review_detail_profile_cv">
+                app:layout_constraintStart_toEndOf="@id/review_detail_profile_cv"
+                app:layout_constraintTop_toTopOf="@id/review_detail_profile_cv" />
 
                 <TextView
-                    android:id="@+id/review_detail_year"
+                    android:id="@+id/review_detail_date_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2023"
+                    android:text="2023년 8월 11일 "
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/gray01"
                     android:textSize="15sp"
-                    android:textColor="@color/gray01"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="년 "
-                    android:textSize="15sp"
-                    android:textColor="@color/gray01"/>
-                <TextView
-                    android:id="@+id/review_detail_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="7"
-                    android:textSize="15sp"
-                    android:textColor="@color/gray01"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="월 "
-                    android:textSize="15sp"
-                    android:textColor="@color/gray01"/>
-                <TextView
-                    android:id="@+id/review_detail_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="13"
-                    android:textSize="15sp"
-                    android:textColor="@color/gray01"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="일"
-                    android:textSize="15sp"
-                    android:textColor="@color/gray01"/>
-
-            </LinearLayout>
+                    app:layout_constraintBottom_toBottomOf="@id/review_detail_profile_cv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/review_detail_profile_cv"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -161,6 +124,8 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
             android:text="4.5"
             android:textSize="40sp"
             android:textColor="@color/beering_black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/review_detail_score_tv"/>
@@ -176,98 +141,96 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/review_star_1_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/review_star_1_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/review_star_2_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/review_star_2_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_half_on"
-                    android:visibility="invisible"/>
-                <ImageView
+                    android:id="@+id/review_star_3_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="invisible"/>
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="5dp">
-
                 <ImageView
+                    android:id="@+id/review_star_3_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_half_on"
-                    android:visibility="invisible"/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
                     android:visibility="invisible"/>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/star_off"/>
-                <ImageView
+                    android:id="@+id/review_star_4_half"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/star_half_on"
                     android:visibility="invisible"/>
                 <ImageView
+                    android:id="@+id/review_star_4_full"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_on"
+                    android:visibility="invisible"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/star_off">
+
+                <ImageView
+                    android:id="@+id/review_star_5_half"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/star_half_on"
+                    android:visibility="invisible"/>
+                <ImageView
+                    android:id="@+id/review_star_5_full"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="invisible"/>
@@ -276,7 +239,7 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/review_detail_taste_cl"
+            android:id="@+id/review_detail_option1_cl"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_height="wrap_content"
@@ -286,10 +249,10 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
             app:layout_constraintTop_toBottomOf="@id/review_detail_score_ll">
 
             <TextView
-                android:id="@+id/review_detail_taste_tv"
+                android:id="@+id/review_detail_option1_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="맛 "
+                android:text=" "
                 android:textColor="@color/beering_black"
                 android:textSize="14sp"
                 android:layout_marginStart="20dp"
@@ -298,121 +261,121 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <LinearLayout
-                android:id="@+id/review_detail_taste_ll"
+                android:id="@+id/review_detail_option1_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                app:layout_constraintStart_toEndOf="@id/review_detail_taste_tv"
+                app:layout_constraintStart_toEndOf="@id/review_detail_option1_tv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option1_star1_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option1_star1_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option1_star2_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option1_star2_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option1_star3_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option1_star3_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option1_star4_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option1_star4_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option1_star5_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option1_star5_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/review_detail_taste_score_tv"
+                android:id="@+id/review_detail_option1_score_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3.5"
+                android:text=""
                 android:textColor="@color/beering_black"
                 android:textSize="14sp"
                 android:layout_marginEnd="20dp"
@@ -423,20 +386,20 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/review_detail_incense_cl"
+            android:id="@+id/review_detail_option2_cl"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_height="wrap_content"
             android:paddingVertical="15dp"
             android:background="@color/gray00"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/review_detail_taste_cl">
+            app:layout_constraintTop_toBottomOf="@id/review_detail_option1_cl">
 
             <TextView
-                android:id="@+id/review_detail_incense_tv"
+                android:id="@+id/review_detail_option2_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="향 "
+                android:text=" "
                 android:textColor="@color/beering_black"
                 android:textSize="14sp"
                 android:layout_marginStart="20dp"
@@ -444,119 +407,119 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
+
             <LinearLayout
-                android:id="@+id/review_detail_incense_ll"
+                android:id="@+id/review_detail_option2_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                app:layout_constraintStart_toEndOf="@id/review_detail_incense_tv"
+                app:layout_constraintStart_toEndOf="@id/review_detail_option2_tv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-                <FrameLayout
+            <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option2_star1_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option2_star1_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option2_star2_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option2_star2_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option2_star3_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option2_star3_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option2_star4_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option2_star4_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option2_star5_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option2_star5_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
             </LinearLayout>
-
             <TextView
-                android:id="@+id/review_detail_incense_score_tv"
+                android:id="@+id/review_detail_option2_score_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3.9"
@@ -570,17 +533,17 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/review_detail_color_cl"
+            android:id="@+id/review_detail_option3_cl"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_height="wrap_content"
             android:paddingVertical="15dp"
             android:background="@color/gray00"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/review_detail_incense_cl">
+            app:layout_constraintTop_toBottomOf="@id/review_detail_option2_cl">
 
             <TextView
-                android:id="@+id/review_detail_color_tv"
+                android:id="@+id/review_detail_option3_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="색 "
@@ -592,118 +555,117 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <LinearLayout
-                android:id="@+id/review_detail_color_ll"
+                android:id="@+id/review_detail_option3_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                app:layout_constraintStart_toEndOf="@id/review_detail_color_tv"
+                app:layout_constraintStart_toEndOf="@id/review_detail_option3_tv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-                <FrameLayout
+               <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option3_star1_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option3_star1_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option3_star2_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option3_star2_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option3_star3_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option3_star3_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option3_star4_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option3_star4_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option3_star5_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option3_star5_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
             </LinearLayout>
-
             <TextView
-                android:id="@+id/review_detail_color_score_tv"
+                android:id="@+id/review_detail_option3_score_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4.2"
@@ -717,19 +679,19 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/review_detail_throat_cl"
+            android:id="@+id/review_detail_option4_cl"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_height="wrap_content"
             android:paddingVertical="15dp"
             android:background="@color/gray00"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/review_detail_color_cl"
+            app:layout_constraintTop_toBottomOf="@id/review_detail_option3_cl"
             app:layout_constraintBottom_toTopOf="@id/view1"
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:id="@+id/review_detail_throat_tv"
+                android:id="@+id/review_detail_option4_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="목넘김 "
@@ -741,118 +703,118 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <LinearLayout
-                android:id="@+id/review_detail_throat_ll"
+                android:id="@+id/review_detail_option4_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                app:layout_constraintStart_toEndOf="@id/review_detail_throat_tv"
+                app:layout_constraintStart_toEndOf="@id/review_detail_option4_tv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-                <FrameLayout
+            <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option4_star1_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option4_star1_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option4_star2_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option4_star2_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option4_star3_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option4_star3_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option4_star4_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option4_star4_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/star_off">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/star_off"/>
-                    <ImageView
+                        android:id="@+id/option4_star5_half"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/star_half_on"
                         android:visibility="invisible"/>
                     <ImageView
+                        android:id="@+id/option4_star5_full"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/star_on"
                         android:visibility="invisible"/>
                 </FrameLayout>
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/review_detail_throat_score_tv"
+                android:id="@+id/review_detail_option4_score_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3.7"
@@ -871,7 +833,7 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
             android:layout_height="2dp"
             android:background="@color/gray03"
             app:layout_constraintBottom_toTopOf="@id/review_detail_like_cl"
-            app:layout_constraintTop_toBottomOf="@id/review_detail_throat_cl"/>
+            app:layout_constraintTop_toBottomOf="@id/review_detail_option4_cl"/>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -885,7 +847,7 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageButton
-                android:id="@+id/home_like_ib"
+                android:id="@+id/review_like_ib"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="@android:color/transparent"
@@ -896,31 +858,31 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
-                android:id="@+id/home_like_tv"
+                android:id="@+id/review_like_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12"
+                android:text="0"
                 android:textSize="17sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toBottomOf="@id/home_like_ib"
-                app:layout_constraintStart_toEndOf="@id/home_like_ib" />
+                app:layout_constraintBottom_toBottomOf="@id/review_like_ib"
+                app:layout_constraintStart_toEndOf="@id/review_like_ib" />
 
             <ImageButton
-                android:id="@+id/home_unlike_ib"
+                android:id="@+id/review_unlike_ib"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="13dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_unlike_light"
-                app:layout_constraintStart_toEndOf="@id/home_like_tv"
+                app:layout_constraintStart_toEndOf="@id/review_like_tv"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
-                android:id="@+id/home_unlike_tv"
+                android:id="@+id/review_unlike_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
@@ -928,8 +890,8 @@ Vestibulum scelerisque amet morbi molestie molestie arcu dignissim. Habitant orn
                 android:textColor="@color/black"
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toBottomOf="@id/home_like_ib"
-                app:layout_constraintStart_toEndOf="@id/home_unlike_ib" />
+                app:layout_constraintBottom_toBottomOf="@id/review_like_ib"
+                app:layout_constraintStart_toEndOf="@id/review_unlike_ib" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
