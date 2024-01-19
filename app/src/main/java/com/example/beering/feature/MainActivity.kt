@@ -1,6 +1,7 @@
 package com.example.beering.feature
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.example.beering.feature.home.HomeFragment
 import com.example.beering.feature.my.MyFragment
 import com.example.beering.R
 import com.example.beering.databinding.ActivityMainBinding
+import com.kakao.sdk.common.util.Utility
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBottomNavigation()
+        Log.d("test", "keyhash : ${Utility.getKeyHash(this)}")
 
     }
 

@@ -16,6 +16,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="oauth"
+                    android:scheme="kakao0f4a4d68b6c509c4e6eb16075b15c7d7" />
+            </intent-filter>
+        </activity>
+
 
         <activity
             android:name=".feature.auth.join.term.Term2Dialog"
