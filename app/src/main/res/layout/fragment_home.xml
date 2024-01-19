@@ -12,16 +12,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="105dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/logo_beering"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/item_home_post_profile_cv"
