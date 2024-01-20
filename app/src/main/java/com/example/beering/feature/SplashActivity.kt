@@ -11,6 +11,7 @@ import com.example.beering.feature.auth.LoginRequestActivity
 import com.example.beering.R
 import com.example.beering.databinding.ActivitySplashBinding
 
+
 class SplashActivity : AppCompatActivity() {
     lateinit var binding : ActivitySplashBinding
 

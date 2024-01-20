@@ -9,6 +9,7 @@ import com.example.beering.util.changeLogin
 import com.example.beering.databinding.ActivityLoginRequestBinding
 import com.example.beering.feature.auth.login.LoginActivity
 
+
 class LoginRequestActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityLoginRequestBinding
