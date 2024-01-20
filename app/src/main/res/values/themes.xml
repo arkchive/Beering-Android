@@ -17,12 +17,4 @@
         <item name="android:windowLightStatusBar">true</item>
 
     </style>
-
-    <!-- Splash theme. -->
-    <style name="Theme.Beering.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.Beering</item>
-        <item name="windowSplashScreenAnimationDuration">1000</item>
-    </style>
 </resources>

@@ -17,24 +17,21 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loadSplashScreen()
-
-        Glide.with(this)
-            .load(R.drawable.logo_test)
-            .into(binding.logoVideo)
     }
 
     fun loadSplashScreen(){
+        // 일정 시간 지연 이후 실행하기 위한 코드
         var handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
+            // 일정 시간 지나면 로그인 요청 화면 이동
             val intent = Intent(this, LoginRequestActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4300)
+        }, 2000) // 2초
 
 
     }

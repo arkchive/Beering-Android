@@ -43,8 +43,7 @@
         <activity android:name=".feature.my.myReviews.MyReviewsActivity" />
         <activity android:name=".feature.my.likeReviews.LikeReviewsActivity" />
         <activity android:name=".feature.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Beering.Splash">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
