@@ -39,8 +39,6 @@ class HomeFragment: Fragment() {
                 if(resp!!.isSuccess) {
                     val reviews = resp.result.content
                     homeAdapter = HomeAdapter(reviews)
-                    recyclerView.adapter = homeAdapter
-                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
                     homeAdapter!!.setOnItemClickListener(object :
                         HomeAdapter.OnItemClickListener {
@@ -53,12 +51,14 @@ class HomeFragment: Fragment() {
                     })
 
 
-
                     homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
                         override fun onButtonClick(position: Int) {
                             homeAdapter!!.notifyItemChanged(position, "likeChange")
                         }
                     })
+
+                    recyclerView.adapter = homeAdapter
+                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
 
                 }else {
