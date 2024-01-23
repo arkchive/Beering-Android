@@ -35,29 +35,32 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frm, HomeFragment())
             .commitAllowingStateLoss()
-        binding.mainBnv.selectedItemId = R.id.homeFragment
+        binding.mainBnv.selectedItemId = R.id.menu_home
 
 
         binding.mainBnv.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.homeFragment -> {
+                R.id.menu_home -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, HomeFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
 
-                R.id.drinkSearchFragment -> {
+                R.id.menu_search -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, DrinkSearchFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
-                R.id.myFragment -> {
+                R.id.menu_my -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, MyFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
+                }
+                R.id.menu_archive -> {
+//                    To-do 나의 기록 페이지 만들면 추가
                 }
 
             }
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 if (fragment is HomeFragment) {
                     killApp()
                 } else {
-                    binding.mainBnv.selectedItemId = R.id.homeFragment
+                    binding.mainBnv.selectedItemId = R.id.menu_home
                 }
             }
         }
