@@ -4,23 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/drinkSearchFragment"
-        android:icon="@drawable/selector_drink_search"
-        android:title="주류 검색"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/menu_home"
         android:icon="@drawable/selector_home"
         android:title="홈"
         android:state_checked="true"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/selector_drink_search"
+        android:title="검색"
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/myFragment"
+        android:id="@+id/menu_archive"
+        android:icon="@drawable/selector_archive"
+        android:title="나의 기록"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_my"
         android:icon="@drawable/selector_my"
-        android:title="내정보"
+        android:title="마이페이지"
         app:showAsAction="always" />
 
 
