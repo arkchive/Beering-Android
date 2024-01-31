@@ -8,17 +8,24 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.beering.R
 import com.example.beering.util.data.DrinkCoverResponse
 import com.example.beering.util.token.token
 import com.example.beering.databinding.FragmentDrinkSearchBinding
 import com.example.beering.feature.drink.DrinkDetailActivity
+import com.example.beering.feature.home.ReviewsApiService
 import com.example.beering.util.data.DrinkCover
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getRetrofit_header
+import com.example.beering.util.getRetrofit_no_header
+import com.example.beering.util.stateLogin
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import retrofit2.Call
 import retrofit2.Response
 
@@ -27,10 +34,23 @@ class DrinkSearchFragment : Fragment() {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     // 선택상태 저장 변수
-    var searchType: String? = null
-    var searchSort: MutableList<String> = ArrayList()
     var searchPrice_min: Int? = null
     var searchPrice_max: Int? = null
+
+
+    // 필터 선택 상태 저장 변수
+    var searchType: String? = null // 정렬
+    var searchSort: String? = null // 주종
+
+    // 필터 선택 버튼
+    var searchSort_filter = Array<Boolean>(6){false}
+    // 0 : 맥주,  1: 와인, 2: 전통주, 3: 위스키, 4: 리큐르, 5: 보드카
+    var searchType_filter = Array<Boolean>(4){false}
+    // 0: 이름순, 1: 리뷰많은순, 2: 최저가순, 3: 평점순
+
+
+    var saerchButton_sort: Boolean =false
+    var saerchButton_type: Boolean =false
 
 
 
@@ -51,25 +71,77 @@ class DrinkSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Slding Up Panel Layout
+
+        val slidePanel = binding.drinkSearchSupl
+
+
+
+        binding.drinkSearchButtonFilterMcv.setOnClickListener {
+            val state = slidePanel.panelState
+            // 닫힌 상태일 경우 열기
+            if (state == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+                slidePanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
+            }
+            // 열린 상태일 경우 닫기
+            else if (state == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                slidePanel.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            }
+        }
+
+
+        // filter의 버튼들에 따른 동적 ui
+        binding.drinkSearchButtonFilterBeerTv.setOnClickListener(searchFilterButton_sort(0))
+        binding.drinkSearchButtonFilterWineTv.setOnClickListener(searchFilterButton_sort(1))
+        binding.drinkSearchButtonFilterTraditionalLiquorTv.setOnClickListener(searchFilterButton_sort(2))
+        binding.drinkSearchButtonFilterWhiskeyTv.setOnClickListener(searchFilterButton_sort(3))
+        binding.drinkSearchButtonFilterLiqueurTv.setOnClickListener(searchFilterButton_sort(4))
+        binding.drinkSearchButtonFilterVodkaTv.setOnClickListener(searchFilterButton_sort(5))
+
+        binding.drinkSearchButtonFilterNameTv.setOnClickListener(searchFilterButton_type(0))
+        binding.drinkSearchButtonFilterReviewTv.setOnClickListener(searchFilterButton_type(1))
+        binding.drinkSearchButtonFilterLowPriceTv.setOnClickListener(searchFilterButton_type(2))
+        binding.drinkSearchButtonFilterHighRatingTv.setOnClickListener(searchFilterButton_type(3))
+
+
+
+
+
+
+
+
+
+
+
+
+
         binding.drinkSearchTopSearchEd.setOnKeyListener { view, i, keyEvent ->
             if ((keyEvent.action == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)) {
                 val data: ArrayList<DrinkCover> = ArrayList()
                 // 엔터가 눌릴 때 하고 싶은 일
                 // api로 데이터 받아오는 부분 작성 -> 이거를 버튼 눌렀을때로 변경해야할듯
 
-                val drinkSearchService =
-                    getRetrofit_header(getAccessToken(requireContext()).toString()).create(
-                        DrinkSearchApiService::class.java
-                    )
-                val category = searchSort.joinToString(",")
-                drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, category, searchPrice_min, searchPrice_max).enqueue(object : retrofit2.Callback<DrinkCoverResponse> {
+
+                var drinkSearchService: DrinkSearchApiService
+
+                // api 연결
+                if(stateLogin(requireContext())){
+                    drinkSearchService =
+                        getRetrofit_header(getAccessToken(requireContext()).toString()).create(
+                            DrinkSearchApiService::class.java)
+                } else {
+                    drinkSearchService =
+                        getRetrofit_no_header().create(DrinkSearchApiService::class.java)
+                }
+
+
+                drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, searchSort, searchPrice_min, searchPrice_max).enqueue(object : retrofit2.Callback<DrinkCoverResponse> {
                     override fun onResponse(
                         call: Call<DrinkCoverResponse>,
                         response: Response<DrinkCoverResponse>
                     ) {
                         val resp = response.body()
                         drinkSearchAdapter?.clearItems()
-                        searchSort.clear()
                         if(response.isSuccessful){
                             if (resp!!.isSuccess) {
                                 for(drink in resp.result.content){
@@ -100,11 +172,13 @@ class DrinkSearchFragment : Fragment() {
 
                                 }
 
-
+                                /*
                                 // 받아온 데이터 넣는 부분
                                 if (data != null) {
                                     initData(data)
                                 }
+
+                                 */
 
                                 // 상세 페이지 구현시, 구현
                                 drinkSearchAdapter!!.setOnItemClickListener(object :
@@ -156,32 +230,6 @@ class DrinkSearchFragment : Fragment() {
 
 
 
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    val data: Intent? = result.data
-                    val bundle = data?.extras
-                    if (bundle != null) {
-                        updateWithFilter(bundle)
-
-                    }
-                }
-            }
-
-        binding.drinkSearchButtonFilterMcv.setOnClickListener {
-            // FilterActivity 시작
-            val intent = Intent(requireContext(), SearchFilterActivity::class.java)
-            resultLauncher.launch(intent)
-        }
-
-        binding.drinkSearchTopSearchCancelIv.setOnClickListener {
-            binding.drinkSearchTopSearchEd.text.clear()
-        }
-
-
-
-
-
 
 
         drinkSearchAdapter = DrinkSearchAdapter((drinkSearchList))
@@ -191,6 +239,145 @@ class DrinkSearchFragment : Fragment() {
 
     }
 
+
+
+
+    // 필터 버튼 클릭 (주종)
+    inner class searchFilterButton_sort(private val sortNum : Int) : View.OnClickListener{
+        override fun onClick(v: View?) {
+            val tv = v as TextView
+
+            // 기존에 선택 되있는 버튼 해제
+            val button_check = searchSort_filter.indexOf(true)
+            if(button_check >= 0){
+                when(button_check){
+                    0 -> {
+                        binding.drinkSearchButtonFilterBeerTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterBeerTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+
+                        binding.drinkSearchFilterCountryCl.visibility = View.GONE
+                        binding.drinkSearchFilterTagCl.visibility = View.GONE
+                    }
+                    1 -> {
+                        binding.drinkSearchButtonFilterWineTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterWineTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    2 -> {
+                        binding.drinkSearchButtonFilterTraditionalLiquorTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterTraditionalLiquorTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    3 -> {
+                        binding.drinkSearchButtonFilterWhiskeyTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterWhiskeyTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    4 -> {
+                        binding.drinkSearchButtonFilterLiqueurTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterLiqueurTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    5 -> {
+                        binding.drinkSearchButtonFilterVodkaTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterVodkaTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                }
+
+                searchSort = null
+                searchSort_filter[button_check] = false
+            }
+
+            // 버튼 클릭
+            if(searchSort_filter[sortNum]){
+                v.setBackgroundResource(R.drawable.background_button_search)
+                tv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                searchSort = null
+                searchSort_filter[sortNum] = false
+
+            } else {
+                v.setBackgroundResource(R.drawable.background_button_search_check)
+                tv.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                searchSort_filter[sortNum] = true
+
+            }
+
+            when(sortNum){
+                0 -> {
+                    searchSort = "맥주"
+                    binding.drinkSearchFilterCountryCl.visibility = View.VISIBLE
+                    binding.drinkSearchFilterTagCl.visibility = View.VISIBLE
+                }
+                1 -> searchSort = "와인"
+                2 -> searchSort = "전통주"
+                3 -> searchSort = "위스키"
+                4 -> searchSort = "리큐르"
+                5 -> searchSort = "보드카"
+            }
+
+
+        }
+
+
+    }
+
+
+    // 필터 버튼 클릭 (정렬기준)
+    inner class searchFilterButton_type(private val typeNum : Int) : View.OnClickListener{
+        override fun onClick(v: View?) {
+            val tv = v as TextView
+
+            // 기존에 선택 되있는 버튼 해제
+            val button_check = searchType_filter.indexOf(true)
+            if(button_check >= 0){
+                when(button_check){
+                    0 -> {
+                        binding.drinkSearchButtonFilterNameTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterNameTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    1 -> {
+                        binding.drinkSearchButtonFilterReviewTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterReviewTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    2 -> {
+                        binding.drinkSearchButtonFilterLowPriceTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterLowPriceTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                    3 -> {
+                        binding.drinkSearchButtonFilterHighRatingTv.setBackgroundResource(R.drawable.background_button_search)
+                        binding.drinkSearchButtonFilterHighRatingTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    }
+                }
+
+                searchType = null
+                searchType_filter[button_check] = false
+            }
+
+            // 버튼 클릭
+            if(searchType_filter[typeNum]){
+                v.setBackgroundResource(R.drawable.background_button_search)
+                tv.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                searchType = null
+                searchType_filter[typeNum] = false
+
+            } else {
+                v.setBackgroundResource(R.drawable.background_button_search_check)
+                tv.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                searchType_filter[typeNum] = true
+
+            }
+
+            when(typeNum){
+                0 -> searchType = "name"
+                1 -> searchType = "review"
+                2 -> searchType = "price"
+                3 -> searchType = "rating"
+            }
+
+
+        }
+
+
+    }
+
+
+    /*
     private fun updateWithFilter(bundle: Bundle) {
         // 여기서 filterData를 사용하여 프래그먼트 UI 업데이트를 수행합니다.
         // 필요한 경우 어댑터에서 notifyDataSetChanged()를 호출하는 것을 잊지 마세요.
@@ -276,6 +463,8 @@ class DrinkSearchFragment : Fragment() {
         drinkSearchList.addAll(data)
         drinkSearchAdapter?.notifyDataSetChanged()
     }
+    */
+
 
 
 }
