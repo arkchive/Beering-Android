@@ -8,19 +8,12 @@ import com.example.beering.feature.MainActivity
 import com.example.beering.util.changeLogin
 import com.example.beering.databinding.ActivityLoginRequestBinding
 import com.example.beering.feature.auth.login.LoginActivity
+import com.example.beering.util.BaseActivity
 
 
-class LoginRequestActivity : AppCompatActivity() {
-
-    lateinit var binding:ActivityLoginRequestBinding
-
-
-    //test
-    override fun onCreate(savedInstanceState: Bundle?) {
+class LoginRequestActivity : BaseActivity<ActivityLoginRequestBinding>(ActivityLoginRequestBinding::inflate) {
+    override fun initAfterBinding(){
         setTheme(R.style.Theme_Beering)
-        super.onCreate(savedInstanceState)
-        binding = ActivityLoginRequestBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         changeLogin(this, false)
 
 
