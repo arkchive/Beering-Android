@@ -11,12 +11,9 @@ interface JoinApiService {
     fun signUp(@Body member: Member): Call<MemberResponse>
 
     @GET("/members/validate/username")
-    fun checkUsernameValidate(@Query("username") username: String): Call<MemberResponse>
+    fun checkUserIdValidate(@Query("username") username: String): Call<MemberResponse>
 
     @GET("/members/validate/nickname")
     fun checkNicknameValidate(@Query("nickname") nickname: String): Call<MemberResponse>
-
-
-
 
 }

@@ -36,7 +36,7 @@
             android:name=".feature.review.reviewDetail.ReviewDetailActivity"
             android:exported="true"></activity>
         <activity android:name=".feature.search.SearchFilterActivity" />
-        <activity android:name=".feature.auth.join.JoinActivity" />
+        <activity android:name=".feature.auth.join.view.JoinActivity" />
         <activity android:name=".feature.auth.login.LoginActivity" />
         <activity android:name=".feature.my.drinkFavorite.DrinkFavoriteActivity" />
         <activity android:name=".feature.review.reviewWriting.ReviewWritingActivity" />
