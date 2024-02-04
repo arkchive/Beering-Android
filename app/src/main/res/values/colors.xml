@@ -12,11 +12,34 @@
     <color name="gray2">#D9D9D9</color>
     <color name="light_gray">#F9F9F9</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="gray03">#E2E2E2</color>
-    <color name="gray02">#726C77</color>
-    <color name="gray00">#F3F3F3</color>
-    <color name="gray01">#A7A7A7</color>
+
+    <!-- 그레이 -->
+    <color name="gray00">#F9F9F9</color>
+    <color name="gray01">#A6A6A6</color>
+    <color name="gray02">#DDDDDD</color>
+    <color name="gray03">#F2F2F2</color>
+
+    <!-- 배경 -->
+    <color name="background1">#F9F9F9</color>
+    <color name="background2">#80807F</color>
+
+    <!-- 그래프 -->
+    <color name="graph1">#FFB0B0</color>
+    <color name="graph2">#BE7DFF</color>
+    <color name="graph3">#FFD338</color>
+    <color name="graph4">#8DADFF</color>
+
+    <!-- 캘린더 -->
+    <color name="c1">#FFEAA0</color>
+    <color name="c2">#FFD338</color>
+    <color name="c3">#FFBB38</color>
+    <color name="c4">#FF9F2E</color>
+
+    <!-- 메인 -->
+    <color name="beering_white">#FFFFFFFF</color>
     <color name="beering_black">#100F0F</color>
+    <color name="beering_yellow">#FFD338</color>
     <color name="beering_red">#FF3838</color>
-    <color name="beering_green">#00B051</color>
+    <color name="beering_green">#00D154</color>
+
 </resources>
