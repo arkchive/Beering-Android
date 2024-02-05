@@ -42,6 +42,17 @@ fun getRetrofit_header(header: String): Retrofit{
 
     return retrofit
 }
+fun getRetrofit_no_header(): Retrofit{
+    // 각 API 호출을 담당할 API 클라이언트 클래스
+    // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
+
+    val retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    return retrofit
+}
 
 
 // 비동기 방식

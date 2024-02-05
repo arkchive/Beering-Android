@@ -113,7 +113,6 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this@LoginActivity, "로그인 성공!", Toast.LENGTH_SHORT).show()
                             // 로그인 성공시에 대한 로직
 
-
                             //api 연결
                             val signInService = getRetrofit_sync().create(LoginApiService::class.java)
                             val user =

@@ -10,22 +10,15 @@ import com.example.beering.feature.search.DrinkSearchFragment
 import com.example.beering.feature.home.HomeFragment
 import com.example.beering.feature.my.MyFragment
 import com.example.beering.R
+import com.example.beering.databinding.ActivityLoginRequestBinding
 import com.example.beering.databinding.ActivityMainBinding
+import com.example.beering.util.BaseActivity
 import com.kakao.sdk.common.util.Utility
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     var exit_millis : Long = 0
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initAfterBinding() {
         installSplashScreen()
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         initBottomNavigation()
         Log.d("test", "keyhash : ${Utility.getKeyHash(this)}")
 
