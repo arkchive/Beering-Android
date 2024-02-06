@@ -2,16 +2,21 @@ package com.example.beering.feature.search
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.beering.R
@@ -54,6 +59,7 @@ class DrinkSearchFragment : Fragment() {
 
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -74,6 +80,24 @@ class DrinkSearchFragment : Fragment() {
         // Slding Up Panel Layout
 
         val slidePanel = binding.drinkSearchSupl
+
+        slidePanel.addPanelSlideListener(object : SlidingUpPanelLayout.PanelSlideListener {
+            override fun onPanelSlide(panel: View?, slideOffset: Float) {
+                // 패널이 움직일 때의 동작
+            }
+
+            override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
+                // 패널 상태 변경 시의 동작
+                if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                    // 패널이 열렸을 때
+                    binding.drinkSearchTopSearchEd.isFocusable = false
+                } else if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+                    // 패널이 닫혔을 때
+                    binding.drinkSearchTopSearchEd.isFocusable = true
+                    binding.drinkSearchTopSearchEd.isFocusableInTouchMode = true
+                }
+            }
+        })
 
 
 
@@ -115,8 +139,9 @@ class DrinkSearchFragment : Fragment() {
 
 
 
-        binding.drinkSearchTopSearchEd.setOnKeyListener { view, i, keyEvent ->
-            if ((keyEvent.action == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)) {
+
+        binding.drinkSearchTopSearchEd.setOnEditorActionListener { view, i, keyEvent ->
+            if (i == EditorInfo.IME_ACTION_SEARCH ||  (keyEvent != null && keyEvent.action == KeyEvent.ACTION_DOWN && keyEvent.keyCode == KeyEvent.KEYCODE_ENTER)) {
                 val data: ArrayList<DrinkCover> = ArrayList()
                 // 엔터가 눌릴 때 하고 싶은 일
                 // api로 데이터 받아오는 부분 작성 -> 이거를 버튼 눌렀을때로 변경해야할듯
@@ -172,13 +197,13 @@ class DrinkSearchFragment : Fragment() {
 
                                 }
 
-                                /*
+
                                 // 받아온 데이터 넣는 부분
                                 if (data != null) {
                                     initData(data)
                                 }
 
-                                 */
+
 
                                 // 상세 페이지 구현시, 구현
                                 drinkSearchAdapter!!.setOnItemClickListener(object :
@@ -220,6 +245,10 @@ class DrinkSearchFragment : Fragment() {
                     }
 
                 })
+
+                // 키보드 숨기기
+                val inputMethodManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(binding.drinkSearchTopSearchEd.windowToken, 0)
 
                 true
             } else false
@@ -458,12 +487,14 @@ class DrinkSearchFragment : Fragment() {
         }
     }
 
+     */
+
 
     private fun initData(data: ArrayList<DrinkCover>) {
         drinkSearchList.addAll(data)
         drinkSearchAdapter?.notifyDataSetChanged()
     }
-    */
+
 
 
 
