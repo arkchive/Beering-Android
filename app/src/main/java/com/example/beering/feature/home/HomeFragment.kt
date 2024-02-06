@@ -14,6 +14,8 @@ import com.example.beering.databinding.FragmentHomeBinding
 import com.example.beering.feature.review.reviewDetail.ReviewDetailActivity
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getRetrofit_header
+import com.example.beering.util.getRetrofit_no_header
+import com.example.beering.util.stateLogin
 import com.example.beering.util.token.token
 import retrofit2.Call
 import retrofit2.Response
@@ -32,42 +34,54 @@ class HomeFragment: Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val recyclerView: RecyclerView = binding.homePostRv
 
+        var homeService: ReviewsApiService
+
         // api 연결
-        val homeService =
-            getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
+        if(stateLogin(requireContext())){
+            homeService =
+                getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
+        } else {
+            homeService =
+                getRetrofit_no_header().create(ReviewsApiService::class.java)
+        }
+
         homeService.getReviews().enqueue(object : retrofit2.Callback<ReviewsResponse>{
             override fun onResponse(
                 call: Call<ReviewsResponse>, response: Response<ReviewsResponse>
             ) {
                 val resp = response.body()
-                if(resp!!.isSuccess) {
-                    val reviews = resp.result.content
-                    homeAdapter = HomeAdapter(reviews)
-                    recyclerView.adapter = homeAdapter
-                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                if(resp != null){
+                    if(resp!!.isSuccess) {
+                        val reviews = resp.result.content
+                        homeAdapter = HomeAdapter(reviews)
+                        recyclerView.adapter = homeAdapter
+                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-                    homeAdapter!!.setOnItemClickListener(object :
-                        HomeAdapter.OnItemClickListener {
-                        override fun onItemClick(review: ReviewsContent) {
-                            // 리뷰 상세보기 페이지
-                            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
-                            intent.putExtra("reviewId", review.reviewId)
-                            startActivity(intent)
-                        }
-                    })
-
-
-
-                    homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
-                        override fun onButtonClick(position: Int) {
-                            homeAdapter!!.notifyItemChanged(position, "likeChange")
-                        }
-                    })
+                        homeAdapter!!.setOnItemClickListener(object :
+                            HomeAdapter.OnItemClickListener {
+                            override fun onItemClick(review: ReviewsContent) {
+                                // 리뷰 상세보기 페이지
+                                val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
+                                intent.putExtra("reviewId", review.reviewId)
+                                startActivity(intent)
+                            }
+                        })
 
 
-                }else {
-                    if(resp.responseCode == 2003) token(requireContext())
+
+                        homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
+                            override fun onButtonClick(position: Int) {
+                                homeAdapter!!.notifyItemChanged(position, "likeChange")
+                            }
+                        })
+
+
+                    }else {
+                        if(resp.responseCode == 2003) token(requireContext())
+                    }
+
                 }
+
             }
 
             override fun onFailure(call: Call<ReviewsResponse>, t: Throwable) {

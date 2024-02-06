@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface ReviewsApiService {
 
-    @GET("/reviews?page=")
+    @GET("/reviews?page=&size=")
     fun getReviews(): Call<ReviewsResponse>
 
     @GET("/members/{memberId}/reviews/tabom?page=")
