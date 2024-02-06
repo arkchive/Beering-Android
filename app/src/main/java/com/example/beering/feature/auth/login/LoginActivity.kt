@@ -17,7 +17,7 @@ import com.example.beering.R
 import com.example.beering.feature.MainActivity
 import com.example.beering.util.getRetrofit_sync
 import com.example.beering.databinding.ActivityLoginBinding
-import com.example.beering.feature.auth.join.JoinActivity
+import com.example.beering.feature.auth.join.view.JoinActivity
 import com.example.beering.feature.auth.login.LoginActivity.Constants.TAG
 import com.example.beering.util.changeLogin
 import com.example.beering.util.setMemberId
