@@ -10,19 +10,20 @@
         android:id="@+id/item_home_drink_recommend_iv"
         android:layout_width="111dp"
         android:layout_height="111dp"
-        android:background="@color/gray02"
+        android:background="@color/gray03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/img_pilsnerurquell"
-        android:padding="13dp"
-        android:scaleType="centerCrop" />
+        android:padding="12dp"
+        android:scaleType="centerCrop"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_home_drink_recommend_cl"
         android:layout_width="210dp"
         android:layout_height="111dp"
         android:layout_marginStart="2dp"
-        android:background="@color/white"
+        android:background="#B3FFFFFF"
         android:paddingStart="20dp"
         android:paddingVertical="12dp"
         app:layout_constraintStart_toEndOf="@id/item_home_drink_recommend_iv"
@@ -85,7 +86,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginEnd="4dp"
-                android:background="@drawable/ic_star_full">
+                android:background="@drawable/ic_star_empty">
 
                 <ImageView
                     android:id="@+id/review_star1_half_iv"

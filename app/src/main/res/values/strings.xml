@@ -3,5 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="long_text">test\n</string>
-    <string name="in_detail">자세히보기</string>
+    <string name="in_detail"><u>자세히보기</u></string>
+    <string name="edit_profile"><u>프로필 편집</u></string>
 </resources>
