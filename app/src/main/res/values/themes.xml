@@ -20,4 +20,45 @@
         <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
 
     </style>
+
+    <style name="title_1">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:fontWeight" tools:targetApi="o">700</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="title_2">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:fontWeight" tools:targetApi="o">700</item>
+        <item name="android:lineSpacingExtra">4.41sp</item>
+    </style>
+
+    <style name="headline">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:fontWeight" tools:targetApi="o">500</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="mypage_menu">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:fontWeight" tools:targetApi="o">400</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <style name="review_content">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:fontWeight" tools:targetApi="o">400</item>
+        <item name="android:lineSpacingExtra">9.1sp</item>
+    </style>
+
 </resources>

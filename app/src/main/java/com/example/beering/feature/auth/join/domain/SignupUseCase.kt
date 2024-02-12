@@ -1,8 +1,17 @@
 package com.example.beering.feature.auth.join.domain
 
 class SignupUseCase {
+
     suspend operator fun invoke(){
         // TODO : 실제 회원가입 요청 API 호출
+    }
+
+    suspend fun checkId(id : String){
+        // TODO : 아이디 중복체크 API 호출
+    }
+
+    suspend fun checkNickname(name : String){
+        // TODO : 닉네임 중복체크 API 호출
     }
 
     fun validatePw(pw : String) : PwValidations{

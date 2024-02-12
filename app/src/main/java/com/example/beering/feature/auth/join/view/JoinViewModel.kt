@@ -29,14 +29,25 @@ class JoinViewModel(
     private val _pwValidation = MutableLiveData<PwValidations>()
     val pwValidation: LiveData<PwValidations> = _pwValidation
 
+    // 다음 버튼 활성화 조건
+    private val _idCheck = MutableLiveData<DuplicationCheck>()   // 아이디 중복확인
+    val idCheck: LiveData<DuplicationCheck> = _idCheck
+    private val _nicknameCheck = MutableLiveData<DuplicationCheck>()     // 닉네임 중복확인
+    val nicknameCheck: LiveData<DuplicationCheck> = _nicknameCheck
+    private val _validNext = MutableLiveData<Boolean>()     // 최종 활성화 여부
+    val validNext: LiveData<Boolean> = _validNext
+
     init{
         _userId.value = ""
         _password.value = ""
         _passwordAgain.value = ""
         _name.value = ""
+        _idCheck.value = DuplicationCheck.PROCEEDING
+        _nicknameCheck.value = DuplicationCheck.PROCEEDING
     }
     fun setUserId(id : String){
         _userId.value = id
+        _idCheck.value = DuplicationCheck.PROCEEDING
     }
 
     fun setPassword(pw : String){
@@ -51,10 +62,36 @@ class JoinViewModel(
     fun setName(name : String){
         _name.value = name
         _nicknameValidation.value = signUp.validateName(name)
+        _nicknameCheck.value = DuplicationCheck.PROCEEDING
+    }
+
+    fun validNext(){
+        if (pwValidation.value == null || nicknameValidation.value == null){
+            return
+        }
+        if (pwValidation.value!!.valid
+            && nicknameCheck.value == DuplicationCheck.CHECKED
+            && idCheck.value == DuplicationCheck.CHECKED){
+            _validNext.value = true
+        }
+    }
+
+    suspend fun checkId(id : String){
+        signUp.checkId(id)
+        // TODO : 중복이면 idcheck = false 아니면 true
+    }
+
+    suspend fun checkNickname(name : String){
+        signUp.checkNickname(name)
+        // TODO : 중복이면 nicknameCheck = false 아니면 true
     }
 
     // 뷰모델 의존성 주입을 위한 Factory
     companion object {
+        enum class DuplicationCheck{
+            PROCEEDING, UNCHECKED, CHECKED
+        }
+
         @Suppress("UNCHECKED_CAST")
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(

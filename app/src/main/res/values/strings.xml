@@ -4,4 +4,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="long_text">test\n</string>
     <string name="in_detail">자세히보기</string>
+
+    <!-- 기록 페이지-->
+    <string name="monthly_report">이번 달 리포트</string>
+    <string name="calendar_date">%1$d년  %2$d월</string>
+    <string name="alcohol_calendar">주류 캘린더</string>
+    <string name="alcohol_calendar_desc">날짜를 클릭하면 기록할 수 있어요</string>
+
+    <!--회원가입-->
+    <string name="term_description">서비스 시작 및 가입을 위해 먼저 \n 이용 약관 확인 및 정보 제공에 동의해 주세요.</string>
+    <string name="term_all_check">약관 전체동의</string>
+    <string name="term_required">(필수)</string>
+    <string name="term_optional">(선택)</string>
+    <string name="term_first">비어링 서비스 이용약관</string>
+    <string name="term_second">개인정보수집 및 이용동의</string>
+    <string name="term_third">마케팅 정보 수신 동의</string>
+
 </resources>
