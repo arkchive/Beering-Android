@@ -32,3 +32,8 @@ fun Activity.setStatusBarTransparent() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
     }
 }
+
+fun dpToPx(dp: Int, context: Context): Int {
+    val density = context.resources.displayMetrics.density
+    return (dp * density).toInt()
+}

@@ -10,7 +10,8 @@
     android:background="#00FFFFFF"
     app:umanoPanelHeight="0dp"
     app:umanoParallaxOffset="0dp"
-    app:umanoOverlay="false"
+    app:umanoShadowHeight="0dp"
+    app:umanoOverlay="true"
     app:umanoDragView="@id/drink_search_filter_slide_layout_cl">
 
 
