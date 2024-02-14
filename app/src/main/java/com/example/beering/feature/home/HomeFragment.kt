@@ -25,14 +25,13 @@ class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var homeAdapter: HomeAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val recyclerView: RecyclerView = binding.homePostRv
+        val recyclerView: RecyclerView = binding.itemHomeRv
 
         var homeService:ReviewsApiService? = null
         if(stateLogin(requireContext())){
@@ -90,11 +89,11 @@ class HomeFragment: Fragment() {
 
         })
 
-        //삭제해야 함.
-        binding.itemHomePostProfileCv.setOnClickListener {
-            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
-            startActivity(intent)
-        }
+//        //삭제해야 함.
+//        binding.itemHomePostProfileCv.setOnClickListener {
+//            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
+//            startActivity(intent)
+//        }
 
         return binding.root
     }
