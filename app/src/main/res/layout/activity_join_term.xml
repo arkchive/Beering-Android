@@ -11,7 +11,7 @@
     app:umanoParallaxOffset="0dp"
     app:umanoShadowHeight="0dp"
     app:umanoOverlay="true"
-    app:umanoScrollableView="@id/term_sliding_layout"
+    app:umanoScrollableView="@id/term_script_sv"
     app:umanoDragView="@id/term_script_layout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,7 @@
             android:id="@+id/term_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="비어링 서비스 회원가입"
+            android:text="@string/join_title"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:fontFamily="@font/pretendard_bold"
@@ -245,9 +245,45 @@
             app:layout_constraintTop_toTopOf="@id/term_third_ll"
             app:layout_constraintBottom_toBottomOf="@id/term_third_ll"/>
 
+        <ImageView
+            android:id="@+id/term_join_on_iv"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:src="@drawable/btn_join_next_on"
+            android:layout_marginBottom="70dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/term_join_off_iv"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:src="@drawable/btn_join_next_off"
+            android:layout_marginBottom="70dp"
+            android:elevation="-1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/term_join"
+            android:textSize="18sp"
+            android:elevation="1dp"
+            android:fontFamily="@font/pretendard_semibold"
+            app:layout_constraintStart_toStartOf="@id/term_join_off_iv"
+            app:layout_constraintEnd_toEndOf="@id/term_join_off_iv"
+            app:layout_constraintTop_toTopOf="@id/term_join_off_iv"
+            app:layout_constraintBottom_toBottomOf="@id/term_join_off_iv"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/term_script_layout"
         android:layout_width="match_parent"
         android:layout_height="670dp"
         android:background="@drawable/background_drawer">
@@ -273,7 +309,6 @@
             app:layout_constraintEnd_toEndOf="parent">
     
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/term_script_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
     
@@ -316,7 +351,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:text="다음으로"
+                    android:text="@string/term_check"
                     android:textSize="18sp"
                     android:elevation="1dp"
                     android:fontFamily="@font/pretendard_semibold"

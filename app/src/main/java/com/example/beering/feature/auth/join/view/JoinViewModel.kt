@@ -1,5 +1,6 @@
 package com.example.beering.feature.auth.join.view
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -52,11 +53,14 @@ class JoinViewModel(
 
     fun setPassword(pw : String){
         _password.value = pw
-        _pwValidation.value = signUp.validatePw(pw)
+        _pwValidation.value = signUp.validatePw(pw, passwordAgain.value!!)
+        validNext()
     }
 
-    fun setPasswordAgain(pw : String){
-        _passwordAgain.value = pw
+    fun setPasswordAgain(pwAgain : String){
+        _passwordAgain.value = pwAgain
+        _pwValidation.value = signUp.validatePw(password.value!!, pwAgain)
+        validNext()
     }
 
     fun setName(name : String){
@@ -66,24 +70,26 @@ class JoinViewModel(
     }
 
     fun validNext(){
-        if (pwValidation.value == null || nicknameValidation.value == null){
+        Log.d("pwpw", pwValidation.value!!.toString())
+        if (pwValidation.value == null){
             return
         }
-        if (pwValidation.value!!.valid
-            && nicknameCheck.value == DuplicationCheck.CHECKED
-            && idCheck.value == DuplicationCheck.CHECKED){
-            _validNext.value = true
-        }
+        _validNext.value = (pwValidation.value!!.valid
+                && pwValidation.value!!.isConfirmed
+                && nicknameCheck.value == DuplicationCheck.CHECKED
+                && idCheck.value == DuplicationCheck.CHECKED)
     }
 
     suspend fun checkId(id : String){
         signUp.checkId(id)
         // TODO : 중복이면 idcheck = false 아니면 true
+        validNext()
     }
 
     suspend fun checkNickname(name : String){
         signUp.checkNickname(name)
         // TODO : 중복이면 nicknameCheck = false 아니면 true
+        validNext()
     }
 
     // 뷰모델 의존성 주입을 위한 Factory

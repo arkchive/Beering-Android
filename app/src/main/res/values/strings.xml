@@ -11,13 +11,28 @@
     <string name="alcohol_calendar">주류 캘린더</string>
     <string name="alcohol_calendar_desc">날짜를 클릭하면 기록할 수 있어요</string>
 
+    <!--로그인-->
+    <string name="login">로그인</string>
+    <string name="login_welcome">비어링에 \n오신 것을 환영해요 :)</string>
+    <string name="login_discription">서비스 이용을 위해 로그인해주세요.</string>
+    <string name="login_id">아이디</string>
+    <string name="login_pw">비밀번호</string>
+    <string name="login_kakao">카카오 로그인</string>
+    <string name="login_newbie">처음이신가요?</string>
+    <string name="login_lookaround">서비스 둘러보기</string>
+
     <!--회원가입-->
     <string name="term_description">서비스 시작 및 가입을 위해 먼저 \n 이용 약관 확인 및 정보 제공에 동의해 주세요.</string>
+    <string name="join_title">비어링 서비스 회원가입</string>
     <string name="term_all_check">약관 전체동의</string>
+    <string name="term_check">동의하기</string>
+    <string name="term_join">회원가입</string>
     <string name="term_required">(필수)</string>
     <string name="term_optional">(선택)</string>
     <string name="term_first">비어링 서비스 이용약관</string>
     <string name="term_second">개인정보수집 및 이용동의</string>
     <string name="term_third">마케팅 정보 수신 동의</string>
+    <string name="complete_semititle">회원 가입 완료!</string>
+    <string name="complete_title">%1$s 님, \n 가입을 축하해요!</string>
 
 </resources>

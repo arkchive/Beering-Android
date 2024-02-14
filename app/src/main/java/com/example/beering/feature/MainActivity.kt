@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.beering.feature.search.DrinkSearchFragment
 import com.example.beering.feature.home.HomeFragment
 import com.example.beering.feature.my.MyFragment
 import com.example.beering.R
-import com.example.beering.databinding.ActivityLoginRequestBinding
 import com.example.beering.databinding.ActivityMainBinding
 import com.example.beering.util.BaseActivity
 import com.kakao.sdk.common.util.Utility

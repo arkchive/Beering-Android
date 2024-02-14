@@ -21,13 +21,13 @@ import com.example.beering.feature.auth.join.JoinApiService
 import com.example.beering.feature.auth.join.Member
 import com.example.beering.feature.auth.join.MemberAgreements
 import com.example.beering.feature.auth.join.MemberResponse
+import com.example.beering.feature.auth.join.domain.SignupUseCase
 import retrofit2.Call
 import retrofit2.Response
 
 class JoinActivity: AppCompatActivity() {
     lateinit var binding: ActivityJoinBinding
     private val joinViewModel : JoinViewModel by viewModels { JoinViewModel.Factory }
-
 
     var idBool:Boolean = false
     var passwordBool:Boolean = false
@@ -101,8 +101,6 @@ class JoinActivity: AppCompatActivity() {
         })
         joinViewModel.password.observe(this, Observer {
             if (it.isNotEmpty()) {
-                joinViewModel.validNext()
-                validatePasswordAgain(joinViewModel.passwordAgain.value!!, it)
                 passwordEdit.setTextColor(
                     ContextCompat.getColor(
                         this@JoinActivity,
@@ -138,8 +136,6 @@ class JoinActivity: AppCompatActivity() {
         })
         joinViewModel.passwordAgain.observe(this, Observer{
             if (it.isNotEmpty()) {
-                joinViewModel.validNext()
-                validatePasswordAgain(it, joinViewModel.password.value!!)
                 passwordAgainEdit.setTextColor(
                     ContextCompat.getColor(
                         this@JoinActivity,
@@ -384,6 +380,40 @@ class JoinActivity: AppCompatActivity() {
                 binding.check4.setImageResource(R.drawable.ic_check_light)
             }
 
+            // 비밀번호 확인란과 일치하는지 확인
+            if (it.isConfirmed){
+                binding.joinPasswordAgainBar.setBackgroundColor(
+                    ContextCompat.getColor(
+                        this@JoinActivity,
+                        R.color.beering_green
+                    )
+                )
+                binding.joinPasswordAgainNotice.setText("비밀번호가 일치해요")
+                binding.joinPasswordAgainNotice.setTextColor(
+                    ContextCompat.getColor(
+                        this@JoinActivity,
+                        R.color.beering_green
+                    )
+                )
+                binding.joinPasswordAgainNotice.visibility = View.VISIBLE
+
+            } else {
+                binding.joinPasswordAgainBar.setBackgroundColor(
+                    ContextCompat.getColor(
+                        this@JoinActivity,
+                        R.color.beering_red
+                    )
+                )
+                binding.joinPasswordAgainNotice.setText("비밀번호가 일치하지 않아요")
+                binding.joinPasswordAgainNotice.setTextColor(
+                    ContextCompat.getColor(
+                        this@JoinActivity,
+                        R.color.beering_red
+                    )
+                )
+                binding.joinPasswordAgainNotice.visibility = View.VISIBLE
+            }
+
             // 비밀번호가 유효한지 확인
             if(joinViewModel.pwValidation.value!!.valid) {
                 binding.joinPasswordBar.setBackgroundColor(ContextCompat.getColor(this@JoinActivity,
@@ -439,11 +469,13 @@ class JoinActivity: AppCompatActivity() {
             }
 
         })  // 닉네임 중복여부
+        joinViewModel.validNext.observe(this, Observer {
+            when(it){
+                true -> binding.joinNextOnIv.visibility = View.VISIBLE
+                else -> binding.joinNextOnIv.visibility = View.GONE
+            }
+        })
 
-        binding.joinNextOffIv.setOnClickListener {
-            val tempIntent = Intent(this, TermActivity::class.java)
-            startActivity(tempIntent)
-        }
         // EditText 값 있을 때만 버튼 활성화
         // 아이디
         userIdEdit.addTextChangedListener(object : TextWatcher {
@@ -581,27 +613,30 @@ class JoinActivity: AppCompatActivity() {
 
         // 다음 버튼
         binding.joinNextOnIv.setOnClickListener {
-            val member = Member(joinViewModel. userId.value!!, joinViewModel.password.value!!, joinViewModel.name.value!!, agreementList)
-
-            val call = joinService.signUp(member)
-
-            call.enqueue(object : retrofit2.Callback<MemberResponse> {
-                override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>){
-                    if(response.isSuccessful) {
-                        val memberResponse = response.body()
-                        if(memberResponse?.isSuccess == true){
-                            val intent = Intent(this@JoinActivity, LoginActivity::class.java)
-                            startActivity(intent)
-                        } else {
-                            Toast.makeText(this@JoinActivity, "로그인을 실패하였습니다.",Toast.LENGTH_SHORT)
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
-                    Toast.makeText(this@JoinActivity, "서버에 요청을 실패하였습니다.",Toast.LENGTH_SHORT)
-                }
-            })
+            // TODO : API 로직 수정
+//            val member = Member(joinViewModel. userId.value!!, joinViewModel.password.value!!, joinViewModel.name.value!!, agreementList)
+//
+//            val call = joinService.signUp(member)
+//
+//            call.enqueue(object : retrofit2.Callback<MemberResponse> {
+//                override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>){
+//                    if(response.isSuccessful) {
+//                        val memberResponse = response.body()
+//                        if(memberResponse?.isSuccess == true){
+//                            val intent = Intent(this@JoinActivity, LoginActivity::class.java)
+//                            startActivity(intent)
+//                        } else {
+//                            Toast.makeText(this@JoinActivity, "로그인을 실패하였습니다.",Toast.LENGTH_SHORT)
+//                        }
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
+//                    Toast.makeText(this@JoinActivity, "서버에 요청을 실패하였습니다.",Toast.LENGTH_SHORT)
+//                }
+//            })
+            val mIntent = Intent(this, TermActivity::class.java)
+            startActivity(mIntent)
         }
 
     }
