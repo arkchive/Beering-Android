@@ -16,7 +16,7 @@ class MyReviewsAdapter(private val reviews: List<ReviewsContent>): RecyclerView.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemMyReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ViewHolde                                    r(binding)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

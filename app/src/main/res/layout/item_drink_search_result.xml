@@ -10,7 +10,7 @@
     android:layout_marginStart="4dp"
     android:layout_marginEnd="4dp"
     android:layout_marginTop="17dp"
-    android:background="@color/white">
+    android:background="@color/background1">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/item_drink_search_result_img_cv"
         android:layout_width="156dp"
