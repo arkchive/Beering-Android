@@ -97,6 +97,5 @@ dependencies {
 
     // sliding up panel
     implementation 'com.github.hannesa2:AndroidSlidingUpPanel:4.2.1'
-
-
+    
 }

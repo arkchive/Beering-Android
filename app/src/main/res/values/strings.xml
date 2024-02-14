@@ -2,7 +2,8 @@
     <string name="app_name">Beering</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="long_text">test\n</string>
+    <string name="long_text">‘종달(終達)’은 맨 끝에 있는 땅, 제주목의 동쪽 끝 마을, 또는 종처럼 생긴 지미봉(地尾峰)[165.3m] 인근에 생긴 마을이라는 뜻이라고 한다. 원래 종달은 종다릿개[終達浦]라는 포구 이름에서 유래한 것으로 보이며 주민들은 종다리 또는 종달이라 부른다.
+    종달리는 한라산 동쪽 끝 해안가에 위치한다. 해발 고도 250m에 이르는 남쪽에서부터 북쪽 해안까지 길게 뻗어 있다. 남에서 북으로 동거문오름[340m], 손자봉(孫子峯)[255.8m], 용눈이오름[247.8m], 은월봉[197.6m]이 연이어 있으며, 해안가에는 바로 남쪽에 마을을 끼고 지미봉이 솟아 있다. 북쪽에는 넓은 모래 해안이 펼쳐진다.</string>
     <string name="in_detail"><u>자세히보기</u></string>
     <string name="edit_profile"><u>프로필 편집</u></string>
 </resources>
