@@ -17,7 +17,7 @@
         android:id="@+id/main_bnv"
         android:layout_width="match_parent"
         android:layout_height="77dp"
-        app:itemBackground="@color/light_gray"
+        app:itemBackground="@color/beering_white"
         app:itemIconSize="90dp"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
