@@ -82,6 +82,7 @@ class MyFragment : Fragment() {
 
             })
 
+
         }
     else {
             // 비로그인 상태일때
@@ -89,16 +90,21 @@ class MyFragment : Fragment() {
 
         }
         // 내 리뷰 모아보기 페이지 연결
+
         binding.myProfileReviewCl.setOnClickListener {
             val intent = Intent(requireContext(), MyReviewsActivity::class.java)
             startActivity(intent)
         }
+
         // 찜한 주류 페이지 연결
+
         binding.myProfileLikeDrinkCl.setOnClickListener {
             val intent = Intent(requireContext(), DrinkFavoriteActivity::class.java)
             startActivity(intent)
         }
+
         // 좋아요한 리뷰 모아보기 페이지 연결
+
         binding.myMenu1Tv.setOnClickListener {
             val intent = Intent(requireContext(), LikeReviewsActivity::class.java)
             startActivity(intent)

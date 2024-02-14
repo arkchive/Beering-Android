@@ -31,10 +31,12 @@ class LikeReviewsAdapter (private val reviews: List<ReviewsContent>): RecyclerVi
         return reviews.size
     }
 
+
     inner class ViewHolder(val binding: ItemLikeReviewsBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(review: ReviewsContent) {
             binding.itemLikeReviewsNicknameTv.text = review.nickName
             binding.itemLikeReviewsTimeTv.text = review.diffFromCurrentTime
+
 
 //            Glide.with(binding.root)
 //                .load(review.profileImage)

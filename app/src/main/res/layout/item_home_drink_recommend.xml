@@ -86,7 +86,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginEnd="4dp"
-                android:background="@drawable/ic_star_full">
+                android:background="@drawable/ic_star_empty">
 
                 <ImageView
                     android:id="@+id/review_star1_half_iv"
