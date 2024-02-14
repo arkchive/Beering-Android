@@ -10,11 +10,13 @@ import com.example.beering.R
 import com.example.beering.feature.home.ReviewsContent
 import com.example.beering.databinding.ItemHomeBinding
 import com.example.beering.databinding.ItemHomeReviewBinding
+import com.example.beering.databinding.ItemMyReviewsBinding
 
 class MyReviewsAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapter<MyReviewsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemHomeReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        val binding = ItemMyReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return ViewHolde                                    r(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,10 +27,12 @@ class MyReviewsAdapter(private val reviews: List<ReviewsContent>): RecyclerView.
         return reviews.size
     }
 
-    inner class ViewHolder(val binding: ItemHomeReviewBinding): RecyclerView.ViewHolder(binding.root) {
+
+    inner class ViewHolder(val binding: ItemMyReviewsBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(review: ReviewsContent) {
-            binding.itemHomeReviewNicknameTv.text = review.nickName
-            binding.itemHomeReviewTimeTv.text = review.diffFromCurrentTime
+            binding.itemMyReviewsNicknameTv.text = review.nickName
+            binding.itemMyReviewsTimeTv.text = review.diffFromCurrentTime
+   
 
 //            Glide.with(binding.root)
 //                .load(review.profileImage)

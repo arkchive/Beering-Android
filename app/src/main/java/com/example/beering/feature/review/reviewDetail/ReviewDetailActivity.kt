@@ -7,18 +7,14 @@ import android.view.View
 import androidx.fragment.app.FragmentManager
 import com.example.beering.api.*
 import com.example.beering.databinding.ActivityReviewDetailBinding
+import com.example.beering.util.BaseActivity
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getRetrofit_header
 import retrofit2.Call
 import retrofit2.Response
 
-class ReviewDetailActivity : AppCompatActivity() {
-    lateinit var binding : ActivityReviewDetailBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityReviewDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+class ReviewDetailActivity : BaseActivity<ActivityReviewDetailBinding>(ActivityReviewDetailBinding:: inflate) {
+    override fun initAfterBinding() {
         binding.buttonBack.setOnClickListener{
             finish()
 

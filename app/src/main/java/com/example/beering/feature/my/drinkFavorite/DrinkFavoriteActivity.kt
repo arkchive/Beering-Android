@@ -11,25 +11,17 @@ import com.example.beering.util.getAccessToken
 import com.example.beering.util.getMemberId
 import com.example.beering.databinding.ActivityDrinkFavoriteBinding
 import com.example.beering.feature.drink.DrinkDetailActivity
+import com.example.beering.util.BaseActivity
 import com.example.beering.util.data.DrinkCover
 import com.example.beering.util.getRetrofit_header
 import retrofit2.Call
 import retrofit2.Response
 
-class DrinkFavoriteActivity : AppCompatActivity() {
-    lateinit var binding: ActivityDrinkFavoriteBinding
-
+class DrinkFavoriteActivity : BaseActivity<ActivityDrinkFavoriteBinding>(ActivityDrinkFavoriteBinding:: inflate) {
     var drinkFavoriteAdapter: DrinkFavoriteAdapter? = null
     var drinkFavoriteList = ArrayList<DrinkCover>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDrinkFavoriteBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-
-
-
+    override fun initAfterBinding() {
         // api로 데이터 받아오는 부분 작성
         val data : ArrayList<DrinkCover> = ArrayList()
 

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -20,13 +19,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_home_drink_recommend_cl"
-        android:layout_width="210dp"
+        android:layout_width="0dp"
         android:layout_height="111dp"
         android:layout_marginStart="2dp"
         android:background="#B3FFFFFF"
         android:paddingStart="20dp"
         android:paddingVertical="12dp"
         app:layout_constraintStart_toEndOf="@id/item_home_drink_recommend_iv"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
