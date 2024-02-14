@@ -48,6 +48,12 @@ class DrinkSearchFragment : Fragment() {
     var searchType_filter = Array<Boolean>(4){false}
     // 0: 이름순, 1: 리뷰많은순, 2: 최저가순, 3: 평점순
 
+    var searchCountry : String? = null
+    var searchTagList = mutableListOf<String>()    // 필터 태그
+
+    // 필터 하위 옵션
+    var searchSweetness: Int? = null // 와인 하위옵션
+
 
     var saerchButton_sort: Boolean =false
     var saerchButton_type: Boolean =false
@@ -103,6 +109,174 @@ class DrinkSearchFragment : Fragment() {
         binding.drinkSearchButtonFilterLowPriceTv.setOnClickListener(searchFilterButton_type(2))
         binding.drinkSearchButtonFilterHighRatingTv.setOnClickListener(searchFilterButton_type(3))
 
+        binding.drinkSearchButtonFilterApplyMcv.setOnClickListener {
+            val state = slidePanel.panelState
+            // 닫힌 상태일 경우 열기
+            if (state == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+                slidePanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
+            }
+            // 열린 상태일 경우 닫기
+            else if (state == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                slidePanel.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            }
+
+
+            // 주종 적용
+            val sortButton_check = searchSort_filter.indexOf(true)
+            if(sortButton_check >= 0) {
+                binding.drinkSearchSortMcv.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.beering_black
+                    )
+                )
+                binding.drinkSearchSortTv.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.beering_white
+                    )
+                )
+
+                when (sortButton_check) {
+                    0 -> binding.drinkSearchTypeTv.text = "맥주"
+                    1 -> binding.drinkSearchTypeTv.text = "와인"
+                    2 -> binding.drinkSearchTypeTv.text = "전통준"
+                    3 -> binding.drinkSearchTypeTv.text = "위스키"
+                    4 -> binding.drinkSearchTypeTv.text = "리큐르"
+                    5 -> binding.drinkSearchTypeTv.text = "보드카"
+                }
+            }
+
+            // 정렬 기준 적용
+            val typeButton_check = searchType_filter.indexOf(true)
+            if(typeButton_check >= 0) {
+                binding.drinkSearchTypeMcv.setCardBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.beering_black
+                    )
+                )
+                binding.drinkSearchTypeTv.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.beering_white
+                    )
+                )
+
+                when (typeButton_check) {
+                    0 -> binding.drinkSearchSortTv.text = "이름순"
+                    1 -> binding.drinkSearchSortTv.text = "리뷰많은순"
+                    2 -> binding.drinkSearchSortTv.text = "최저가순"
+                    3 -> binding.drinkSearchSortTv.text = "평점순"
+                }
+            }
+        }
+
+
+
+        val data: ArrayList<DrinkCover> = ArrayList()
+        // 엔터가 눌릴 때 하고 싶은 일
+        // api로 데이터 받아오는 부분 작성 -> 이거를 버튼 눌렀을때로 변경해야할듯
+
+
+        var drinkSearchService: DrinkSearchApiService
+
+        // api 연결
+        if(stateLogin(requireContext())){
+            drinkSearchService =
+                getRetrofit_header(getAccessToken(requireContext()).toString()).create(
+                    DrinkSearchApiService::class.java)
+        } else {
+            drinkSearchService =
+                getRetrofit_no_header().create(DrinkSearchApiService::class.java)
+        }
+
+
+        drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, searchSort, searchPrice_min, searchPrice_max, searchCountry, searchTagList.joinToString(","), searchSweetness).enqueue(object : retrofit2.Callback<DrinkCoverResponse> {
+            override fun onResponse(
+                call: Call<DrinkCoverResponse>,
+                response: Response<DrinkCoverResponse>
+            ) {
+                val resp = response.body()
+                drinkSearchAdapter?.clearItems()
+                if(response.isSuccessful){
+                    if (resp!!.isSuccess) {
+                        for(drink in resp.result.content){
+                            if(drink.imageUrlList.isEmpty()){
+                                data.add(
+                                    DrinkCover(
+                                        drink.nameKr,
+                                        drink.nameEn,
+                                        drink.manufacturer,
+                                        drink.drinkId,
+                                        null,
+                                        drink.isLiked
+                                    )
+                                )
+                            } else {
+                                data.add(
+                                    DrinkCover(
+                                        drink.nameKr,
+                                        drink.nameEn,
+                                        drink.manufacturer,
+                                        drink.drinkId,
+                                        drink.imageUrlList[0],
+                                        drink.isLiked
+                                    )
+
+                                )
+                            }
+
+                        }
+
+
+                        // 받아온 데이터 넣는 부분
+                        if (data != null) {
+                            initData(data)
+                        }
+
+
+
+                        // 상세 페이지 구현시, 구현
+                        drinkSearchAdapter!!.setOnItemClickListener(object :
+                            DrinkSearchAdapter.OnItemClickListener {
+                            override fun onItemClick(drinkInfo: DrinkCover) {
+                                val intent = Intent(requireContext(), DrinkDetailActivity::class.java)
+                                intent.putExtra("drinkId", drinkInfo.id)
+                                startActivity(intent)
+
+                            }
+
+
+                        })
+
+
+                        drinkSearchAdapter!!.setOnHeartClickListener(object :
+                            DrinkSearchAdapter.OnHeartClickListener {
+                            override fun onButtonClick(position: Int) {
+                                drinkSearchAdapter!!.notifyItemChanged(position, "heartChange")
+                            }
+                        })
+
+                    } else {
+                        if(resp.responseCode == 2003) token(requireContext())
+                    }
+                }
+
+            }
+
+            override fun onFailure(call: Call<DrinkCoverResponse>, t: Throwable) {
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("요청 오류")
+                builder.setMessage("서버에 요청을 실패하였습니다.")
+                builder.setPositiveButton("네") { dialog, which ->
+                    dialog.dismiss()
+                }
+                val dialog = builder.create()
+                dialog.show()
+            }
+
+        })
 
 
 
@@ -135,7 +309,7 @@ class DrinkSearchFragment : Fragment() {
                 }
 
 
-                drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, searchSort, searchPrice_min, searchPrice_max).enqueue(object : retrofit2.Callback<DrinkCoverResponse> {
+                drinkSearchService.drinkSearch(null,binding.drinkSearchTopSearchEd.text.toString(), searchType, searchSort, searchPrice_min, searchPrice_max, searchCountry, searchTagList.joinToString(","), searchSweetness).enqueue(object : retrofit2.Callback<DrinkCoverResponse> {
                     override fun onResponse(
                         call: Call<DrinkCoverResponse>,
                         response: Response<DrinkCoverResponse>
@@ -172,13 +346,13 @@ class DrinkSearchFragment : Fragment() {
 
                                 }
 
-                                /*
+
                                 // 받아온 데이터 넣는 부분
                                 if (data != null) {
                                     initData(data)
                                 }
 
-                                 */
+
 
                                 // 상세 페이지 구현시, 구현
                                 drinkSearchAdapter!!.setOnItemClickListener(object :
@@ -458,12 +632,14 @@ class DrinkSearchFragment : Fragment() {
         }
     }
 
+     */
+
 
     private fun initData(data: ArrayList<DrinkCover>) {
         drinkSearchList.addAll(data)
         drinkSearchAdapter?.notifyDataSetChanged()
     }
-    */
+
 
 
 

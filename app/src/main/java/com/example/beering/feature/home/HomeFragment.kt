@@ -14,6 +14,8 @@ import com.example.beering.databinding.FragmentHomeBinding
 import com.example.beering.feature.review.reviewDetail.ReviewDetailActivity
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getRetrofit_header
+import com.example.beering.util.getRetrofit_no_header
+import com.example.beering.util.stateLogin
 import com.example.beering.util.token.token
 import retrofit2.Call
 import retrofit2.Response
@@ -32,9 +34,14 @@ class HomeFragment: Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val recyclerView: RecyclerView = binding.homePostRv
 
+        var homeService:ReviewsApiService? = null
+        if(stateLogin(requireContext())){
+            homeService = getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
+        }else{
+            homeService = getRetrofit_no_header().create(ReviewsApiService::class.java)
+        }
+
         // api 연결
-        val homeService =
-            getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
         homeService.getReviews().enqueue(object : retrofit2.Callback<ReviewsResponse>{
             override fun onResponse(
                 call: Call<ReviewsResponse>, response: Response<ReviewsResponse>
