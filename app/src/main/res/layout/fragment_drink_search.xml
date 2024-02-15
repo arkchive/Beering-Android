@@ -119,7 +119,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drink_search_type_mcv"
+                    android:id="@+id/drink_search_sort_mcv"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
@@ -131,7 +131,7 @@
 
 
                     <TextView
-                        android:id="@+id/drink_search_type_tv"
+                        android:id="@+id/drink_search_sort_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -144,7 +144,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drink_search_sort_mcv"
+                    android:id="@+id/drink_search_type_mcv"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
@@ -155,7 +155,7 @@
 
 
                     <TextView
-                        android:id="@+id/drink_search_sort_tv"
+                        android:id="@+id/drink_search_type_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"

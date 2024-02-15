@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -162,12 +163,12 @@ class DrinkSearchFragment : Fragment() {
                 )
 
                 when (sortButton_check) {
-                    0 -> binding.drinkSearchTypeTv.text = "맥주"
-                    1 -> binding.drinkSearchTypeTv.text = "와인"
-                    2 -> binding.drinkSearchTypeTv.text = "전통준"
-                    3 -> binding.drinkSearchTypeTv.text = "위스키"
-                    4 -> binding.drinkSearchTypeTv.text = "리큐르"
-                    5 -> binding.drinkSearchTypeTv.text = "보드카"
+                    0 -> binding.drinkSearchSortTv.text = "맥주"
+                    1 -> binding.drinkSearchSortTv.text = "와인"
+                    2 -> binding.drinkSearchSortTv.text = "전통준"
+                    3 -> binding.drinkSearchSortTv.text = "위스키"
+                    4 -> binding.drinkSearchSortTv.text = "리큐르"
+                    5 -> binding.drinkSearchSortTv.text = "보드카"
                 }
             }
 
@@ -188,10 +189,10 @@ class DrinkSearchFragment : Fragment() {
                 )
 
                 when (typeButton_check) {
-                    0 -> binding.drinkSearchSortTv.text = "이름순"
-                    1 -> binding.drinkSearchSortTv.text = "리뷰많은순"
-                    2 -> binding.drinkSearchSortTv.text = "최저가순"
-                    3 -> binding.drinkSearchSortTv.text = "평점순"
+                    0 -> binding.drinkSearchTypeTv.text = "이름순"
+                    1 -> binding.drinkSearchTypeTv.text = "리뷰많은순"
+                    2 -> binding.drinkSearchTypeTv.text = "최저가순"
+                    3 -> binding.drinkSearchTypeTv.text = "평점순"
                 }
             }
         }
@@ -373,9 +374,8 @@ class DrinkSearchFragment : Fragment() {
 
 
                                 // 받아온 데이터 넣는 부분
-                                if (data != null) {
-                                    initData(data)
-                                }
+                                initData(data)
+
 
 
 
