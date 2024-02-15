@@ -25,63 +25,55 @@ class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var homeAdapter: HomeAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val recyclerView: RecyclerView = binding.homePostRv
+        val recyclerView: RecyclerView = binding.itemHomeRv
 
-        var homeService: ReviewsApiService
-
-        // api 연결
+        var homeService:ReviewsApiService? = null
         if(stateLogin(requireContext())){
-            homeService =
-                getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
-        } else {
-            homeService =
-                getRetrofit_no_header().create(ReviewsApiService::class.java)
+            homeService = getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
+        }else{
+            homeService = getRetrofit_no_header().create(ReviewsApiService::class.java)
         }
 
+        // api 연결
         homeService.getReviews().enqueue(object : retrofit2.Callback<ReviewsResponse>{
             override fun onResponse(
                 call: Call<ReviewsResponse>, response: Response<ReviewsResponse>
             ) {
                 val resp = response.body()
-                if(resp != null){
-                    if(resp!!.isSuccess) {
-                        val reviews = resp.result.content
-                        homeAdapter = HomeAdapter(reviews)
-                        recyclerView.adapter = homeAdapter
-                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                if(resp!!.isSuccess) {
+                    val reviews = resp.result.content
+                    homeAdapter = HomeAdapter(reviews)
+                    recyclerView.adapter = homeAdapter
+                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-                        homeAdapter!!.setOnItemClickListener(object :
-                            HomeAdapter.OnItemClickListener {
-                            override fun onItemClick(review: ReviewsContent) {
-                                // 리뷰 상세보기 페이지
-                                val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
-                                intent.putExtra("reviewId", review.reviewId)
-                                startActivity(intent)
-                            }
-                        })
-
+                    homeAdapter!!.setOnItemClickListener(object :
+                        HomeAdapter.OnItemClickListener {
+                        override fun onItemClick(review: ReviewsContent) {
+                            // 리뷰 상세보기 페이지
+                            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
+                            intent.putExtra("reviewId", review.reviewId)
+                            startActivity(intent)
+                        }
+                    })
 
 
-                        homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
-                            override fun onButtonClick(position: Int) {
-                                homeAdapter!!.notifyItemChanged(position, "likeChange")
-                            }
-                        })
+
+                    homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
+                        override fun onButtonClick(position: Int) {
+                            homeAdapter!!.notifyItemChanged(position, "likeChange")
+                        }
+                    })
 
 
-                    }else {
-                        if(resp.responseCode == 2003) token(requireContext())
-                    }
-
+                }else {
+                    if(resp.responseCode == 2003) token(requireContext())
                 }
-
             }
 
             override fun onFailure(call: Call<ReviewsResponse>, t: Throwable) {
@@ -97,11 +89,11 @@ class HomeFragment: Fragment() {
 
         })
 
-        //삭제해야 함.
-        binding.itemHomePostProfileCv.setOnClickListener {
-            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
-            startActivity(intent)
-        }
+//        //삭제해야 함.
+//        binding.itemHomePostProfileCv.setOnClickListener {
+//            val intent = Intent(requireContext(), ReviewDetailActivity::class.java)
+//            startActivity(intent)
+//        }
 
         return binding.root
     }

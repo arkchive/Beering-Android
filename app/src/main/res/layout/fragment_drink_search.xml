@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.sothree.slidinguppanel.SlidingUpPanelLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drink_search_supl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
     android:background="#00FFFFFF"
+    android:gravity="bottom"
+    app:umanoDragView="@id/drink_search_filter_slide_layout_cl"
+    app:umanoOverlay="true"
     app:umanoPanelHeight="0dp"
-    app:umanoParallaxOffset="0dp"
-    app:umanoOverlay="false"
-    app:umanoDragView="@id/drink_search_filter_slide_layout_cl">
+    app:umanoParallaxOffset="0dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/background1">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/drink_search_top_cl"
             android:layout_width="0dp"
             android:layout_height="90dp"
-            android:layout_marginTop="23dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="23dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,20 +34,20 @@
                 android:id="@+id/drink_search_top_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:text="주류 검색"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/button_search_code"/>
+                android:src="@drawable/button_search_code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/drink_search_top_search_mcv"
@@ -57,12 +56,12 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/drink_search_top_tv"
                 android:backgroundTint="#D9D9D9"
                 app:cardCornerRadius="50dp"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/drink_search_top_tv">
 
                 <EditText
                     android:id="@+id/drink_search_top_search_ed"
@@ -72,22 +71,23 @@
                     android:layout_marginEnd="19dp"
                     android:background="@color/transparent"
                     android:hint="검색어를 입력하세요."
+                    android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:imeOptions="actionSearch"
-                    android:textSize="16sp"
                     android:textColor="#B4B4B4"
-                    android:textColorHint="#B4B4B4"/>
+                    android:textColorHint="#B4B4B4"
+                    android:textSize="16sp" />
             </com.google.android.material.card.MaterialCardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <HorizontalScrollView
             android:id="@+id/drink_search_filter_hsv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:scrollbars="none"
             app:layout_constraintStart_toStartOf="@id/drink_search_top_cl"
             app:layout_constraintTop_toBottomOf="@id/drink_search_top_cl">
@@ -108,11 +108,12 @@
                     android:layout_height="32dp"
                     app:cardBackgroundColor="#FFD338"
                     app:cardCornerRadius="21dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    app:strokeColor="@null">
 
                     <ImageView
-                        android:layout_width="17dp"
-                        android:layout_height="24dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_filter" />
                 </com.google.android.material.card.MaterialCardView>
@@ -123,9 +124,10 @@
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
                     android:background="@null"
-                    app:cardBackgroundColor="@color/gray01"
+                    app:cardBackgroundColor="@color/gray02"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    app:strokeColor="@null">
 
 
                     <TextView
@@ -133,9 +135,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
+                        android:layout_marginHorizontal="8dp"
                         android:gravity="center"
                         android:text="주종"
-                        android:layout_marginHorizontal="8dp"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -146,9 +148,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray01"
+                    app:cardBackgroundColor="@color/gray02"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    app:strokeColor="@null">
 
 
                     <TextView
@@ -156,32 +159,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
+                        android:layout_marginHorizontal="8dp"
                         android:gravity="center"
                         android:text="정렬 기준"
-                        android:layout_marginHorizontal="8dp"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drink_search_price_mcv"
+                    android:id="@+id/drink_search_tag_mcv"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray01"
+                    app:cardBackgroundColor="@color/gray02"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    app:strokeColor="@null"
+                    android:visibility="gone">
 
 
                     <TextView
-                        android:id="@+id/drink_search_price_tv"
+                        android:id="@+id/drink_search_tag_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="가격대"
                         android:layout_marginHorizontal="8dp"
+                        android:gravity="center"
+                        android:text="#RkfRMagks"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -194,8 +199,8 @@
             android:id="@+id/drink_search_result_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="7dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/drink_search_filter_hsv" />
@@ -203,318 +208,316 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/drink_search_filter_slide_layout_cl"
         android:layout_width="match_parent"
         android:layout_height="630dp"
-        android:background="@drawable/background_drawer">
-
-
-        <View
-            android:layout_width="58dp"
-            android:layout_height="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="9dp"
-            android:background="@drawable/background_drawer_pin"/>
-
-        <TextView
-            android:id="@+id/drink_search_filter_sort_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="주종"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="58dp"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/drink_search_filter_sort_tv"
-            android:fillViewport="true"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="18dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_beer_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="🍺 맥주"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_wine_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="🍷 와인"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_traditional_liquor_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="🍶 전통주"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_whiskey_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="🥃 위스키"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_liqueur_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="🥃 리큐르"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_vodka_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="🥃 보드카"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-
-
-
-        <TextView
-            android:id="@+id/drink_search_filter_type_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="정렬기준"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/drink_search_filter_sort_tv"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="91dp"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/drink_search_filter_type_tv"
-            android:layout_marginHorizontal="10dp"
-            android:fillViewport="true"
-            android:layout_marginTop="18dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="이름순"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_review_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="리뷰많은순"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_low_price_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="최저가순"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:textColor="@color/black"/>
-
-
-                <TextView
-                    android:id="@+id/drink_search_button_filter_high_rating_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_button_search"
-                    android:text="평점순"
-                    android:textSize="15sp"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="8dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:textColor="@color/black"/>
-
-
-            </LinearLayout>
-        </HorizontalScrollView>
+        android:background="#00FFFFFF"
+        android:orientation="vertical">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/drink_search_filter_country_cl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/drink_search_filter_type_tv"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="91dp"
-            android:visibility="gone">
+            android:id="@+id/drink_search_filter_slide__cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_drawer">
+
+
+            <View
+                android:layout_width="58dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/background_drawer_pin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:id="@+id/drink_search_filter_country_tv"
+                android:id="@+id/drink_search_filter_sort_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="제조국"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="58dp"
+                android:text="주종"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="18dp"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/drink_search_filter_sort_tv">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_beer_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="🍺 맥주"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_wine_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="🍷 와인"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_traditional_liquor_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="🍶 전통주"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_whiskey_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="🥃 위스키"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_liqueur_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="🥃 리큐르"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_vodka_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="🥃 보드카"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <TextView
+                android:id="@+id/drink_search_filter_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="91dp"
+                android:text="정렬기준"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/drink_search_filter_sort_tv" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="18dp"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/drink_search_filter_type_tv">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="이름순"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_review_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="리뷰많은순"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_low_price_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="최저가순"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:id="@+id/drink_search_button_filter_high_rating_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_button_search"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:text="평점순"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/drink_search_filter_country_selecter_cl"
-                android:layout_width="123dp"
-                android:layout_height="35dp"
+                android:id="@+id/drink_search_filter_country_cl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="91dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/drink_search_filter_country_tv"
-                android:background="@drawable/background_button_search"
-                android:backgroundTint="@color/gray2"
-                android:layout_marginTop="14dp">
+                app:layout_constraintTop_toBottomOf="@id/drink_search_filter_type_tv">
 
-                <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginEnd="17dp"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/ic_arrow_down_gray"
-                    />
+                <TextView
+                    android:id="@+id/drink_search_filter_country_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제조국"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/drink_search_filter_country_selecter_cl"
+                    android:layout_width="123dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/background_button_search"
+                    android:backgroundTint="@color/gray2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/drink_search_filter_country_tv">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="17dp"
+                        android:src="@drawable/ic_arrow_down_gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/drink_search_filter_tag_cl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/drink_search_filter_type_tv"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="199dp"
-            android:visibility="gone">
-            <TextView
-                android:id="@+id/drink_search_filter_tag_tv"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/drink_search_filter_tag_cl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="태그"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="199dp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/drink_search_filter_type_tv">
+
+                <TextView
+                    android:id="@+id/drink_search_filter_tag_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="태그"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/drink_search_button_filter_apply_mcv"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginBottom="22dp"
+                android:backgroundTint="#FFD338"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="필터 적용하기"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </com.google.android.material.card.MaterialCardView>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginBottom="22dp"
-            app:cardCornerRadius="50dp"
-            android:backgroundTint="#FFD338"
-            app:cardElevation="0dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="필터 적용하기"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
-        </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+    </LinearLayout>
 
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

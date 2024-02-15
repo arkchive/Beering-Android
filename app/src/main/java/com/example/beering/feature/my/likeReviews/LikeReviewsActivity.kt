@@ -9,18 +9,15 @@ import com.example.beering.feature.home.ReviewsResponse
 import com.example.beering.util.getRetrofit_header
 import com.example.beering.util.getAccessToken
 import com.example.beering.databinding.ActivityLikeReviewsBinding
+import com.example.beering.util.BaseActivity
 import retrofit2.Call
 import retrofit2.Response
 
-class LikeReviewsActivity: AppCompatActivity() {
-    lateinit var binding : ActivityLikeReviewsBinding
+class LikeReviewsActivity: BaseActivity<ActivityLikeReviewsBinding>(ActivityLikeReviewsBinding::inflate) {
     lateinit var likeReviewsAdapter : LikeReviewsAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityLikeReviewsBinding.inflate(layoutInflater)
+    override fun initAfterBinding() {
         val recyclerView: RecyclerView = binding.likeReviewsPostRv
-        setContentView(binding.root)
 
         binding.btnBack.setOnClickListener {
             finish()

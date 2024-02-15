@@ -13,6 +13,7 @@ import com.example.beering.feature.my.drinkFavorite.DrinkFavoriteActivity
 import com.example.beering.feature.my.likeReviews.LikeReviewsActivity
 import com.example.beering.feature.my.myReviews.MyReviewsActivity
 import com.example.beering.R
+import com.example.beering.databinding.FragmentMy2Binding
 import com.example.beering.util.token.token
 import com.example.beering.databinding.FragmentMyBinding
 import com.example.beering.util.getAccessToken
@@ -22,78 +23,20 @@ import retrofit2.Call
 import retrofit2.Response
 
 class MyFragment : Fragment() {
-    lateinit var binding: FragmentMyBinding
+    lateinit var binding: FragmentMy2Binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyBinding.inflate(inflater, container, false)
+        binding = FragmentMy2Binding.inflate(inflater, container, false)
 
 
         // 로그인 상태에 따른 화면 설정
         if (stateLogin(requireContext())) {
             // 로그인 상태일때
-            binding.myMyReviewsTv.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-            binding.myMyReviewsButtonIv.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-            binding.myMyReviewsButtonIv.isEnabled = true
-            binding.myMyReviewsUnderlineV.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
 
-            binding.myFavoriteDrinkTv.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-            binding.myFavoriteDrinkButtonIv.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-            binding.myFavoriteDrinkButtonIv.isEnabled = true
-            binding.myFavoriteDrinkUnderlineV.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-
-            binding.myFavoriteReviewTv.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-            binding.myFavoriteReviewButtonIv.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
-            binding.myFavoriteReviewButtonIv.isEnabled = true
-            binding.myFavoriteReviewUnderlineV.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
 
             // api 연결설정
             val myService =
@@ -107,7 +50,6 @@ class MyFragment : Fragment() {
                         val resp = response.body()
                         if (resp!!.isSuccess) {
                             binding.myProfileNicknameTv.text = resp!!.result.nickname
-                            binding.myProfileEmailTv.text = resp!!.result.username
                             val defaultImage = R.drawable.img_default_profile
                             val url = resp!!.result.url
 
@@ -139,85 +81,31 @@ class MyFragment : Fragment() {
                 }
 
             })
-            
 
 
-        } else {
-            // 비로그인 상태일때
-            binding.myMyReviewsTv.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-            binding.myMyReviewsButtonIv.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-            binding.myMyReviewsButtonIv.isEnabled = false
-            binding.myMyReviewsUnderlineV.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-
-
-
-            binding.myFavoriteDrinkTv.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-            binding.myFavoriteDrinkButtonIv.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-            binding.myFavoriteDrinkButtonIv.isEnabled = false
-            binding.myFavoriteDrinkUnderlineV.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-
-            binding.myFavoriteReviewTv.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-            binding.myFavoriteReviewButtonIv.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
-            binding.myFavoriteReviewButtonIv.isEnabled = false
-            binding.myFavoriteReviewUnderlineV.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.gray01
-                )
-            )
         }
+    else {
+            // 비로그인 상태일때
 
-        binding.myMyReviewsButtonIv.setOnClickListener {
+
+        }
+        // 내 리뷰 모아보기 페이지 연결
+
+        binding.myProfileReviewCl.setOnClickListener {
             val intent = Intent(requireContext(), MyReviewsActivity::class.java)
             startActivity(intent)
         }
 
-        binding.myFavoriteDrinkButtonIv.setOnClickListener {
+        // 찜한 주류 페이지 연결
+
+        binding.myProfileLikeDrinkCl.setOnClickListener {
             val intent = Intent(requireContext(), DrinkFavoriteActivity::class.java)
             startActivity(intent)
         }
 
-        binding.myFavoriteReviewButtonIv.setOnClickListener {
+        // 좋아요한 리뷰 모아보기 페이지 연결
+
+        binding.myMenu1Tv.setOnClickListener {
             val intent = Intent(requireContext(), LikeReviewsActivity::class.java)
             startActivity(intent)
         }
