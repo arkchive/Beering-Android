@@ -13,6 +13,9 @@ android {
     viewBinding{
         enabled true
     }
+    dataBinding{
+        enabled true
+    }
 
     defaultConfig {
         applicationId "com.example.beering"
@@ -97,5 +100,4 @@ dependencies {
 
     // sliding up panel
     implementation 'com.github.hannesa2:AndroidSlidingUpPanel:4.2.1'
-    
 }

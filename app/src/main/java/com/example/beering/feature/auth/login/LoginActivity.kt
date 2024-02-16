@@ -22,6 +22,7 @@ import com.example.beering.feature.auth.login.LoginActivity.Constants.TAG
 import com.example.beering.util.changeLogin
 import com.example.beering.util.setMemberId
 import com.example.beering.util.setToken
+import com.google.android.material.card.MaterialCardView
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.KakaoSdk
@@ -82,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-        binding.loginKakaoLoginIv.setOnClickListener(object : View.OnClickListener {
+        binding.loginKakaoCl.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 // 카카오톡 설치 확인
                 if (UserApiClient.instance.isKakaoTalkLoginAvailable(this@LoginActivity)) {
@@ -145,39 +146,39 @@ class LoginActivity : AppCompatActivity() {
 
 
                                     } else {
-                                        binding.loginErrorTv.text = resp!!.responseMessage
-                                        binding.loginErrorTv.visibility = View.VISIBLE
-                                        binding.loginIdV.setBackgroundColor(
-                                            ContextCompat.getColor(
-                                                this@LoginActivity,
-                                                R.color.beering_red
-                                            )
-                                        )
-                                        binding.loginPasswordV.setBackgroundColor(
-                                            ContextCompat.getColor(
-                                                this@LoginActivity,
-                                                R.color.beering_red
-                                            )
-                                        )
+//                                        binding.loginErrorTv.text = resp!!.responseMessage
+//                                        binding.loginErrorTv.visibility = View.VISIBLE
+//                                        binding.loginIdV.setBackgroundColor(
+//                                            ContextCompat.getColor(
+//                                                this@LoginActivity,
+//                                                R.color.beering_red
+//                                            )
+//                                        )
+//                                        binding.loginPasswordV.setBackgroundColor(
+//                                            ContextCompat.getColor(
+//                                                this@LoginActivity,
+//                                                R.color.beering_red
+//                                            )
+//                                        )
 
                                     }
                                 }
 
                                 override fun onFailure(call: Call<KakaoLoginResponse>, t: Throwable) {
-                                    binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
-                                    binding.loginErrorTv.visibility = View.VISIBLE
-                                    binding.loginIdV.setBackgroundColor(
-                                        ContextCompat.getColor(
-                                            this@LoginActivity,
-                                            R.color.beering_red
-                                        )
-                                    )
-                                    binding.loginPasswordV.setBackgroundColor(
-                                        ContextCompat.getColor(
-                                            this@LoginActivity,
-                                            R.color.beering_red
-                                        )
-                                    )
+//                                    binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
+//                                    binding.loginErrorTv.visibility = View.VISIBLE
+//                                    binding.loginIdV.setBackgroundColor(
+//                                        ContextCompat.getColor(
+//                                            this@LoginActivity,
+//                                            R.color.beering_red
+//                                        )
+//                                    )
+//                                    binding.loginPasswordV.setBackgroundColor(
+//                                        ContextCompat.getColor(
+//                                            this@LoginActivity,
+//                                            R.color.beering_red
+//                                        )
+//                                    )
                                 }
 
                             })
@@ -195,33 +196,29 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        binding.loginSignupCl.setOnClickListener {
+        binding.loginSignupCv.setOnClickListener {
             val intent = Intent(this, JoinActivity::class.java)
             startActivity(intent)
         }
 
-        binding.loginBackIv.setOnClickListener {
-            finish()
-        }
-
-        binding.loginPasswordInvisibleIv.setOnClickListener {
-            binding.loginPasswordEd.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            binding.loginPasswordInvisibleIv.visibility = View.INVISIBLE
-            binding.loginPasswordVisibleIv.visibility = View.VISIBLE
-        }
-
-        binding.loginPasswordVisibleIv.setOnClickListener {
-            binding.loginPasswordEd.inputType =
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            binding.loginPasswordInvisibleIv.visibility = View.VISIBLE
-            binding.loginPasswordVisibleIv.visibility = View.INVISIBLE
-        }
+//        binding.loginPasswordInvisibleIv.setOnClickListener {
+//            binding.loginPasswordEd.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+//            binding.loginPasswordInvisibleIv.visibility = View.INVISIBLE
+//            binding.loginPasswordVisibleIv.visibility = View.VISIBLE
+//        }
+//
+//        binding.loginPasswordVisibleIv.setOnClickListener {
+//            binding.loginPasswordEd.inputType =
+//                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+//            binding.loginPasswordInvisibleIv.visibility = View.VISIBLE
+//            binding.loginPasswordVisibleIv.visibility = View.INVISIBLE
+//        }
 
 
         //객체 생성
         val idEdit: EditText = binding.loginIdEd
         val passwordEdit: EditText = binding.loginPasswordEd
-        val loginBtn: ConstraintLayout = binding.loginLoginButtonCl
+        val loginBtn: MaterialCardView = binding.loginBtnCv
 
         //메시지 담을 변수
         var id: String = ""
@@ -229,7 +226,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         //버튼 비활성화
-        loginBtn.isEnabled = false
+//        loginBtn.isEnabled = false
 
         //EditText 값 있을때만 버튼 활성화
         idEdit.addTextChangedListener(object : TextWatcher {
@@ -242,23 +239,23 @@ class LoginActivity : AppCompatActivity() {
                 //id 입력값 담기
                 id = idEdit.text.toString()
 
-                if (id.isNotEmpty() && password.isNotEmpty()) {
-                    loginBtn.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.black
-                        )
-                    )
-                    loginBtn.isEnabled = true
-                } else {
-                    loginBtn.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.gray03
-                        )
-                    )
-                    loginBtn.isEnabled = false
-                }
+//                if (id.isNotEmpty() && password.isNotEmpty()) {
+//                    loginBtn.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            this@LoginActivity,
+//                            R.color.black
+//                        )
+//                    )
+//                    loginBtn.isEnabled = true
+//                } else {
+//                    loginBtn.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            this@LoginActivity,
+//                            R.color.gray03
+//                        )
+//                    )
+//                    loginBtn.isEnabled = false
+//                }
             }
 
             // 입력이 끝날 때 작동
@@ -278,21 +275,21 @@ class LoginActivity : AppCompatActivity() {
 
                 //값 유무에 따른 활성화 여부
                 if (id.isNotEmpty() && password.isNotEmpty()) {
-                    loginBtn.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.black
-                        )
-                    )
-                    loginBtn.isEnabled = true
+//                    loginBtn.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            this@LoginActivity,
+//                            R.color.black
+//                        )
+//                    )
+//                    loginBtn.isEnabled = true
                 } else {
-                    loginBtn.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.gray03
-                        )
-                    )
-                    loginBtn.isEnabled = false
+//                    loginBtn.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            this@LoginActivity,
+//                            R.color.gray03
+//                        )
+//                    )
+//                    loginBtn.isEnabled = false
                 }
             }
 
@@ -303,16 +300,6 @@ class LoginActivity : AppCompatActivity() {
         //버튼 이벤트
         loginBtn.setOnClickListener {
             singIn()
-        }
-
-        binding.loginIdDeleteIv.setOnClickListener {
-            binding.loginIdEd.text.clear()
-            id = ""
-        }
-
-        binding.loginPasswordDeleteIv.setOnClickListener {
-            binding.loginPasswordEd.text.clear()
-            password = ""
         }
 
         binding.loginPasswordEd.setOnKeyListener { view, i, keyEvent ->
@@ -352,47 +339,42 @@ class LoginActivity : AppCompatActivity() {
                     setMemberId(this@LoginActivity, resp.result.memberId)
 
                 } else {
-                    binding.loginErrorTv.text = resp!!.responseMessage
-                    binding.loginErrorTv.visibility = View.VISIBLE
-                    binding.loginIdV.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.beering_red
-                        )
-                    )
-                    binding.loginPasswordV.setBackgroundColor(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.beering_red
-                        )
-                    )
+//                    binding.loginErrorTv.text = resp!!.responseMessage
+//                    binding.loginErrorTv.visibility = View.VISIBLE
+//                    binding.loginIdV.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            this@LoginActivity,
+//                            R.color.beering_red
+//                        )
+//                    )
+//                    binding.loginPasswordV.setBackgroundColor(
+//                        ContextCompat.getColor(
+//                            this@LoginActivity,
+//                            R.color.beering_red
+//                        )
+//                    )
 
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
-                binding.loginErrorTv.visibility = View.VISIBLE
-                binding.loginIdV.setBackgroundColor(
-                    ContextCompat.getColor(
-                        this@LoginActivity,
-                        R.color.beering_red
-                    )
-                )
-                binding.loginPasswordV.setBackgroundColor(
-                    ContextCompat.getColor(
-                        this@LoginActivity,
-                        R.color.beering_red
-                    )
-                )
+//                binding.loginErrorTv.text = "서버에 요청을 실패하였습니다."
+//                binding.loginErrorTv.visibility = View.VISIBLE
+//                binding.loginIdV.setBackgroundColor(
+//                    ContextCompat.getColor(
+//                        this@LoginActivity,
+//                        R.color.beering_red
+//                    )
+//                )
+//                binding.loginPasswordV.setBackgroundColor(
+//                    ContextCompat.getColor(
+//                        this@LoginActivity,
+//                        R.color.beering_red
+//                    )
+//                )
             }
-
         })
-
-
     }
-
-
 }
 
 
