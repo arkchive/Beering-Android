@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.auth.LoginRequestActivity">
+    tools:context=".feature.auth.login.LoginActivity">
 
     <FrameLayout
         android:id="@+id/main_frm"

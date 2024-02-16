@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.bumptech.glide.Glide
-import com.example.beering.feature.auth.LoginRequestActivity
-import com.example.beering.R
 import com.example.beering.databinding.ActivitySplashBinding
+import com.example.beering.feature.auth.login.LoginActivity
 
 
 class SplashActivity : AppCompatActivity() {
@@ -28,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
         var handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             // 일정 시간 지나면 로그인 요청 화면 이동
-            val intent = Intent(this, LoginRequestActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, 2000) // 2초
