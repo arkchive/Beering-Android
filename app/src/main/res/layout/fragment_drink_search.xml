@@ -10,15 +10,14 @@
     android:background="#00FFFFFF"
     app:umanoPanelHeight="0dp"
     app:umanoParallaxOffset="0dp"
-    app:umanoShadowHeight="0dp"
-    app:umanoOverlay="true"
+    app:umanoOverlay="false"
     app:umanoDragView="@id/drink_search_filter_slide_layout_cl">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/background1">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -112,25 +111,25 @@
                     app:cardElevation="0dp">
 
                     <ImageView
-                        android:layout_width="17dp"
-                        android:layout_height="24dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_filter" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drink_search_type_mcv"
+                    android:id="@+id/drink_search_sort_mcv"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
                     android:background="@null"
-                    app:cardBackgroundColor="@color/gray01"
+                    app:cardBackgroundColor="@color/gray02"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="0dp">
 
 
                     <TextView
-                        android:id="@+id/drink_search_type_tv"
+                        android:id="@+id/drink_search_sort_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -143,17 +142,17 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drink_search_sort_mcv"
+                    android:id="@+id/drink_search_type_mcv"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray01"
+                    app:cardBackgroundColor="@color/gray02"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="0dp">
 
 
                     <TextView
-                        android:id="@+id/drink_search_sort_tv"
+                        android:id="@+id/drink_search_type_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
@@ -166,17 +165,19 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/drink_search_price_mcv"
+                    android:id="@+id/drink_search_tag_mcv"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/gray01"
+                    app:cardBackgroundColor="@color/gray02"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    app:strokeColor="@null"
+                    android:visibility="gone">
 
 
                     <TextView
-                        android:id="@+id/drink_search_price_tv"
+                        android:id="@+id/drink_search_tag_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
                         android:layout_gravity="center"
