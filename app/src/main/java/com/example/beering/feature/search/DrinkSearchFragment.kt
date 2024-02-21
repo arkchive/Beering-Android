@@ -29,7 +29,7 @@ import com.example.beering.feature.home.ReviewsApiService
 import com.example.beering.util.data.DrinkCover
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getRetrofit_header
-import com.example.beering.util.getRetrofit_no_header
+import com.example.beering.util.getRetrofit
 import com.example.beering.util.stateLogin
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import retrofit2.Call
@@ -213,7 +213,7 @@ class DrinkSearchFragment : Fragment() {
                     DrinkSearchApiService::class.java)
         } else {
             drinkSearchService =
-                getRetrofit_no_header().create(DrinkSearchApiService::class.java)
+                getRetrofit().create(DrinkSearchApiService::class.java)
         }
 
 
@@ -331,7 +331,7 @@ class DrinkSearchFragment : Fragment() {
                             DrinkSearchApiService::class.java)
                 } else {
                     drinkSearchService =
-                        getRetrofit_no_header().create(DrinkSearchApiService::class.java)
+                        getRetrofit().create(DrinkSearchApiService::class.java)
                 }
 
 
@@ -503,15 +503,15 @@ class DrinkSearchFragment : Fragment() {
 
             when(sortNum){
                 0 -> {
-                    searchSort = "맥주"
+                    searchSort = "beer"
                     binding.drinkSearchFilterCountryCl.visibility = View.VISIBLE
                     binding.drinkSearchFilterTagCl.visibility = View.VISIBLE
                 }
-                1 -> searchSort = "와인"
-                2 -> searchSort = "전통주"
-                3 -> searchSort = "위스키"
-                4 -> searchSort = "리큐르"
-                5 -> searchSort = "보드카"
+                1 -> searchSort = "wine"
+                2 -> searchSort = "traditional_liquor"
+                3 -> searchSort = "whiskey"
+                4 -> searchSort = "liqueur"
+                5 -> searchSort = "vodka"
             }
 
 

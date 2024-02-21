@@ -11,7 +11,15 @@ import java.io.IOException
 
 const val BASE_URL = "https://api.beering.shop/"
 
-// 토큰 요청 (비동기 방식)
+// 헤더 없는 okHttpClient
+fun okHttpClient() : OkHttpClient {
+    val builder = OkHttpClient.Builder()
+    val logging = HttpLoggingInterceptor()
+    logging.level = HttpLoggingInterceptor.Level.BODY
+    return builder.addInterceptor(logging).build()
+}
+
+
 fun okHttpClient_header(header: String) : OkHttpClient {
     val builder = OkHttpClient.Builder()
     val logging = HttpLoggingInterceptor()
@@ -19,6 +27,8 @@ fun okHttpClient_header(header: String) : OkHttpClient {
     builder.addInterceptor(HeaderInterceptor(header))
     return builder.addInterceptor(logging).build()
 }
+
+
 class HeaderInterceptor constructor(private val token: String) : Interceptor {
 
     @Throws(IOException::class)
@@ -30,6 +40,9 @@ class HeaderInterceptor constructor(private val token: String) : Interceptor {
         return chain.proceed(newRequest)
     }
 }
+
+
+
 fun getRetrofit_header(header: String): Retrofit{
     // 각 API 호출을 담당할 API 클라이언트 클래스
     // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
@@ -42,41 +55,8 @@ fun getRetrofit_header(header: String): Retrofit{
 
     return retrofit
 }
-fun getRetrofit_no_header(): Retrofit{
-    // 각 API 호출을 담당할 API 클라이언트 클래스
-    // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
 
-    val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    return retrofit
-}
-
-
-// 비동기 방식
-fun okHttpClient() : OkHttpClient {
-    val builder = OkHttpClient.Builder()
-    val logging = HttpLoggingInterceptor()
-    logging.level = HttpLoggingInterceptor.Level.BODY
-    return builder.addInterceptor(logging).build()
-}
-fun getRetrofit_async(): Retrofit{
-    // 각 API 호출을 담당할 API 클라이언트 클래스
-    // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
-
-    val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client((okHttpClient()))
-        .build()
-
-    return retrofit
-}
-
-//동기 방식 (로그인에서 사용중)
-fun getRetrofit_sync(): Retrofit{
+fun getRetrofit(): Retrofit{
     // 각 API 호출을 담당할 API 클라이언트 클래스
     // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
 
@@ -92,18 +72,3 @@ fun getRetrofit_sync(): Retrofit{
 
 
 
-// 동기 방식
-class ApiClient {
-    // 각 API 호출을 담당할 API 클라이언트 클래스
-    // API 인터페이스를 생성하고 Retrofit 인스턴스 초기화
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    // 필요한 API 인터페이스 속성 추가
-    val joinApiService: JoinApiService = retrofit.create(JoinApiService::class.java)
-
-
-}

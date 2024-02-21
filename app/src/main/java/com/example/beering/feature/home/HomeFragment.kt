@@ -14,7 +14,7 @@ import com.example.beering.databinding.FragmentHomeBinding
 import com.example.beering.feature.review.reviewDetail.ReviewDetailActivity
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getRetrofit_header
-import com.example.beering.util.getRetrofit_no_header
+import com.example.beering.util.getRetrofit
 import com.example.beering.util.stateLogin
 import com.example.beering.util.token.token
 import retrofit2.Call
@@ -37,7 +37,7 @@ class HomeFragment: Fragment() {
         if(stateLogin(requireContext())){
             homeService = getRetrofit_header(getAccessToken(requireContext()).toString()).create(ReviewsApiService::class.java)
         }else{
-            homeService = getRetrofit_no_header().create(ReviewsApiService::class.java)
+            homeService = getRetrofit().create(ReviewsApiService::class.java)
         }
 
         // api 연결
