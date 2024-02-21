@@ -65,8 +65,14 @@ class HomeFragment: Fragment() {
 
 
                     homeAdapter!!.setOnLikeClickListener(object:HomeAdapter.OnLikeClickListener {
-                        override fun onButtonClick(position: Int) {
-                            homeAdapter!!.notifyItemChanged(position, "likeChange")
+                        override fun onLikeClick(position: Int) {
+                            homeAdapter!!.notifyItemChanged(position, "payload_like")
+                        }
+                    })
+
+                    homeAdapter!!.setOnUnlikeClickListener(object:HomeAdapter.OnUnlikeClickListener {
+                        override fun onUnlikeClick(position: Int) {
+                            homeAdapter!!.notifyItemChanged(position, "payload_dislike")
                         }
                     })
 

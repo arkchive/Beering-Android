@@ -1,29 +1,24 @@
 package com.example.beering.feature.home
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.beering.R
-import com.example.beering.databinding.ItemHomeBinding
 import com.example.beering.databinding.ItemHomeReviewBinding
-import com.example.beering.util.ImageAdapter
 import com.example.beering.util.getMemberId
 import com.example.beering.util.like.ReviewLike
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapter<HomeAdapter.ViewHolder>(){
 
     private lateinit var itemClickListener: HomeAdapter.OnItemClickListener
     private lateinit var likeClickListener: HomeAdapter.OnLikeClickListener
+    private lateinit var unlikeClickListener: HomeAdapter.OnUnlikeClickListener
+
+    private val likeCounts: MutableList<Int> = reviews.map { it.like }.toMutableList()
 
     companion object {
         const val PAYLOAD_LIKE = "payload_like"
@@ -35,7 +30,10 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
     }
 
     interface OnLikeClickListener {
-        fun onButtonClick(position: Int)
+        fun onLikeClick(position: Int)
+    }
+    interface OnUnlikeClickListener {
+        fun onUnlikeClick(position: Int)
     }
 
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
@@ -44,6 +42,9 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
 
     fun setOnLikeClickListener(listener: OnLikeClickListener) {
         likeClickListener = listener
+    }
+    fun setOnUnlikeClickListener(listener: OnUnlikeClickListener){
+        unlikeClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
@@ -54,20 +55,42 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(reviews[position])
         holder.bindLike(position, reviews[position], holder)
-        updateLikeButtonUI(holder, reviews[position])
-        updateUnlikeButtonUI(holder, reviews[position])
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: MutableList<Any>) {
         if(payloads.isNotEmpty()) {
             val payload = payloads[0] as String
-
+            val context = holder.itemView.context
             when(payload) {
                 PAYLOAD_LIKE -> {
-                    updateLikeButtonUI(holder, reviews[position])
+                    if(holder.likeButton.isSelected){
+                        holder.likeButton.isSelected = false
+                        holder.likeImageView.isSelected = false
+                        holder.likeNumTextView.setTextColor(ContextCompat.getColor(context, R.color.beering_black))
+                        holder.unlikeButton.isSelected = false
+                        holder.unlikeImageView.isSelected = false
+                    }else{
+                        holder.likeButton.isSelected = true
+                        holder.likeImageView.isSelected = true
+                        holder.likeNumTextView.setTextColor(ContextCompat.getColor(context,R.color.beering_yellow))
+                        holder.unlikeButton.isSelected = false
+                        holder.unlikeImageView.isSelected = false
+                    }
                 }
                 PAYLOAD_DISLIKE -> {
-                    updateUnlikeButtonUI(holder, reviews[position])
+                    if(holder.unlikeButton.isSelected){
+                        holder.likeButton.isSelected = false
+                        holder.likeImageView.isSelected = false
+                        holder.likeNumTextView.setTextColor(ContextCompat.getColor(context, R.color.beering_black))
+                        holder.unlikeButton.isSelected = false
+                        holder.unlikeImageView.isSelected = false
+                    }else{
+                        holder.likeButton.isSelected = false
+                        holder.likeImageView.isSelected = false
+                        holder.likeNumTextView.setTextColor(ContextCompat.getColor(context,R.color.beering_black))
+                        holder.unlikeButton.isSelected = true
+                        holder.unlikeImageView.isSelected = true
+                    }
                 }
             }
         } else {
@@ -75,43 +98,6 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
         }
     }
 
-    private fun updateLikeButtonUI(holder:ViewHolder, review: ReviewsContent){
-        val context = holder.itemView.context
-        val isAlreadyLiked = review.isTabomed == "true"
-
-        if(isAlreadyLiked){
-            holder.likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-            holder.likeImageView.setBackgroundResource(R.drawable.ic_like_light)
-            holder.likeNumTextView.setTextColor(ContextCompat.getColor(context, R.color.beering_black))
-            holder.unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-            holder.unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_light)
-        }else {
-            holder.likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_clicked)
-            holder.likeImageView.setBackgroundResource(R.drawable.ic_like_dark)
-            holder.likeNumTextView.setTextColor(ContextCompat.getColor(context,R.color.beering_yellow))
-            holder.unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-            holder.unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_light)
-        }
-    }
-
-    private fun updateUnlikeButtonUI(holder: ViewHolder, review: ReviewsContent) {
-        val context = holder.itemView.context
-        val isAlreadyUnliked = review.isTabomed == "false"
-
-        if(isAlreadyUnliked){
-            holder.likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-            holder.likeImageView.setBackgroundResource(R.drawable.ic_like_light)
-            holder.likeNumTextView.setTextColor(ContextCompat.getColor(context,R.color.beering_black))
-            holder.unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-            holder.unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_light)
-        }else {
-            holder.likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-            holder.likeImageView.setBackgroundResource(R.drawable.ic_like_light)
-            holder.likeNumTextView.setTextColor(ContextCompat.getColor(context, R.color.beering_black))
-            holder.unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_clicked)
-            holder.unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_dark)
-        }
-    }
 
     override fun getItemCount(): Int {
         return reviews.size
@@ -145,44 +131,64 @@ class HomeAdapter(private val reviews: List<ReviewsContent>): RecyclerView.Adapt
             binding.itemHomeReviewContentTv.text = review.content
 
             if (review.isTabomed == "true") {
-                likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_clicked)
-                likeImageView.setBackgroundResource(R.drawable.ic_like_dark)
+                likeButton.isSelected = true
+                likeImageView.isSelected = true
                 likeNumTextView.setTextColor(ContextCompat.getColor(context,R.color.beering_yellow))
-                unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-                unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_light)
+                unlikeButton.isSelected = false
+                unlikeImageView.isSelected = false
             } else if (review.isTabomed == "false") {
-                likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-                likeImageView.setBackgroundResource(R.drawable.ic_like_light)
+                likeButton.isSelected = false
+                likeImageView.isSelected = false
                 likeNumTextView.setTextColor(ContextCompat.getColor(context, R.color.beering_black))
-                unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_clicked)
-                unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_dark)
+                unlikeButton.isSelected = true
+                unlikeImageView.isSelected = true
             } else {
-                likeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-                likeImageView.setBackgroundResource(R.drawable.ic_like_light)
+                likeButton.isSelected = false
+                likeImageView.isSelected = false
                 likeNumTextView.setTextColor(ContextCompat.getColor(context, R.color.beering_black))
-                unlikeButton.setBackgroundResource(R.drawable.bg_home_review_btn_unclicked)
-                unlikeImageView.setBackgroundResource(R.drawable.ic_unlike_light)
+                unlikeButton.isSelected = false
+                unlikeImageView.isSelected = false
             }
 
         }
 
         fun bindLike(position:Int, review: ReviewsContent, holder: ViewHolder) {
+            val context = itemView.context
             holder.likeButton.setOnClickListener {
-                likeClickListener.onButtonClick(position)
-                ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = true)
-                updateLikeButtonUI(holder, review)
-                notifyItemChanged(position, PAYLOAD_LIKE)
-
+                if(holder.likeButton.isSelected){
+                    likeCounts[position] -= 1
+                    holder.likeNumTextView.text = likeCounts[position].toString()
+                    likeClickListener.onLikeClick(position)
+                    ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = true)
+                    notifyItemChanged(position, PAYLOAD_LIKE)
+                }else{
+                    likeCounts[position] += 1
+                    holder.likeNumTextView.text = likeCounts[position].toString()
+                    likeClickListener.onLikeClick(position)
+                    ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = true)
+                    notifyItemChanged(position, PAYLOAD_LIKE)
             }
 
-            holder.unlikeButton.setOnClickListener{
-                likeClickListener.onButtonClick(position)
-                ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = false)
-                updateUnlikeButtonUI(holder, review)
-                notifyItemChanged(position, PAYLOAD_DISLIKE)
+            holder.unlikeButton.setOnClickListener {
+                if(holder.unlikeButton.isSelected && !holder.likeButton.isSelected){
+                    holder.likeNumTextView.text = likeCounts[position].toString()
+                    unlikeClickListener.onUnlikeClick(position)
+                    ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = false)
+                    notifyItemChanged(position, PAYLOAD_DISLIKE)
+                    }else if(!holder.unlikeButton.isSelected && holder.likeButton.isSelected){
+                        likeCounts[position] -= 1
+                        holder.likeNumTextView.text = likeCounts[position].toString()
+                        unlikeClickListener.onUnlikeClick(position)
+                        ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = false)
+                        notifyItemChanged(position, PAYLOAD_DISLIKE)
+                    }else if(!holder.unlikeButton.isSelected && !holder.likeButton.isSelected){
+                        holder.likeNumTextView.text = likeCounts[position].toString()
+                        unlikeClickListener.onUnlikeClick(position)
+                        ReviewLike(binding.root.context, getMemberId(binding.root.context), review.reviewId, isUp = false)
+                        notifyItemChanged(position, PAYLOAD_DISLIKE)
+                    }
+                }
             }
-
         }
-
     }
 }
