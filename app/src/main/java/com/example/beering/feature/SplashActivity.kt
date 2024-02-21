@@ -5,18 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.example.beering.databinding.ActivityMainBinding
 import com.example.beering.databinding.ActivitySplashBinding
 import com.example.beering.feature.auth.login.LoginActivity
+import com.example.beering.util.BaseActivity
 
 
-class SplashActivity : AppCompatActivity() {
-    lateinit var binding : ActivitySplashBinding
+class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
+    override fun initAfterBinding() {
         loadSplashScreen()
     }
 

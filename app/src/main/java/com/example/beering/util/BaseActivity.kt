@@ -25,7 +25,6 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
         super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)
         setContentView(binding.root)
-        setStatusBarTransparent()
         // 상태 바, 네비게이션 높이 만큼 padding 주기
         binding.root.setPadding(
             0,
@@ -33,6 +32,8 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
             0,
             this.navigationHeight()
         )
+        setStatusBarTransparent()
+
 
         imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
 
@@ -69,15 +70,3 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
 
 
 
-
-fun Activity.setStatusBarTransparent() {
-    window.apply {
-        setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
-    }
-    if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-    }
-}

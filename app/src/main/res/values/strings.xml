@@ -2,8 +2,7 @@
     <string name="app_name">Beering</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="long_text">test\n</string>
-    <string name="in_detail">자세히보기</string>
+
 
     <!-- 기록 페이지-->
     <string name="monthly_report">이번 달 리포트</string>

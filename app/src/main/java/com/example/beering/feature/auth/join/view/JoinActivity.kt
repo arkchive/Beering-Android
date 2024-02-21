@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.beering.feature.auth.login.LoginActivity
 import com.example.beering.R
-import com.example.beering.util.getRetrofit_sync
+import com.example.beering.util.getRetrofit
 import com.example.beering.databinding.ActivityJoinBinding
 import com.example.beering.feature.auth.join.JoinApiService
 import com.example.beering.feature.auth.join.Member
@@ -36,7 +36,7 @@ class JoinActivity: AppCompatActivity() {
     var checkbox2Bool:Boolean = false
 
     // api 연결
-    val joinService = getRetrofit_sync().create(JoinApiService::class.java)
+    val joinService = getRetrofit().create(JoinApiService::class.java)
 
     // 메시지 담을 변수
     var agreementList: MutableList<MemberAgreements> = mutableListOf(

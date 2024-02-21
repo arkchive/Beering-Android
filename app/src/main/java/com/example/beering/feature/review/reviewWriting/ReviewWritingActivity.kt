@@ -22,7 +22,7 @@ import com.example.beering.feature.review.ReviewWritingFormResponse
 import com.example.beering.feature.review.ReviewWritingRequest
 import com.example.beering.feature.review.ReviewWritingResponse
 import com.example.beering.util.getRetrofit_header
-import com.example.beering.util.getRetrofit_sync
+import com.example.beering.util.getRetrofit
 import com.example.beering.util.token.token
 import com.example.beering.util.getAccessToken
 import com.example.beering.util.getMemberId
@@ -60,7 +60,7 @@ class ReviewWritingActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         // api연결하여 작성 폼 설정
-        val reviewWritingFromApi = getRetrofit_sync().create(ReviewWritingFormApiService::class.java)
+        val reviewWritingFromApi = getRetrofit().create(ReviewWritingFormApiService::class.java)
         reviewWritingFromApi.getform(drinkId).enqueue(object : retrofit2.Callback<ReviewWritingFormResponse>{
             override fun onResponse(
                 call: Call<ReviewWritingFormResponse>,

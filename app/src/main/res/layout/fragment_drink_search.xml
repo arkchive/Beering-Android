@@ -10,7 +10,7 @@
     android:background="#00FFFFFF"
     app:umanoPanelHeight="0dp"
     app:umanoParallaxOffset="0dp"
-    app:umanoOverlay="false"
+    app:umanoOverlay="true"
     app:umanoDragView="@id/drink_search_filter_slide_layout_cl">
 
 
@@ -486,6 +486,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/drink_search_button_filter_apply_mcv"
             android:layout_width="0dp"
             android:layout_height="52dp"
             app:layout_constraintStart_toStartOf="parent"
